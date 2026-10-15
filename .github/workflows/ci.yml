@@ -26,7 +26,9 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        profile: [core, postgres, browser, postgres-browser, https]
+        # Public checkout has no real AppID, private corpus or review submissions.
+        # The original core profile remains available for the complete local tree.
+        profile: [public-core, postgres, browser, postgres-browser, https]
     defaults:
       run:
         working-directory: zhongyi-platform

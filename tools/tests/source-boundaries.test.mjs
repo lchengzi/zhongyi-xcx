@@ -33,7 +33,7 @@ test('actual Git ignores private material, credentials and generated files while
   const privatePaths = ['zhongyi/content-private/research-refresh/fixture.json', 'zhongyi/content-private/photos/fixture.jpg',
     'zhongyi/.local/fixture.sqlite', 'zhongyi-platform/.local/fixture.sqlite', '.env', 'zhongyi-platform/.env',
     '.npm-cache/fixture', '.refactor/evidence/fixture', 'node_modules/fixture', 'apps/miniprogram/dist/app.js',
-    'apps/miniprogram/project.config.json', 'apps/miniprogram/project.private.config.json'];
+    'apps/miniprogram/project.config.json', 'apps/miniprogram/project.private.config.json', 'zhongyi/project.config.json'];
   const publicPaths = ['package.json', 'package-lock.json', '.env.example', 'apps/miniprogram/src/pages/catalog/index.tsx',
     'packages/catalog-core/src/photo-client.ts', 'zhongyi/data/ingredients.js', 'zhongyi-platform/server/index.ts',
     'tools/tests/photo-research.fixture.ts', 'apps/miniprogram/project.config.example.json'];

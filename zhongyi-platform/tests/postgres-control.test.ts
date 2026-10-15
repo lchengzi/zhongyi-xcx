@@ -6,6 +6,33 @@ import { postgresProof } from '../tools/ci-core.js';
 import { join, resolve } from 'node:path';
 import { postgresBrowserProof, postgresBrowserReportPath } from '../tools/postgres-test-plan.js';
 import { postgresStartupFailure } from '../tools/postgres-readiness.js';
+import { windowsPostgresStartArgs, postmasterIdentity, postgresPidLive } from '../tools/postgres-owned-process.js';
+
+test('Windows pg_ctl uses restricted startup with quoted fixed arguments, rejecting shell syntax and relative paths', () => {
+  const data = resolve('fixture path/data'), log = resolve('fixture path/server.log');
+  const args = windowsPostgresStartArgs(data, log, ['-p', '5555', '-c', 'listen_addresses=127.0.0.1,::1']);
+  assert.deepEqual(args.slice(0, 8), ['-D', data, '-l', log, '-w', '-t', '20', '-o']);
+  assert.equal(args[8], '"-p" "5555" "-c" "listen_addresses=127.0.0.1,::1"'); assert.equal(args[9], 'start');
+  for (const value of ['x&whoami', '%TEMP%', 'a|b', 'a"b', 'a\nb', 'a^b', 'a!b', 'a>b']) assert.throws(() => windowsPostgresStartArgs(data, log, [value]));
+  assert.throws(() => windowsPostgresStartArgs('relative', log, []));
+});
+
+test('postmaster adoption binds a fresh positive PID, exact data directory, port and start time', () => {
+  const data = resolve('owned-cluster/data'), startedAt = 1700000000999;
+  const marker = `12345\n${data}\n1700000000\n5555\n`;
+  assert.deepEqual(postmasterIdentity(marker, data, 5555, startedAt), { pid: 12345, dataDir: data, startedSeconds: 1700000000, port: 5555 });
+  for (const bad of [marker.replace('12345', '0'), marker.replace('12345', '-12345'), marker.replace('12345', '12x'),
+    marker.replace(data, resolve('other/data')), marker.replace('1700000000', '1699999999'), marker.replace('5555', '5556')]) {
+    assert.throws(() => postmasterIdentity(bad, data, 5555, startedAt));
+  }
+});
+
+test('owned process liveness treats only actual ESRCH as exit, never access denied or invalid identity', () => {
+  assert.equal(postgresPidLive(12345, () => {}), true);
+  assert.equal(postgresPidLive(12345, () => { throw Object.assign(new Error(), { code: 'ESRCH' }); }), false);
+  for (const code of ['EPERM', 'EACCES', 'UNKNOWN']) assert.throws(() => postgresPidLive(12345, () => { throw Object.assign(new Error(), { code }); }));
+  for (const pid of [0, -1, 1, NaN, 1.2]) assert.throws(() => postgresPidLive(pid, () => {}));
+});
 
 test('startup diagnostics retain bounded fixture failure evidence but redact credentials, URLs and terminal controls', () => {
   const password = 'fixture-password-only'; const connection = `postgresql://fixture:${password}@localhost:9999/postgres`;

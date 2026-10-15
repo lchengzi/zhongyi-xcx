@@ -4,6 +4,8 @@
   "private": true,
   "description": "非医疗的中医食养资料筛选微信小程序",
   "scripts": {
+    "check:public": "node tools/public-ci.js --check",
+    "test:public": "node tools/test-public-ci.js && node tools/public-ci.js --test",
     "preflight:device": "node tools/device-preflight.js",
     "build:recipes": "node tools/build-public-recipes.js",
     "build:runtime": "node tools/build-runtime-config.js",

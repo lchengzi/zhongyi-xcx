@@ -24,7 +24,9 @@ async function main() {
   const directory = join(runs, `${profile}-${randomUUID()}`); mkdirSync(directory); ordinaryDirectory(directory);
   const filename = join(directory, 'report.json');
   const latest = join(local, `ci-results.${profile}.latest.json`);
-  const report: CiReport = { schemaVersion: 1, profile, runId: basename(directory), startedAt: new Date().toISOString(), finishedAt: null,
+  const report: CiReport & { sourceScope: 'working-tree' | 'public-source'; privateCorpusVerified: boolean } = {
+    sourceScope: profile === 'core' ? 'working-tree' : 'public-source', privateCorpusVerified: false,
+    schemaVersion: 1, profile, runId: basename(directory), startedAt: new Date().toISOString(), finishedAt: null,
     runtime: { node: process.version, platform: process.platform }, status: 'running',
     commit: /^[a-f0-9]{40}$/.test(process.env.GITHUB_SHA || '') ? process.env.GITHUB_SHA! : null,
     deploymentVerified: false, externalAiEnabled: false, steps: ciPlan(profile).map((step) => ({ ...step, status: 'pending' })) };
@@ -76,7 +78,9 @@ async function main() {
     }
     return { code, proof };
   }, persist);
-  console.log(JSON.stringify({ profile, status: result.status, report: filename, deploymentVerified: false }));
+  report.privateCorpusVerified = profile === 'core' && result.status === 'passed'; persist(report);
+  console.log(JSON.stringify({ profile, status: result.status, report: filename, sourceScope: report.sourceScope,
+    privateCorpusVerified: report.privateCorpusVerified, professionalApprovalGranted: false, deploymentVerified: false }));
   if (result.status !== 'passed') process.exitCode = 1;
 }
 main().catch(() => { console.error('CI verification failed. No deployment performed; inspect the last safe report and process output.'); process.exitCode = 1; });

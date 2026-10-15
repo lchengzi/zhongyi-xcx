@@ -68,11 +68,15 @@ test('browser typecheck really rejects incompatible types and implicit any witho
   assert(diagnostics.some((item) => item.code === 7006), 'Compiler did not reject implicit any');
 });
 test('CI profiles are exact fixed plans and include real migration/recovery, browser, native safety and build commands', () => {
-  for (const name of ['core', 'postgres', 'browser', 'postgres-browser', 'https'] as const) assert.equal(parseCiProfile([name]), name);
+  for (const name of ['core', 'public-core', 'postgres', 'browser', 'postgres-browser', 'https'] as const) assert.equal(parseCiProfile([name]), name);
   for (const args of [[], ['core', 'postgres'], ['--skip'], ['deploy'], ['core; echo secret']]) assert.throws(() => parseCiProfile(args));
   assert.deepEqual(ciPlan('core').map((step) => step.script), ['catalog:check', 'typecheck', 'test', 'eval:assistant', 'check', 'test', 'build', 'test:request-log:runtime']);
   assert.equal(ciPlan('core').at(-1)?.proof, 'tap');
   assert.equal(ciPlan('core').filter((step) => step.project === 'mini').length, 2);
+  assert.deepEqual(ciPlan('public-core').filter(step => step.project === 'mini').map(step => step.script), ['check:public', 'test:public']);
+  assert.deepEqual(ciPlan('public-core').filter(step => step.project === 'platform'), ciPlan('core').filter(step => step.project === 'platform'));
+  const legacy = JSON.parse(readFileSync(resolve('../zhongyi/package.json'), 'utf8'));
+  assert(legacy.scripts.check.includes('check-research-refresh.js')); assert(legacy.scripts.test.includes('test-professional-review-scoped.js'));
   assert.equal(ciPlan('postgres')[0].script, 'test:postgres'); assert.equal(ciPlan('postgres-browser')[0].script, 'test:postgres:browser');
   assert.equal(ciPlan('https')[0].script, 'test:https'); assert.equal(ciPlan('https')[0].proof, 'https');
   assert.deepEqual(ciPlan('https').map(({ script, proof }) => ({ script, proof })), [
@@ -166,7 +170,7 @@ test('GitHub workflow YAML is valid and keeps fixed actions, exact profiles, rea
   assert(workflow.on.pull_request.paths.includes('packages/catalog-core/**'));
   assert.deepEqual(workflow.permissions, { contents: 'read' }); assert.equal(workflow.concurrency['cancel-in-progress'], false);
   assert.deepEqual(Object.keys(workflow.jobs), ['verify']); const job = workflow.jobs.verify;
-  assert.equal(job['runs-on'], 'windows-2025'); assert.deepEqual(job.strategy.matrix.profile, ['core', 'postgres', 'browser', 'postgres-browser', 'https']);
+  assert.equal(job['runs-on'], 'windows-2025'); assert.deepEqual(job.strategy.matrix.profile, ['public-core', 'postgres', 'browser', 'postgres-browser', 'https']);
   assert.equal(job.strategy['fail-fast'], false); assert(job['timeout-minutes'] >= 30);
   const actions = job.steps.filter((step: any) => step.uses);
   assert.equal(actions.length, 3); for (const action of actions) assert.match(action.uses, /^actions\/(checkout|setup-node|upload-artifact)@[a-f0-9]{40}$/);

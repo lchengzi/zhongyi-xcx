@@ -3,10 +3,11 @@ import { spawn, execFile, type ChildProcess } from 'node:child_process';
 import { promisify } from 'node:util';
 import { once } from 'node:events';
 import { createServer, type AddressInfo } from 'node:net';
-import { appendFileSync, mkdirSync, mkdtempSync, lstatSync, realpathSync, readFileSync, writeFileSync, unlinkSync, chmodSync } from 'node:fs';
+import { appendFileSync, mkdirSync, mkdtempSync, lstatSync, realpathSync, readFileSync, writeFileSync, unlinkSync, chmodSync, existsSync } from 'node:fs';
 import { resolve, join, sep } from 'node:path';
 import { createPostgresPool } from '../server/postgres-migration.js';
 import { postgresStartupFailure, waitForPostgresReadiness } from './postgres-readiness.js';
+import { windowsPostgresStartArgs, postmasterIdentity, postgresPidLive, type PostmasterIdentity } from './postgres-owned-process.js';
 import { assertNoLinks } from '../server/demo-secrets.js';
 import { ciEnvironment, httpsProof, tapProof } from './ci-core.js';
 import { httpsOwnedReportPath } from './https-test-plan.js';
@@ -27,7 +28,10 @@ async function main() {
   const platform = process.platform === 'win32' ? 'windows' : process.platform;
   let binaries: { initdb: string; postgres: string; pg_ctl: string } | undefined;
   let port = 0; let connection = '';
-  let server: ChildProcess | undefined; let restarting = false; let serverVersion = ''; let restarts = 0;
+  type OwnedServer = { kind: 'direct'; child: ChildProcess } | { kind: 'pg-ctl'; identity: PostmasterIdentity };
+  let server: OwnedServer | undefined; let restarting = false; let serverVersion = ''; let restarts = 0;
+  const isLive = (owned: OwnedServer) => owned.kind === 'direct'
+    ? owned.child.exitCode === null && owned.child.signalCode === null : postgresPidLive(owned.identity.pid);
   let stopping: Promise<void> | undefined;
   let latestReport: Record<string, unknown> | undefined;
   let httpsReportPath: string | undefined;
@@ -53,48 +57,70 @@ async function main() {
     persist(); console.log(`Owned PostgreSQL ${plan.scope} evidence: ${ownedReportPath}`);
   }
 
-  async function command(binary: string, args: string[]) {
-    const child = spawn(binary, args, { windowsHide: true, env: { ...process.env, LC_MESSAGES: 'C' }, stdio: ['ignore', 'pipe', 'pipe'] });
-    let stdout = ''; let stderr = ''; child.stdout!.on('data', (chunk) => { stdout += chunk; }); child.stderr!.on('data', (chunk) => { stderr += chunk; });
+  async function command(binary: string, args: string[], discardOutput = false) {
+    // pg_ctl's detached postmaster may inherit otherwise-unused pipe handles.
+    // Its server log is explicit; do not wait for daemon-owned pipes to close.
+    const child = spawn(binary, args, { windowsHide: true, env: { ...process.env, LC_MESSAGES: 'C' }, stdio: discardOutput ? 'ignore' : ['ignore', 'pipe', 'pipe'] });
+    let stdout = ''; let stderr = ''; child.stdout?.on('data', (chunk) => { stdout += chunk; }); child.stderr?.on('data', (chunk) => { stderr += chunk; });
     const [code] = await once(child, 'close');
     if (code !== 0) throw new Error(`PostgreSQL fixture command failed with code ${code}: ${(stdout + stderr).replaceAll(password, '[redacted]').replaceAll(connection, '[redacted]').slice(-1600)}`);
     return stdout;
   }
   async function start() {
     if (!binaries || !connection || !port) throw new Error('Owned PostgreSQL setup is incomplete');
-    if (server && server.exitCode === null && server.signalCode === null) throw new Error('Previous owned PostgreSQL process is still live; refusing another start.');
+    if (server && isLive(server)) throw new Error('Previous owned PostgreSQL process is still live; refusing another start.');
     stopping = undefined;
-    server = spawn(binaries.postgres, ['-D', dataDir, '-p', String(port), '-c', `listen_addresses=${databaseTls ? '127.0.0.1,::1' : '127.0.0.1'}`,
+    const options = ['-p', String(port), '-c', `listen_addresses=${databaseTls ? '127.0.0.1,::1' : '127.0.0.1'}`,
       ...(databaseTls ? ['-c', 'ssl=on', '-c', 'ssl_min_protocol_version=TLSv1.2',
         '-c', `ssl_cert_file=${join(directory, 'server.pem').replaceAll('\\', '/')}`,
-        '-c', `ssl_key_file=${join(directory, 'server.key').replaceAll('\\', '/')}`] : [])], {
+        '-c', `ssl_key_file=${join(directory, 'server.key').replaceAll('\\', '/')}`] : [])];
+    if (process.platform === 'win32') {
+      const pidFile = join(dataDir, 'postmaster.pid'); assertNoLinks(pidFile);
+      if (existsSync(pidFile)) throw new Error('Previous owned PostgreSQL PID file still exists; refusing another start');
+      const requestedAt = Date.now();
+      let startupError: unknown;
+      try { await command(binaries.pg_ctl, windowsPostgresStartArgs(dataDir, serverLog, options), true); }
+      catch (error) { startupError = error; }
+      // Adopt only the identity from this freshly initialized, guarded cluster,
+      // even if pg_ctl timed out, so final cleanup can observe/stop that process.
+      if (existsSync(pidFile)) {
+        assertNoLinks(pidFile);
+        server = { kind: 'pg-ctl', identity: postmasterIdentity(readFileSync(pidFile, 'utf8'), dataDir, port, requestedAt) };
+      }
+      if (startupError) throw postgresStartupFailure('Owned pg_ctl startup failed', `${startupError instanceof Error ? startupError.message : 'Command failed'}\n${readFileSync(serverLog, 'utf8')}`, [password, connection]);
+      if (!server || server.kind !== 'pg-ctl') throw new Error('Missing owned pg_ctl postmaster identity');
+    } else {
+    const child = spawn(binaries.postgres, ['-D', dataDir, ...options], {
       windowsHide: true, env: { ...process.env, LC_MESSAGES: 'C' }, stdio: ['ignore', 'ignore', 'pipe']
     });
+    server = { kind: 'direct', child };
     let output = '';
     await new Promise<void>((ready, reject) => {
       const failure = (reason: string) => postgresStartupFailure(reason, output, [password, connection]);
       const timer = setTimeout(() => reject(failure('PostgreSQL fixture startup timed out')), 20000);
-      server!.on('error', (error) => { clearTimeout(timer); reject(error); });
+      child.on('error', (error) => { clearTimeout(timer); reject(error); });
       // close follows the final stderr delivery; exit can precede it on Windows.
-      server!.once('close', (code, signal) => { clearTimeout(timer); reject(failure(`PostgreSQL fixture exited before readiness (code=${code}, signal=${signal})`)); });
-      server!.stderr!.on('data', (chunk) => {
+      child.once('close', (code, signal) => { clearTimeout(timer); reject(failure(`PostgreSQL fixture exited before readiness (code=${code}, signal=${signal})`)); });
+      child.stderr!.on('data', (chunk) => {
         output += chunk.toString();
         appendFileSync(serverLog, chunk.toString().replaceAll(password, '[redacted]').replaceAll(connection, '[redacted]'));
         if (output.includes('database system is ready to accept connections')) { clearTimeout(timer); ready(); }
       });
     });
+    }
     const ownedServer = server;
     serverVersion = await waitForPostgresReadiness(async () => {
       const pool = createPostgresPool(connection);
       try { return (await pool.query('SELECT version() AS version')).rows[0].version as string; }
       finally { await pool.end(); }
-    }, () => ownedServer.exitCode === null && ownedServer.signalCode === null);
+    }, () => isLive(ownedServer));
   }
   async function stop() {
     // Reuse the SAME shutdown even if restart verification and final cleanup
     // both await it. An observation expiry must never issue a second signal.
     if (stopping) return stopping;
-    if (!server || server.exitCode !== null || server.signalCode !== null) return;
+    if (!server) return;
+    if (!isLive(server)) throw new Error('Owned PostgreSQL process exited before controlled shutdown');
     stopping = stopOwnedServer();
     return stopping;
   }
@@ -103,14 +129,21 @@ async function main() {
     const absolute = realpathSync(dataDir);
     if (lstatSync(dataDir).isSymbolicLink() || !absolute.toLowerCase().startsWith((directory + sep).toLowerCase()) ||
       absolute.toLowerCase() !== dataDir.toLowerCase()) throw new Error('Unsafe PostgreSQL fixture directory');
-    const actualPid = Number(readFileSync(join(dataDir, 'postmaster.pid'), 'utf8').split(/\r?\n/)[0]);
-    if (!server.pid || actualPid !== server.pid) throw new Error('PostgreSQL fixture ownership mismatch');
-    const ownedServer = server; const exited = once(ownedServer, 'exit');
+    const ownedServer = server; const pidFile = join(dataDir, 'postmaster.pid'); assertNoLinks(pidFile);
+    const actualPid = Number(readFileSync(pidFile, 'utf8').split(/\r?\n/)[0]);
+    const ownedPid = ownedServer.kind === 'direct' ? ownedServer.child.pid : ownedServer.identity.pid;
+    if (!ownedPid || actualPid !== ownedPid) throw new Error('PostgreSQL fixture ownership mismatch');
+    if (ownedServer.kind === 'pg-ctl') {
+      const identity = postmasterIdentity(readFileSync(pidFile, 'utf8'), dataDir, port, ownedServer.identity.startedSeconds * 1000);
+      if (identity.startedSeconds !== ownedServer.identity.startedSeconds) throw new Error('Owned PostgreSQL identity changed');
+    }
+    const exited = ownedServer.kind === 'direct' ? once(ownedServer.child, 'exit') : undefined;
+    const shutdownLogStart = readFileSync(serverLog).length;
     try { await command(binaries.pg_ctl, ['-D', dataDir, '-m', 'fast', '-w', '-t', '60', 'stop']); }
     catch (error) {
       // An observation timeout is not a second shutdown request or a license to
       // restart. Keep observing the same owned process while its checkpoint syncs.
-      const log = readFileSync(serverLog, 'utf8');
+      const log = readFileSync(serverLog).subarray(shutdownLogStart).toString('utf8');
       if (!(error instanceof Error) || !error.message.includes('pg_ctl: server does not shut down') ||
         !log.includes(`[${actualPid}] LOG:  received fast shutdown request`)) throw error;
       console.log('pg_ctl observation expired; waiting for the SAME owned PostgreSQL process to finish normal shutdown. No force/second signal.');
@@ -121,8 +154,14 @@ async function main() {
     try {
       // Keep observing actual process exit. The test-side verification has its
       // own deadline, but cleanup must not treat that deadline as an exit.
-      const [code] = await exited;
-      if (code !== 0) throw new Error('Owned PostgreSQL process exited abnormally; evidence retained.');
+      if (ownedServer.kind === 'direct') {
+        const [code] = await exited!;
+        if (code !== 0) throw new Error('Owned PostgreSQL process exited abnormally; evidence retained.');
+      } else {
+        while (isLive(ownedServer)) await new Promise<void>(done => setTimeout(done, 250));
+        const shutdownLog = readFileSync(serverLog).subarray(shutdownLogStart).toString('utf8');
+        if (existsSync(pidFile) || !shutdownLog.includes('database system is shut down')) throw new Error('Owned PostgreSQL normal shutdown evidence missing');
+      }
       server = undefined;
     } finally { clearInterval(observer); }
   }
@@ -280,7 +319,7 @@ async function main() {
       throw error;
     } finally {
       if (latestReport) {
-        latestReport.fixtureStopped = !server || server.exitCode !== null || server.signalCode !== null;
+        latestReport.fixtureStopped = !server || !isLive(server);
         latestReport.finishedAt = new Date().toISOString(); persist();
       }
     }

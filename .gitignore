@@ -2,6 +2,7 @@ node_modules/
 .npm-cache/
 .refactor/
 /zhongyi/content-private/
+/zhongyi/project.config.json
 apps/*/dist/
 apps/*/.verification-builds/
 apps/*/.swc/

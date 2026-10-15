@@ -1,6 +1,6 @@
 import { basename, dirname, isAbsolute, join } from 'node:path';
 
-export const CI_PROFILES = ['core', 'postgres', 'browser', 'postgres-browser', 'https'] as const;
+export const CI_PROFILES = ['core', 'public-core', 'postgres', 'browser', 'postgres-browser', 'https'] as const;
 export type CiProfile = typeof CI_PROFILES[number];
 export interface CiStep { id: string; project: 'platform' | 'mini'; script: string; proof?: 'tap' | 'offline' | 'postgres' | 'browser' | 'postgres-browser' | 'https' | 'postgres-https' }
 export interface CiProof { passed?: number; failed?: number; skipped?: number; restarts?: number; fixtureStopped?: boolean; databaseTlsVerified?: true; kind?: 'offline-contract' | 'local-https-engineering'; realModelCalls?: 0; modelQualityMeasured?: false; certificateChainVerified?: true; secureCookieVerified?: true; browserFlowVerified?: true; applicationRestartVerified?: true; publicTrustVerified?: false; publicEducationClientVerified?: true; publicEducationClientRequests?: number }
@@ -11,6 +11,8 @@ export interface CiReport {
   commit: string | null; deploymentVerified: false; externalAiEnabled: false; steps: CiStepResult[];
 }
 export function ciPlan(profile: CiProfile): CiStep[] {
+  if (profile === 'public-core') return ciPlan('core').map(step => step.project === 'mini'
+    ? { ...step, id: `public-${step.id}`, script: step.script === 'check' ? 'check:public' : 'test:public' } : step);
   if (profile === 'core') return [
     { id: 'catalog', project: 'platform', script: 'catalog:check' },
     { id: 'types', project: 'platform', script: 'typecheck' },
@@ -40,7 +42,7 @@ export function ciScriptArgs(step: CiStep, directory: string): string[] {
   return args;
 }
 export function parseCiProfile(args: string[]): CiProfile {
-  if (args.length !== 1 || !(CI_PROFILES as readonly string[]).includes(args[0])) throw new Error('Specify exactly one CI profile: core, postgres, browser, postgres-browser, https.');
+  if (args.length !== 1 || !(CI_PROFILES as readonly string[]).includes(args[0])) throw new Error('Specify exactly one CI profile: core, public-core, postgres, browser, postgres-browser, https.');
   return args[0] as CiProfile;
 }
 export function ciEnvironment(original: NodeJS.ProcessEnv, isolatedDbPath: string): NodeJS.ProcessEnv {
