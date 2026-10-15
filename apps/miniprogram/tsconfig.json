@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM"],
+    "types": ["@tarojs/taro", "node"]
+  },
+  "include": ["src", "config", "../../tools/validate-mini-public-content.ts", "../../tools/tests/mini-public-content.test.ts"]
+}

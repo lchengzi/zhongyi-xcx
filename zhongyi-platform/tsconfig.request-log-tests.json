@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.server.json",
+  "compilerOptions": { "noEmit": true },
+  "include": ["tests/request-log.test.ts", "tests/request-log-runtime.test.ts", "tests/failure-diagnostics.test.ts", "tests/initialization-diagnostics.test.ts", "tests/postgres-failure-diagnostics.test.ts", "tests/auth.test.ts"]
+}

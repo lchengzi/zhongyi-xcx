@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "module": "NodeNext", "moduleResolution": "NodeNext", "types": ["node"], "allowImportingTsExtensions": false },
+  "include": ["photo-processing", "tests/photo-derivative*.ts", "tests/research-review-packet-browser.test.ts", "tests/baihe-food-part-materials-browser.test.ts", "tests/container-photo-backup.test.ts", "tests/postgres-photo-publication.test.ts"]
+}

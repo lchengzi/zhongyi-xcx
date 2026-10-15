@@ -1,0 +1,24 @@
+{
+  "description": "食养图录 TypeScript 小程序",
+  "miniprogramRoot": "dist/",
+  "projectname": "food-education-ts",
+  "appid": "",
+  "compileType": "miniprogram",
+  "libVersion": "3.7.6",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "enhance": false,
+    "postcss": false,
+    "minified": true,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "uploadWithSourceMap": false,
+    "compileHotReLoad": false,
+    "ignoreUploadUnusedFiles": false
+  },
+  "packOptions": {
+    "ignore": [{ "type": "suffix", "value": ".map" }],
+    "include": []
+  }
+}

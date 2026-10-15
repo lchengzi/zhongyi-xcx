@@ -1,0 +1,85 @@
+<!-- Ordinary subpackage page; direct links still pass the shared safety gates. -->
+<view class="page-shell plan-detail-page">
+  <view wx:if="{{triageBlocked}}" class="triage-alert card">
+    <view class="triage-alert__title">当前不适合继续查看方案</view>
+    <view>安全检查包含需优先处理的紧急情况，本页不会显示方案候选。</view>
+    <view class="triage-alert__help">请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+    <button class="secondary-btn" bindtap="goSafetyCheck">返回安全检查</button>
+  </view>
+
+  <view wx:elif="{{notFound}}" class="empty-state card">
+    <view class="empty-state__mark" aria-hidden="true">◇</view>
+    <view class="empty-state__title">没有找到该完整方案</view>
+    <view>方案可能尚未发布、已经撤回，或分享链接已失效。</view>
+    <button class="secondary-btn detail-action" bindtap="goDirectory">返回方案目录</button>
+  </view>
+
+  <view wx:elif="{{unavailable}}" class="empty-state card">
+    <view class="empty-state__mark" aria-hidden="true">◇</view>
+    <view class="empty-state__title">{{unavailableTitle}}</view>
+    <view>{{unavailableMessage}}</view>
+    <button class="secondary-btn detail-action" bindtap="goDirectory">返回方案目录</button>
+  </view>
+
+  <block wx:elif="{{recipe}}">
+    <view class="detail-hero card">
+      <view class="pill {{contentHidden ? 'pill--warning' : ''}}">{{recipe.statusText}}</view>
+      <view class="detail-hero__title">{{recipe.name}}</view>
+      <view class="detail-hero__target">{{target.shortLabel}}</view>
+      <view class="source-note">{{recipe.sourceText}}</view>
+    </view>
+
+    <view wx:if="{{contentHidden}}" class="blocked-card card">
+      <view class="blocked-card__title">当前不展示材料、用量和做法</view>
+      <view wx:for="{{evaluation.reasons}}" wx:key="*this" class="blocked-card__reason">{{item}}</view>
+      <view>完整方案不能通过删除冲突材料或忽略未审校字段继续使用。</view>
+    </view>
+
+    <block wx:else>
+      <view class="integrity-card safety-banner">
+        <view class="safety-banner__title">以下用量用于保持官方原文完整</view>
+        <view>不是根据个人情况给出的剂量。不得自行删除、替换材料，或与其他方案合并、增减用量。</view>
+      </view>
+
+      <view wx:if="{{evaluation.warnings.length}}" class="warning-card card">
+        <view class="detail-section-title">本次仍需确认</view>
+        <view wx:for="{{evaluation.warnings}}" wx:key="*this" class="warning-row">{{item}}</view>
+      </view>
+
+      <view class="content-card card">
+        <view class="detail-section-title">完整材料与原始用量</view>
+        <view wx:for="{{ingredientRows}}" wx:key="id" class="ingredient-row">
+          <view><view class="ingredient-row__name">{{item.name}}</view><view class="source-note">{{item.part}} · {{item.processing}}</view></view>
+          <view class="ingredient-row__amount">{{item.amount}}</view>
+        </view>
+      </view>
+
+      <view class="content-card card">
+        <view class="detail-section-title">原始制作方法</view>
+        <view wx:for="{{stepRows}}" wx:key="stepId" class="step-row"><text class="step-row__number">{{index + 1}}</text><text>{{item.text}}</text></view>
+        <view class="serving-text">原文食用方式：{{recipe.servingText}}</view>
+      </view>
+
+      <view class="content-card card">
+        <view class="detail-section-title">历史语境与后续目录事件</view>
+        <view wx:for="{{recipe.historicNotes}}" wx:key="*this" class="context-row">{{item}}</view>
+        <view wx:for="{{recipe.currentContext}}" wx:key="*this" class="context-row">{{item}}</view>
+      </view>
+    </block>
+
+    <view class="content-card card">
+      <view class="detail-section-title">来源与复核</view>
+      <view wx:for="{{sourceRows}}" wx:key="id" class="source-row">
+        <view class="source-row__body">
+          <view class="source-row__title">{{item.title}}</view>
+          <view class="source-note">{{item.publisher}} · 发布 {{item.publishedAt}} · 复核 {{item.checkedAt}}</view>
+          <view class="source-note">{{item.locator}}</view>
+        </view>
+        <button class="text-btn" data-id="{{item.id}}" bindtap="copySource">复制链接</button>
+      </view>
+    </view>
+
+    <button class="secondary-btn back-action" bindtap="goDirectory">返回方案目录</button>
+    <view class="source-note detail-footnote">内容版本：{{contentVersion}}。本页不构成诊断、处方、疗程或个体营养治疗建议。</view>
+  </block>
+</view>

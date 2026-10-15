@@ -1,0 +1,46 @@
+/* Official-plan pages are grouped in one ordinary subpackage. */
+.official-plans-page { padding-bottom: 48rpx; overflow-wrap: anywhere; }
+.official-plans-page button {
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.hero { padding: 36rpx; border: 0; background: linear-gradient(120deg, #173f32, #2d6048); color: #ffffff; }
+.hero__kicker { margin-bottom: 18rpx; color: #e0ecdf; font-size: 22rpx; line-height: 1.6; letter-spacing: 2rpx; }
+.hero .pill { border: 1rpx solid #789b82; background: #305d47; color: #f1f8ee; }
+.hero__title { margin-top: 18rpx; font-size: 46rpx; font-weight: 750; line-height: 1.35; }
+.hero__copy { margin-top: 14rpx; color: #d9e6d9; font-size: 24rpx; line-height: 1.75; }
+.boundary-card { margin-top: 22rpx; padding: 24rpx; line-height: 1.65; }
+.profile-card { margin-top: 22rpx; padding: 24rpx; line-height: 1.6; }
+.profile-card__title { margin-bottom: 8rpx; font-weight: 800; }
+.profile-card .text-btn { margin-top: 10rpx; }
+.target-title { margin-top: 36rpx; }
+.target-list { display: grid; gap: 14rpx; }
+.target-card { box-sizing: border-box; width: 100%; margin: 0; padding: 24rpx; border: 1rpx solid #d2dfd3; border-radius: 22rpx; background: #ffffff; color: #203b32; text-align: left; }
+.target-card--selected { border-color: #245b46; background: #edf4ec; }
+.target-card__title { font-weight: 800; }
+.target-card__status { margin-top: 7rpx; color: #69766e; font-size: 24rpx; }
+.target-summary { margin-top: 20rpx; padding: 24rpx; }
+.target-summary__head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 18rpx; }
+.target-summary__head > view { flex: 1 1 300rpx; min-width: 0; }
+.target-summary__head .text-btn { flex: 0 0 auto; margin: 0; }
+.target-summary__title { margin-bottom: 8rpx; font-size: 32rpx; font-weight: 800; }
+.withheld-note { margin-top: 18rpx; padding: 18rpx; border-radius: 14rpx; background: #fff4dc; color: #73551f; line-height: 1.6; }
+.diagnosis-check { display: block; margin-top: 18rpx; line-height: 1.6; }
+.plans-section { margin-top: 34rpx; }
+.plan-card, .pending-card { margin-top: 16rpx; padding: 24rpx; }
+.plan-card__title, .pending-card__title { font-size: 32rpx; font-weight: 800; }
+.plan-card .pill { margin-top: 10rpx; }
+.plan-card .source-note, .pending-card .source-note { margin-top: 14rpx; }
+.plan-card__status, .pending-card__status { margin-top: 14rpx; line-height: 1.55; }
+.card-reason { margin-top: 12rpx; color: #7a493e; line-height: 1.55; }
+.plan-card .primary-btn { margin: 20rpx 0 0; }
+.pending-card__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16rpx; }
+.pending-card__head .pending-card__title { flex: 1 1 300rpx; min-width: 0; }
+.pending-card .muted { margin-top: 10rpx; line-height: 1.55; }
+.page-footnote { margin-top: 30rpx; }
+.triage-alert { padding: 28rpx; border-color: #dda69d; background: #fff0ed; color: #77362e; line-height: 1.6; }
+.triage-alert__title { margin-bottom: 10rpx; font-size: 32rpx; font-weight: 800; }
+.triage-alert__help { margin: 12rpx 0 20rpx; font-weight: 700; }

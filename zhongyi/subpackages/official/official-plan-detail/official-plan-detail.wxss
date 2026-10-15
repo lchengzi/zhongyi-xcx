@@ -1,0 +1,41 @@
+/* Official-plan pages are grouped in one ordinary subpackage. */
+.plan-detail-page { padding-bottom: 48rpx; overflow-wrap: anywhere; }
+.plan-detail-page button {
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.detail-hero { padding: 36rpx; border: 0; background: linear-gradient(120deg, #173f32, #2d6048); color: #ffffff; }
+.detail-hero .pill { border: 1rpx solid #789b82; background: #305d47; color: #f1f8ee; }
+.detail-hero .pill--warning { border-color: #e6d4ac; background: #fff0d1; color: #7a5717; }
+.detail-hero__title { margin-top: 18rpx; font-size: 44rpx; font-weight: 750; line-height: 1.4; }
+.detail-hero__target { margin-top: 12rpx; color: #e0ecdf; font-weight: 600; line-height: 1.6; }
+.detail-hero .source-note { margin-top: 18rpx; color: #e0ecdf; }
+.blocked-card { margin-top: 22rpx; padding: 26rpx; border-color: #e0b2aa; background: #fff3f0; color: #743c34; line-height: 1.65; }
+.blocked-card__title { margin-bottom: 10rpx; font-size: 32rpx; font-weight: 800; }
+.blocked-card__reason { margin-bottom: 8rpx; }
+.integrity-card { margin-top: 22rpx; padding: 24rpx; line-height: 1.65; }
+.warning-card, .content-card { margin-top: 22rpx; padding: 26rpx; }
+.detail-section-title { margin-bottom: 16rpx; font-size: 32rpx; font-weight: 800; }
+.warning-row, .context-row { margin-top: 10rpx; line-height: 1.65; }
+.ingredient-row { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 20rpx; padding: 18rpx 0; border-top: 2rpx solid #eeeade; }
+.ingredient-row > view:first-child { flex: 1 1 280rpx; min-width: 0; }
+.ingredient-row:first-of-type { border-top: 0; }
+.ingredient-row__name { font-weight: 800; }
+.ingredient-row__amount { flex: 0 1 auto; min-width: 0; color: #245b46; font-weight: 800; }
+.step-row { display: flex; align-items: flex-start; gap: 14rpx; margin-top: 16rpx; line-height: 1.7; }
+.step-row__number { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 48rpx; min-height: 48rpx; border-radius: 50%; background: #edf4ec; color: #245b46; font-weight: 800; }
+.serving-text { margin-top: 20rpx; padding: 16rpx; border-radius: 14rpx; background: #f5f2e8; font-weight: 700; }
+.source-row { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 18rpx; padding: 18rpx 0; border-top: 2rpx solid #eeeade; }
+.source-row:first-of-type { border-top: 0; }
+.source-row__body { flex: 1 1 300rpx; min-width: 0; }
+.source-row .text-btn { flex: 0 0 auto; margin: 0; }
+.source-row__title { font-weight: 800; line-height: 1.5; }
+.back-action { margin: 24rpx 0 0; }
+.detail-footnote { margin-top: 20rpx; }
+.detail-action { margin-top: 22rpx; }
+.triage-alert { padding: 28rpx; border-color: #dda69d; background: #fff0ed; color: #77362e; line-height: 1.6; }
+.triage-alert__title { margin-bottom: 10rpx; font-size: 32rpx; font-weight: 800; }
+.triage-alert__help { margin: 12rpx 0 20rpx; font-weight: 700; }

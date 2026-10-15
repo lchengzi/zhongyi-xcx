@@ -1,0 +1,43 @@
+# Legacy platform-only context; current Dockerfile uses Dockerfile.dockerignore
+# with the workspace-root context. Never widen either list to include secrets.
+**
+!package.json
+!package-lock.json
+!tsconfig.json
+!tsconfig.server.json
+!tsconfig.publication-tests.json
+!tsconfig.local-demo-tests.json
+!tsconfig.https-tests.json
+!tsconfig.web-tests.json
+!tsconfig.request-log-tests.json
+!tsconfig.publication-client-browser.json
+!tsconfig.assistant-tests.json
+!playwright.config.ts
+!vite.config.ts
+!index.html
+!server/
+!server/**/*.ts
+!shared/
+!shared/**/*.ts
+!web/
+!web/**/*.ts
+!web/**/*.tsx
+!web/**/*.css
+!tools/
+!tools/*.ts
+!tests/
+!tests/**/*.ts
+!data/
+!data/catalog.seed.json
+!Dockerfile
+!.dockerignore
+# Reassert secret exclusions even if a future file is put in an allowed tree.
+**/.env
+**/.env.*
+**/*.sqlite
+**/*.sqlite-*
+**/*.zfbackup
+**/*.pem
+**/*.key
+**/node_modules/**
+**/.local/**

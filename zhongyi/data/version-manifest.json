@@ -1,0 +1,871 @@
+{
+  "schemaVersion": "1.1.0",
+  "manifestVersion": "2026.08-manifest.10",
+  "generatedAt": "2026-08-13T03:31:30+08:00",
+  "releases": [
+    {
+      "id": "release-2026.08.10-full-catalog.3",
+      "label": "106项官方目录、P3食养方与安全规则基线",
+      "createdAt": "2026-08-10T13:27:22+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.1",
+      "rulesContentVersion": "1.1.0",
+      "rulesBundleDigest": "sha256:e54ffee68390440438854acfd7faaa1692fbbe6f21b8d4eb4c3a168a36519132",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.10-full-catalog.3.json",
+        "sha256": "sha256:dd19e3858db14048bf5bbb9baf184053ae9624df4096972e166f51ea6dc849f8"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:b3aca57d0f168e4fd27ee509eda5df2c3d90ee2f0f6565a451806e5a8de8256f",
+          "bytes": 21926,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "2026.08-official-recipe.1",
+            "publishedAt": "2026-08-10",
+            "count": 2
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:c763685a78af2849f52c8735f8ddbdb92da229c844d65558cee00559b1e4412c",
+          "bytes": 19247,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "2026.08-official-recipe.1",
+            "publishedAt": "2026-08-10",
+            "count": 2
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:7e34c4b70a6b6ff971efb99a6cc1f4d1544bee2f2fc07dc608cb4f14d7032eb2",
+          "bytes": 881,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.1.0",
+            "publishedAt": "2026-08-10",
+            "count": 9
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:f673096d975526e52e3aa3c18601b46e1d1900ca46195aaec9d9d16985306d99",
+          "bytes": 15299,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:b3b20504a9cdc5d58afa3c9e943a1fb58c8c91bbbb941ea4b32223224d21d310",
+          "bytes": 18338,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:d59f2e9f9a8800f160bdbcd40974bb0ebf8c9d9ecdb1dac513b413abb78272d3",
+          "bytes": 3325,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:d31da0e9c63a0e0a2d05099fd86788fcc6162892d012fd3f8954c028c8f7558c",
+          "bytes": 3288,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.11-pattern-recipe-drafts.4",
+      "label": "新增3条证型限定官方食养方审校草稿",
+      "createdAt": "2026-08-11T20:50:00+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.2",
+      "rulesContentVersion": "1.1.0",
+      "rulesBundleDigest": "sha256:e54ffee68390440438854acfd7faaa1692fbbe6f21b8d4eb4c3a168a36519132",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.11-pattern-recipe-drafts.4.json",
+        "sha256": "sha256:078e3700b7b666ec5c5b910518d7ea02ae84326edbcf7d012f78ad22e4f89db7"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:aae458c2083e48ec8c0e926faccbefbee144228051848d9a9fd2422aea03d6b0",
+          "bytes": 42856,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "2026.08-official-recipe.2",
+            "publishedAt": "2026-08-11",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:a5416205a9bb4a758999d26887eb143b7bc11756ff94d603095506a80e9a8ac0",
+          "bytes": 36705,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "2026.08-official-recipe.2",
+            "publishedAt": "2026-08-11",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:7e34c4b70a6b6ff971efb99a6cc1f4d1544bee2f2fc07dc608cb4f14d7032eb2",
+          "bytes": 881,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.1.0",
+            "publishedAt": "2026-08-10",
+            "count": 9
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:f673096d975526e52e3aa3c18601b46e1d1900ca46195aaec9d9d16985306d99",
+          "bytes": 15299,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:b3b20504a9cdc5d58afa3c9e943a1fb58c8c91bbbb941ea4b32223224d21d310",
+          "bytes": 18338,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:d59f2e9f9a8800f160bdbcd40974bb0ebf8c9d9ecdb1dac513b413abb78272d3",
+          "bytes": 3325,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:d31da0e9c63a0e0a2d05099fd86788fcc6162892d012fd3f8954c028c8f7558c",
+          "bytes": 3288,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.11-pattern-recipe-drafts.5",
+      "label": "补齐证型食养方辅助材料来源语义",
+      "createdAt": "2026-08-11T21:00:00+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.3",
+      "rulesContentVersion": "1.1.0",
+      "rulesBundleDigest": "sha256:e54ffee68390440438854acfd7faaa1692fbbe6f21b8d4eb4c3a168a36519132",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.11-pattern-recipe-drafts.5.json",
+        "sha256": "sha256:0b8c03a077bb68d7224167f6bdf4462c5c1de90e76bfd1d47087c424dc13987d"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:e70ac022a1521218607c5e836d6f017441f40ef2fed0d471cbf2615697d0ca0b",
+          "bytes": 43206,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "2026.08-official-recipe.3",
+            "publishedAt": "2026-08-11",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:99f897e536b4a0fe6c886fd6431e475132f34b4f1f171f9eff49cf8a5d439505",
+          "bytes": 36705,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "2026.08-official-recipe.3",
+            "publishedAt": "2026-08-11",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:7e34c4b70a6b6ff971efb99a6cc1f4d1544bee2f2fc07dc608cb4f14d7032eb2",
+          "bytes": 881,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.1.0",
+            "publishedAt": "2026-08-10",
+            "count": 9
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:f673096d975526e52e3aa3c18601b46e1d1900ca46195aaec9d9d16985306d99",
+          "bytes": 15299,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:b3b20504a9cdc5d58afa3c9e943a1fb58c8c91bbbb941ea4b32223224d21d310",
+          "bytes": 18338,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:d59f2e9f9a8800f160bdbcd40974bb0ebf8c9d9ecdb1dac513b413abb78272d3",
+          "bytes": 3325,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:d31da0e9c63a0e0a2d05099fd86788fcc6162892d012fd3f8954c028c8f7558c",
+          "bytes": 3288,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.11-external-food-registry.6",
+      "label": "新增18条配方普通食品待审登记与统一材料门禁",
+      "createdAt": "2026-08-11T21:45:00+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.4",
+      "rulesContentVersion": "1.2.0",
+      "rulesBundleDigest": "sha256:b71c6105672e51c4cf071ee1fff79e9a1d1d7b767e19724d218edc08e7115c60",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.11-external-food-registry.6.json",
+        "sha256": "sha256:8c19e0cdded88cb93bf50598d494cd72086f537ea1707eeb0dd7a2145fdcf9ed"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:2674f643ca1d548560185ec8a49f0732a7993f0cc2957c21980c5cf36b802b53",
+          "bytes": 55009,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.4",
+            "publishedAt": "2026-08-11",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:0a2978c33e4917c8d23bb0bc481d4c1f36afa9a4438f31de67d5118e87a9e799",
+          "bytes": 36875,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.4",
+            "publishedAt": "2026-08-11",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:0b359f0d2ba09d57827d7ebacb11dd6a7f468e53f62ade3f9e2950394531bdd0",
+          "bytes": 924,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.2.0",
+            "publishedAt": "2026-08-11",
+            "count": 10
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:618a5e3e2f986befd1f85a6ae8ea7b150c12e15f562c1590110570b023d8c51a",
+          "bytes": 15445,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:61919ff15a113859c6ad33dc517a6515221c74bf4bcf775c81db02357348674d",
+          "bytes": 24090,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:b6644976bb1312de08014fc260521486a9e43bf32cf6d801da97380a0f7e6560",
+          "bytes": 4730,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:24a0989233674c943ce95deeba8500be03beb20e505f8f47d73d2ba082f528f5",
+          "bytes": 6622,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.12-external-source-contract.7",
+      "label": "普通食品来源一致性与公开裁剪硬门禁",
+      "createdAt": "2026-08-12T01:08:00+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.5",
+      "rulesContentVersion": "1.3.0",
+      "rulesBundleDigest": "sha256:65c835edb5d203ab5a0209572c509642bd41ddba96d701dbc5525e3da10176dc",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.12-external-source-contract.7.json",
+        "sha256": "sha256:006e0684055dadf8efa7fda04363f508e4785839d970798306fd6e4bf2f0a17b"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:682a7c13c1f9d8b6659d204dce8c8488213e6682693eb1de6800576f47231941",
+          "bytes": 55009,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.5",
+            "publishedAt": "2026-08-12",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:5fe4f6e3b60aea4f1fa00083cd78c9cce8b1c49c4a8b34096b16029584df5119",
+          "bytes": 36875,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.5",
+            "publishedAt": "2026-08-12",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:47feb2465abc32be622f1deeaea8f208cb09b99418620fa865675365733a340d",
+          "bytes": 974,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.3.0",
+            "publishedAt": "2026-08-12",
+            "count": 11
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:618a5e3e2f986befd1f85a6ae8ea7b150c12e15f562c1590110570b023d8c51a",
+          "bytes": 15445,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:bc6f4264c22fd2afd0060c9a55136fd88458be9817b49fb5032782cada93724c",
+          "bytes": 31224,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:b6644976bb1312de08014fc260521486a9e43bf32cf6d801da97380a0f7e6560",
+          "bytes": 4730,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:70a070ea255fd6637a732389fec528f825cbd374a33702bb75c9269d07d37c0c",
+          "bytes": 8703,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.13-unpublished-projection.8",
+      "label": "Unpublished recipe strict public projection",
+      "createdAt": "2026-08-13T02:56:23+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.6",
+      "rulesContentVersion": "1.4.0",
+      "rulesBundleDigest": "sha256:44bc2a7b80593268039873b545ee351c3ef4728b2922cc7f2cf738d462f1ad73",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.13-unpublished-projection.8.json",
+        "sha256": "sha256:7349875ad11e0d32f9194d948233b58f6fa29f0be75b0f8dc1b4bfc6580bd2ba"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:54cecb1cf8d31bf114f52a803839de8caecd0496a4822fca9dbe1dad6ee98afc",
+          "bytes": 55009,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.6",
+            "publishedAt": "2026-08-13",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:81d508eaa13874818e32991508119b4dee4d5c217bbefe7d7f9644f5e0081fd4",
+          "bytes": 36875,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.6",
+            "publishedAt": "2026-08-13",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:e7e2d8cf6743765fd6ccbf26f54666baf4dce5c0a21863869c65b8664a2c6625",
+          "bytes": 1023,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.4.0",
+            "publishedAt": "2026-08-13",
+            "count": 12
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:618a5e3e2f986befd1f85a6ae8ea7b150c12e15f562c1590110570b023d8c51a",
+          "bytes": 15445,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:bc6f4264c22fd2afd0060c9a55136fd88458be9817b49fb5032782cada93724c",
+          "bytes": 31224,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:b6644976bb1312de08014fc260521486a9e43bf32cf6d801da97380a0f7e6560",
+          "bytes": 4730,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:a74dd83817389d8dc5baf5aa7a4eb1c1378910909754cd5661fbce2bb751c05a",
+          "bytes": 10358,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.13-public-artifact-projection.9",
+      "label": "Whole public recipe artifact strict projection",
+      "createdAt": "2026-08-13T03:24:53+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.7",
+      "rulesContentVersion": "1.5.0",
+      "rulesBundleDigest": "sha256:ee4ee421b5f09eb2e86e0b4da592f3715a321ec7e4e7ca6275ec6057dfd31c35",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.13-public-artifact-projection.9.json",
+        "sha256": "sha256:c73e5dfb5e553214366893d62b5e0bf76e7a788985dc179e4ba1db2e6b7b05e9"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:1df9cee5bfd5ee1207f66f435105a853894b4e643803c6625cffc605354c5522",
+          "bytes": 55009,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.7",
+            "publishedAt": "2026-08-13",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:1cb63150bd967a3bf0089de8afbecb6ec5a6908cdae776e5445f902f4f621885",
+          "bytes": 36875,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.7",
+            "publishedAt": "2026-08-13",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:f8b551aa91d88820fd8c38a3f2bf141b0a0855a0e5b78dc690be75e7547ab8c4",
+          "bytes": 1075,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.5.0",
+            "publishedAt": "2026-08-13",
+            "count": 13
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:618a5e3e2f986befd1f85a6ae8ea7b150c12e15f562c1590110570b023d8c51a",
+          "bytes": 15445,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:bc6f4264c22fd2afd0060c9a55136fd88458be9817b49fb5032782cada93724c",
+          "bytes": 31224,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:b6644976bb1312de08014fc260521486a9e43bf32cf6d801da97380a0f7e6560",
+          "bytes": 4730,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:a56ab72046b7337ab2496a569a672a71c2ce672c2aa46ef8fa1a8be45cdecabe",
+          "bytes": 15880,
+          "module": null
+        }
+      ]
+    },
+    {
+      "id": "release-2026.08.13-complete-public-projection.10",
+      "label": "Complete typed public recipe projection",
+      "createdAt": "2026-08-13T03:31:30+08:00",
+      "catalogContentVersion": "2026.08-full-catalog.1",
+      "recipeContentVersion": "2026.08-official-recipe.8",
+      "rulesContentVersion": "1.6.0",
+      "rulesBundleDigest": "sha256:536d0600836b6823a16695ce133d1d7974caba7f97d665539b2f18d8c59572ae",
+      "rollbackPolicy": "allowed",
+      "snapshot": {
+        "path": "tools/version-snapshots/release-2026.08.13-complete-public-projection.10.json",
+        "sha256": "sha256:51857684d6c15f624c6f5890b52b12db7c2cf43313318624b124f57bad0e9c44"
+      },
+      "artifacts": [
+        {
+          "path": "data/ingredients.js",
+          "sha256": "sha256:5b21a1e30d592cfa00017ad9021d591219cb0d74fb86c1f3ab5fad6c7115c092",
+          "bytes": 23450,
+          "module": {
+            "schemaVersion": "1.2.0",
+            "contentVersion": "2026.08-full-catalog.1",
+            "publishedAt": "2026-08-10",
+            "count": 106
+          }
+        },
+        {
+          "path": "data/recipes.js",
+          "sha256": "sha256:97fea226e897435731a620ef10f44f89c11db5c501cf53c3530c2d7b8e963f89",
+          "bytes": 55009,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.8",
+            "publishedAt": "2026-08-13",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/recipes-public.js",
+          "sha256": "sha256:1a6d9828763fa4ae8c911e6e01c09509f17c29eb37c9d2458291c52979084c4f",
+          "bytes": 36875,
+          "module": {
+            "schemaVersion": "1.1.0",
+            "contentVersion": "2026.08-official-recipe.8",
+            "publishedAt": "2026-08-13",
+            "count": 5
+          }
+        },
+        {
+          "path": "data/rule-set.js",
+          "sha256": "sha256:368515a8e2f8ccf2053fa54f2e5685bb9a5c5465260f3266c07563fe0ad1bda2",
+          "bytes": 1127,
+          "module": {
+            "schemaVersion": "1.0.0",
+            "contentVersion": "1.6.0",
+            "publishedAt": "2026-08-13",
+            "count": 14
+          }
+        },
+        {
+          "path": "data/options.js",
+          "sha256": "sha256:69da58b0bb8f20baea785083bc465f26e59780ee8b456224b13be7309e9b9be7",
+          "bytes": 4233,
+          "module": null
+        },
+        {
+          "path": "utils/safety.js",
+          "sha256": "sha256:618a5e3e2f986befd1f85a6ae8ea7b150c12e15f562c1590110570b023d8c51a",
+          "bytes": 15445,
+          "module": null
+        },
+        {
+          "path": "utils/recipe-safety.js",
+          "sha256": "sha256:bc6f4264c22fd2afd0060c9a55136fd88458be9817b49fb5032782cada93724c",
+          "bytes": 31224,
+          "module": null
+        },
+        {
+          "path": "utils/session-profile.js",
+          "sha256": "sha256:8896438c7b99b527c8b6ab3e4a9f1c26e8ea1971461b061f520e873a662ab31f",
+          "bytes": 1757,
+          "module": null
+        },
+        {
+          "path": "utils/filter.js",
+          "sha256": "sha256:3ffaa3e2135393c2e1e89fbb8a7c61c55f27f24c31008420f629fb6297ce8848",
+          "bytes": 3724,
+          "module": null
+        },
+        {
+          "path": "utils/format.js",
+          "sha256": "sha256:90d86ba0fadbdee2d9f99707ed61443e55c0d33e22aa282e1fcd3b3df7bb00fb",
+          "bytes": 6591,
+          "module": null
+        },
+        {
+          "path": "tools/recipe-digests.js",
+          "sha256": "sha256:b6644976bb1312de08014fc260521486a9e43bf32cf6d801da97380a0f7e6560",
+          "bytes": 4730,
+          "module": null
+        },
+        {
+          "path": "tools/build-public-recipes.js",
+          "sha256": "sha256:db26b2d60eb2641264af1b4016d2b4bc064e5889352489fa217978398780ab71",
+          "bytes": 15815,
+          "module": null
+        }
+      ]
+    }
+  ]
+}

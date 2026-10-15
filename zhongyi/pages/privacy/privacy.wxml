@@ -1,0 +1,77 @@
+<view class="page-shell privacy-page">
+  <view wx:if="{{storageIssue}}" class="storage-notice">
+    <view>{{storageIssue}}</view>
+    <button class="secondary-btn" bindtap="refresh">重试读取本机记录</button>
+  </view>
+  <view class="privacy-head">
+    <view class="page-kicker">你的数据，由你掌握</view>
+    <view class="page-title">本地数据与隐私</view>
+    <view class="page-description">这里仅显示数据类别和数量，不回显你填写的健康内容。</view>
+  </view>
+
+  <view wx:if="{{triageBlocked}}" class="triage-alert card">
+    <view class="triage-alert__title">先处理紧急情况</view>
+    <view>当前会话含需要立即就医的红旗情况。删除功能仍可使用，但不要因整理数据延误急救；中国大陆可拨打 120。</view>
+  </view>
+
+  <view class="summary-card card">
+    <view class="section-title">保存在当前设备</view>
+    <view class="data-row">
+      <view>
+        <view class="data-row__title">收藏条目 ID</view>
+        <view class="muted">只记录目录条目标识，不保存健康画像。</view>
+      </view>
+      <text class="data-row__count">{{favoritesAvailable ? favoritesCount : '未知'}}</text>
+    </view>
+    <view class="data-row">
+      <view>
+        <view class="data-row__title">对照条目 ID</view>
+        <view class="muted">只用于恢复最多四项横向对照。</view>
+      </view>
+      <text class="data-row__count">{{compareAvailable ? compareCount : '未知'}}</text>
+    </view>
+  </view>
+
+  <view class="summary-card card">
+    <view class="section-title">仅在本次运行内</view>
+    <view class="session-state {{hasHealthSession ? 'session-state--active' : ''}}">
+      <view class="data-row__title">安全问项与健康画像</view>
+      <view>{{hasHealthSession ? '本次会话已填写；未写入本机持久化存储' : '本次会话没有已填写的健康画像'}}</view>
+    </view>
+    <view class="data-row data-row--compact">
+      <text>咨询准备自记进度</text>
+      <text>{{checklistCount}} 项</text>
+    </view>
+    <view class="data-row data-row--compact">
+      <text>已确诊目标确认</text>
+      <text>{{diagnosisConfirmationCount}} 项</text>
+    </view>
+    <view class="source-note">症状/红旗、年龄、孕哺、过敏、基础疾病、用药名称、确诊确认及清单进度只在内存中使用，不调用本地持久化接口，也不上传。</view>
+  </view>
+
+  <view class="summary-card card">
+    <view class="section-title">按需读取公开资料</view>
+    <view class="source-note">首页点击“读取服务目录”后，仅请求完整公开目录；不发送搜索词、安全问项、健康信息、收藏或对照 ID。返回资料只在本次运行内使用，一键删除同时取消读取并清空该缓存。</view>
+    <view class="source-note">未配置服务或请求失败时使用本地历史资料。服务器和网络服务可能产生 IP、请求时间及标准访问日志；这不等于完全匿名。当前不进行用户登录或健康数据同步。</view>
+  </view>
+
+  <view class="summary-card card">
+    <view class="section-title">当前版本不采集</view>
+    <view class="plain-list">
+      <view>姓名、手机号、病历和精确位置</view>
+      <view>账号、云端健康档案和跨设备同步</view>
+      <view>用于广告或画像分析的健康数据</view>
+    </view>
+    <view class="clipboard-note">主动复制咨询准备、安全摘要或来源链接时，文本会进入系统剪贴板。若含个人健康信息，请确认接收方后再粘贴。一键删除只清理本小程序记录，不能清空系统剪贴板或删除其他应用中的副本；已发起的系统复制也无法撤销，请按手机系统提供的方式管理剪贴板。</view>
+  </view>
+
+  <view class="delete-card card">
+    <view class="section-title">一键彻底清除</view>
+    <view class="muted">同时删除收藏、对照及全部会话健康状态；成功后会重新打开首页，避免缓存页面带回旧内容。</view>
+    <button class="delete-btn" bindtap="deleteLocalData" loading="{{deleting}}" disabled="{{confirming || deleting || returning}}">删除本机全部数据</button>
+    <view wx:if="{{deleteStatus}}" class="delete-status">{{deleteStatus}}</view>
+    <button wx:if="{{returnAvailable}}" class="secondary-btn" bindtap="returnToHome" loading="{{returning}}" disabled="{{confirming || deleting || returning}}">重新打开首页（不再次删除）</button>
+  </view>
+
+  <view class="emergency-note">胸痛、严重呼吸困难、意识改变、明显出血等情况请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+</view>

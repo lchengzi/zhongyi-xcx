@@ -1,0 +1,245 @@
+import { test, expect, type Page } from '@playwright/test';
+import { fixturePassword } from '../migration-fixture';
+import type { SessionInfo } from '../../shared/contracts';
+
+const origin = 'http://127.0.0.1:4313';
+test.use({ baseURL: origin });
+async function login(page: Page, username = 'publication-ui-editor') {
+  await page.goto('/'); await page.getByLabel('用户名', { exact: true }).fill(username);
+  await page.getByLabel('密码', { exact: true }).fill(fixturePassword);
+  await page.getByRole('button', { name: '登录工作台' }).click();
+  await expect(page.getByLabel('搜索食材', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '内容协作', exact: true }).click();
+}
+const panel = (page: Page, name: string) => page.locator('section.professional-panel').filter({ has: page.getByRole('heading', { name, exact: true }) });
+const countWrites = (page: Page) => { let count = 0; page.on('request', (r) => { if (r.method() !== 'GET') count += 1; }); return () => count; };
+
+test('governance history read failures never mean empty or stale history and deliberate retry never writes', async ({ page, context }, info) => {
+  await login(page); const writes = countWrites(page);
+  const before = await (await context.request.get('/api/v1/editorial/events')).json(); expect(before.items.length).toBeGreaterThan(0);
+  await page.route('**/api/v1/editorial/events', (route) => route.abort());
+  await page.getByRole('button', { name: '协作记录', exact: true }).click();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expect(page.getByText('尚无协作记录。', { exact: true })).toHaveCount(0);
+  await expect(page.getByRole('table', { name: '内容协作记录', exact: true })).toHaveCount(0);
+  await page.unroute('**/api/v1/editorial/events'); await page.getByRole('button', { name: '刷新协作记录', exact: true }).click();
+  await expect(page.getByRole('table', { name: '内容协作记录', exact: true })).toBeVisible();
+  await page.route('**/api/v1/editorial/events', (route) => route.abort());
+  await page.getByRole('button', { name: '刷新协作记录', exact: true }).click();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expect(page.getByRole('table', { name: '内容协作记录', exact: true })).toHaveCount(0);
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('governance-history-failure-mobile.png'), fullPage: true });
+  await page.unroute('**/api/v1/editorial/events'); await page.getByRole('button', { name: '刷新协作记录', exact: true }).click();
+  await expect(page.getByRole('table', { name: '内容协作记录', exact: true })).toBeVisible();
+  expect(await (await context.request.get('/api/v1/editorial/events')).json()).toEqual(before); expect(writes()).toBe(0);
+});
+
+test('qualification account failure stays unknown; a failed qualification refresh hides old history and preserves input', async ({ page, context }, info) => {
+  await login(page, 'publication-ui-admin'); const writes = countWrites(page);
+  await page.route('**/api/v1/users', (route) => route.abort());
+  await page.getByRole('button', { name: '专业审校记录', exact: true }).click();
+  const qualifications = panel(page, '专业资格核验记录');
+  await expect(qualifications.getByRole('alert')).toBeVisible();
+  await expect(qualifications.getByText('尚无其他审阅或管理员账号，请先到账号权限创建。', { exact: true })).toHaveCount(0);
+  await page.unroute('**/api/v1/users'); await qualifications.getByRole('button', { name: '刷新资格记录', exact: true }).click();
+  const person = (await (await context.request.get('/api/v1/users')).json()).items.find((user: { username: string }) => user.username === 'publication-physician');
+  await qualifications.getByLabel('资格所属账号', { exact: true }).selectOption(person.id);
+  await expect(qualifications.getByRole('button', { name: '保存资格记录', exact: true })).toBeDisabled();
+  await expect(qualifications.getByLabel('内部核验依据编号', { exact: true })).toHaveValue('ENGINEERING_SIMULATION_NOT_REAL');
+  const before = await (await context.request.get(`/api/v1/editorial/qualifications/${person.id}`)).json();
+  await qualifications.getByLabel('资格核验说明', { exact: true }).fill('未提交核验说明；仅工程测试。');
+  let qualificationReads = 0;
+  page.on('request', (r) => { if (r.url().endsWith(`/api/v1/editorial/qualifications/${person.id}`)) qualificationReads += 1; });
+  await page.route('**/api/v1/users', (route) => route.abort());
+  page.once('dialog', (dialog) => dialog.accept()); await qualifications.getByRole('button', { name: '刷新资格记录', exact: true }).click();
+  await expect(qualifications.getByRole('alert')).toBeVisible();
+  await expect(qualifications.getByLabel('资格核验说明', { exact: true })).toHaveValue('未提交核验说明；仅工程测试。');
+  expect(qualificationReads).toBe(0);
+  await page.unroute('**/api/v1/users');
+  await page.route(`**/api/v1/editorial/qualifications/${person.id}`, (route) => route.abort());
+  page.once('dialog', (dialog) => dialog.accept()); await qualifications.getByRole('button', { name: '刷新资格记录', exact: true }).click();
+  await expect(qualifications.getByRole('alert')).toBeVisible();
+  await expect(qualifications.getByRole('heading', { name: '最近资格版本', exact: true })).toHaveCount(0);
+  await expect(qualifications.getByLabel('资格核验说明', { exact: true })).toHaveValue('未提交核验说明；仅工程测试。');
+  await expect(qualifications.getByLabel('资格核验说明', { exact: true })).toBeDisabled();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('qualification-refresh-failure-mobile.png'), fullPage: true });
+  await page.unroute(`**/api/v1/editorial/qualifications/${person.id}`);
+  page.once('dialog', (dialog) => dialog.accept()); await qualifications.getByRole('button', { name: '刷新资格记录', exact: true }).click();
+  await expect(qualifications.getByRole('heading', { name: '最近资格版本', exact: true })).toBeVisible();
+  await expect(qualifications.getByLabel('资格核验说明', { exact: true })).toHaveValue('');
+  expect(await (await context.request.get(`/api/v1/editorial/qualifications/${person.id}`)).json()).toEqual(before); expect(writes()).toBe(0);
+});
+
+test('professional search failure hides stale choices; list-only retry preserves the selected fixed draft and opinion', async ({ page }) => {
+  await login(page, 'publication-physician'); await page.getByRole('button', { name: '专业审校记录', exact: true }).click();
+  const desk = panel(page, '固定版本专业审校');
+  await desk.getByLabel('搜索待专业审校食材', { exact: true }).fill('黄芪');
+  await desk.getByRole('button', { name: '查看黄芪专业审校', exact: true }).click();
+  await desk.getByLabel('专业审校意见', { exact: true }).fill('未提交审校意见；不是实际专业签审。');
+  const writes = countWrites(page);
+  await page.route('**/api/v1/ingredients?**', (route) => route.abort());
+  await desk.getByLabel('搜索待专业审校食材', { exact: true }).fill('姜');
+  await expect(desk.getByRole('alert')).toBeVisible();
+  await expect(desk.getByRole('button', { name: '查看黄芪专业审校', exact: true })).toHaveCount(0);
+  await expect(desk.getByLabel('专业审校意见', { exact: true })).toHaveValue('未提交审校意见；不是实际专业签审。');
+  await expect(desk.getByLabel('专业审校状态', { exact: true })).toBeVisible();
+  await expect(desk.getByLabel('专业审校当前食材', { exact: true })).toContainText('黄芪');
+  await page.unroute('**/api/v1/ingredients?**'); await desk.getByRole('button', { name: '重试专业审校食材', exact: true }).click();
+  await expect(desk.getByRole('button', { name: '查看姜专业审校', exact: true })).toBeVisible();
+  await expect(desk.getByLabel('专业审校意见', { exact: true })).toHaveValue('未提交审校意见；不是实际专业签审。'); expect(writes()).toBe(0);
+});
+
+test('professional detail refresh is independent of the picker and preserves failed-read input without prior authority', async ({ page, context }) => {
+  await login(page, 'publication-physician'); await page.getByRole('button', { name: '专业审校记录', exact: true }).click();
+  const desk = panel(page, '固定版本专业审校');
+  await desk.getByRole('button', { name: '查看黄芪专业审校', exact: true }).click();
+  await desk.getByLabel('专业审校意见', { exact: true }).fill('刷新失败仍须保留的工程测试意见。');
+  const before = await (await context.request.get('/api/v1/editorial/professional/huang-qi')).json(); const writes = countWrites(page);
+  let pickerReads = 0;
+  page.on('request', (request) => { if (new URL(request.url()).pathname === '/api/v1/ingredients') pickerReads += 1; });
+  await page.route('**/api/v1/editorial/professional/huang-qi', (route) => route.abort());
+  page.once('dialog', (dialog) => dialog.accept()); await desk.getByRole('button', { name: '刷新专业审校', exact: true }).click();
+  await expect(desk.getByRole('alert')).toBeVisible();
+  await expect(desk.getByLabel('专业审校状态', { exact: true })).toHaveCount(0);
+  await expect(desk.getByRole('heading', { name: '最近固定审校记录', exact: true })).toHaveCount(0);
+  await expect(desk.getByLabel('专业审校意见', { exact: true })).toHaveValue('刷新失败仍须保留的工程测试意见。');
+  await expect(desk.getByRole('button', { name: '记录专业通过（不发布）', exact: true })).toBeDisabled();
+  await expect(desk.getByRole('button', { name: '查看黄芪专业审校', exact: true })).toBeVisible();
+  await expect(desk.getByText('正在读取待审校食材…', { exact: true })).toHaveCount(0);
+  await expect(desk.getByText('正在读取固定版本与资格…', { exact: true })).toHaveCount(0);
+  expect(pickerReads).toBe(0);
+  await page.unroute('**/api/v1/editorial/professional/huang-qi');
+  page.once('dialog', (dialog) => dialog.accept()); await desk.getByRole('button', { name: '刷新专业审校', exact: true }).click();
+  await expect(desk.getByLabel('专业审校状态', { exact: true })).toBeVisible();
+  await expect(desk.getByLabel('专业审校意见', { exact: true })).toHaveValue('');
+  expect(pickerReads).toBe(0);
+  expect(await (await context.request.get('/api/v1/editorial/professional/huang-qi')).json()).toEqual(before); expect(writes()).toBe(0);
+});
+
+test('refreshing the selected professional record cannot silently retry or erase a picker failure', async ({ page }) => {
+  await login(page, 'publication-physician'); await page.getByRole('button', { name: '专业审校记录', exact: true }).click();
+  const desk = panel(page, '固定版本专业审校');
+  await desk.getByRole('button', { name: '查看黄芪专业审校', exact: true }).click();
+  const opinion = desk.getByLabel('专业审校意见', { exact: true }); await opinion.fill('读取列表失败后尚未提交的工程测试说明。');
+  const writes = countWrites(page); let pickerReads = 0;
+  page.on('request', (request) => { if (new URL(request.url()).pathname === '/api/v1/ingredients') pickerReads += 1; });
+  await page.route('**/api/v1/ingredients?**', (route) => route.abort());
+  await desk.getByLabel('搜索待专业审校食材', { exact: true }).fill('姜');
+  const pickerRetry = desk.getByRole('button', { name: '重试专业审校食材', exact: true }); await expect(pickerRetry).toBeVisible();
+  expect(pickerReads).toBe(1); await page.unroute('**/api/v1/ingredients?**');
+  page.once('dialog', (dialog) => dialog.accept()); await desk.getByRole('button', { name: '刷新专业审校', exact: true }).click();
+  await expect(opinion).toHaveValue(''); await expect(desk.getByLabel('专业审校状态', { exact: true })).toBeVisible();
+  await expect(pickerRetry).toBeVisible(); expect(pickerReads).toBe(1);
+  await expect(desk.getByText('正在读取待审校食材…', { exact: true })).toHaveCount(0);
+  await opinion.fill('手动重试列表时必须保留的工程测试说明。'); await pickerRetry.click();
+  await expect(desk.getByRole('button', { name: '查看姜专业审校', exact: true })).toBeVisible();
+  await expect(opinion).toHaveValue('手动重试列表时必须保留的工程测试说明。');
+  await expect(desk.getByLabel('专业审校当前食材', { exact: true })).toContainText('黄芪');
+  expect(pickerReads).toBe(2); expect(writes()).toBe(0);
+});
+
+test('cancelled professional refresh and target change retain the unsent opinion; failed new targets never inherit it', async ({ page, context }) => {
+  await login(page, 'publication-physician'); await page.getByRole('button', { name: '专业审校记录', exact: true }).click();
+  const desk = panel(page, '固定版本专业审校');
+  await desk.getByRole('button', { name: '查看黄芪专业审校', exact: true }).click();
+  const opinion = desk.getByLabel('专业审校意见', { exact: true });
+  await opinion.fill('只属于黄芪的未提交工程测试意见。');
+  const before = await (await context.request.get('/api/v1/editorial/professional/huang-qi')).json();
+  const writes = countWrites(page); let detailReads = 0;
+  page.on('request', (request) => { if (new URL(request.url()).pathname.startsWith('/api/v1/editorial/professional/')) detailReads += 1; });
+  page.once('dialog', (dialog) => dialog.dismiss()); await desk.getByRole('button', { name: '刷新专业审校', exact: true }).click();
+  await expect(opinion).toHaveValue('只属于黄芪的未提交工程测试意见。');
+  await desk.getByLabel('搜索待专业审校食材', { exact: true }).fill('姜');
+  const next = desk.getByRole('button', { name: '查看姜专业审校', exact: true }); await expect(next).toBeVisible();
+  page.once('dialog', (dialog) => dialog.dismiss()); await next.click();
+  await expect(desk.getByLabel('专业审校当前食材', { exact: true })).toContainText('黄芪');
+  await expect(opinion).toHaveValue('只属于黄芪的未提交工程测试意见。');
+  await expect(desk.getByLabel('专业审校状态', { exact: true })).toBeVisible(); expect(detailReads).toBe(0);
+  await page.route('**/api/v1/editorial/professional/jiang', (route) => route.abort());
+  page.once('dialog', (dialog) => dialog.accept()); await next.click();
+  await expect(desk.getByRole('alert')).toBeVisible();
+  await expect(desk.getByLabel('专业审校当前食材', { exact: true })).toContainText('姜');
+  await expect(opinion).toHaveCount(0); await expect(desk.getByLabel('专业审校状态', { exact: true })).toHaveCount(0);
+  expect(detailReads).toBe(1); expect(writes()).toBe(0);
+  expect(await (await context.request.get('/api/v1/editorial/professional/huang-qi')).json()).toEqual(before);
+});
+
+test('pending professional detail reads disable decisions and target changes while an independent picker can still search', async ({ page }) => {
+  await login(page, 'publication-physician'); await page.getByRole('button', { name: '专业审校记录', exact: true }).click();
+  const desk = panel(page, '固定版本专业审校');
+  await desk.getByRole('button', { name: '查看黄芪专业审校', exact: true }).click();
+  const opinion = desk.getByLabel('专业审校意见', { exact: true }); await opinion.fill('慢响应期间保留的工程测试意见。');
+  const writes = countWrites(page);
+  let release: (() => void) | undefined;
+  const held = new Promise<void>((resolve) => { release = resolve; });
+  await page.route('**/api/v1/editorial/professional/huang-qi', async (route) => { await held; await route.continue(); });
+  try {
+    page.once('dialog', (dialog) => dialog.accept()); await desk.getByRole('button', { name: '刷新专业审校', exact: true }).click();
+    await expect(desk.getByText('正在读取固定版本与资格…', { exact: true })).toBeVisible();
+    await expect(opinion).toHaveValue('慢响应期间保留的工程测试意见。'); await expect(opinion).toBeDisabled();
+    await expect(desk.getByRole('button', { name: '刷新专业审校', exact: true })).toBeDisabled();
+    await expect(desk.getByRole('button', { name: '记录专业通过（不发布）', exact: true })).toBeDisabled();
+    await expect(desk.getByLabel('专业审校状态', { exact: true })).toHaveCount(0);
+    await desk.getByLabel('搜索待专业审校食材', { exact: true }).fill('姜');
+    await expect(desk.getByRole('button', { name: '查看姜专业审校', exact: true })).toBeVisible();
+    await expect(desk.getByRole('button', { name: '查看姜专业审校', exact: true })).toBeDisabled();
+    await expect(opinion).toHaveValue('慢响应期间保留的工程测试意见。');
+    release!(); await expect(desk.getByLabel('专业审校状态', { exact: true })).toBeVisible();
+    await expect(opinion).toHaveValue(''); await expect(opinion).toBeEnabled();
+    await expect(desk.getByRole('button', { name: '查看姜专业审校', exact: true })).toBeEnabled();
+    await expect(desk.getByLabel('专业审校当前食材', { exact: true })).toContainText('黄芪'); expect(writes()).toBe(0);
+  } finally { release!(); }
+});
+
+test('source and ingredient-scope search failures hide stale options without discarding the selected source form', async ({ page, context }) => {
+  await login(page, 'publication-ui-admin');
+  const session: SessionInfo = await (await context.request.get('/api/v1/auth/me')).json();
+  const title = `读取隔离工程来源-${Date.now()}`;
+  const created = await context.request.post('/api/v1/editorial/sources', { headers: { Origin: origin, 'X-CSRF-Token': session.csrfToken }, data: { title, publisher: '工程测试，非正式来源', url: 'https://example.org/governance-recovery' } });
+  expect(created.status()).toBe(201); const source = await created.json();
+  await page.getByRole('button', { name: '来源核验与发布检查', exact: true }).click(); const desk = panel(page, '固定来源核验');
+  await desk.getByLabel('搜索待核验来源', { exact: true }).fill(title); await desk.getByRole('button', { name: `核验${title}`, exact: true }).click();
+  await desk.getByLabel('来源核验说明', { exact: true }).fill('只保留输入，不提交核验。');
+  await desk.getByLabel('查找适用食材', { exact: true }).fill('黄芪'); await desk.getByRole('button', { name: '加入黄芪核验范围', exact: true }).click();
+  const before = await (await context.request.get(`/api/v1/editorial/source-checks/${source.id}/1`)).json(); const writes = countWrites(page);
+  await page.route('**/api/v1/editorial/sources?**', (route) => route.abort()); await desk.getByLabel('搜索待核验来源', { exact: true }).fill('没有这个来源');
+  await expect(desk.getByRole('alert')).toBeVisible(); await expect(desk.getByRole('button', { name: `核验${title}`, exact: true })).toHaveCount(0);
+  await expect(desk.getByText('暂无匹配来源；可先在来源登记中录入。', { exact: true })).toHaveCount(0);
+  await page.unroute('**/api/v1/editorial/sources?**'); await desk.getByRole('button', { name: '重试待核验来源', exact: true }).click();
+  await expect(desk.getByText('暂无匹配来源；可先在来源登记中录入。', { exact: true })).toBeVisible();
+  await page.route('**/api/v1/ingredients?**', (route) => route.abort()); await desk.getByLabel('查找适用食材', { exact: true }).fill('姜');
+  await expect(desk.getByRole('alert')).toBeVisible(); await expect(desk.getByRole('button', { name: '加入黄芪核验范围', exact: true })).toHaveCount(0);
+  await expect(desk.getByRole('button', { name: '移除黄芪范围', exact: true })).toBeVisible();
+  await page.unroute('**/api/v1/ingredients?**'); await desk.getByRole('button', { name: '重试核验范围食材', exact: true }).click();
+  await expect(desk.getByRole('button', { name: '加入姜核验范围', exact: true })).toBeVisible();
+  await expect(desk.getByLabel('来源核验说明', { exact: true })).toHaveValue('只保留输入，不提交核验。');
+  await page.route(`**/api/v1/editorial/source-checks/${source.id}/1`, (route) => route.abort());
+  page.once('dialog', (dialog) => dialog.accept()); await desk.getByRole('button', { name: '刷新来源核验', exact: true }).click();
+  await expect(desk.getByRole('alert')).toBeVisible(); await expect(desk.getByLabel('来源核验状态', { exact: true })).toHaveCount(0);
+  await expect(desk.getByLabel('来源核验说明', { exact: true })).toHaveValue('只保留输入，不提交核验。');
+  await expect(desk.getByLabel('来源核验说明', { exact: true })).toBeDisabled();
+  await expect(desk.getByLabel('核验当前来源', { exact: true })).toContainText(title);
+  await page.unroute(`**/api/v1/editorial/source-checks/${source.id}/1`);
+  page.once('dialog', (dialog) => dialog.accept()); await desk.getByRole('button', { name: '刷新来源核验', exact: true }).click();
+  await expect(desk.getByLabel('来源核验状态', { exact: true })).toBeVisible();
+  expect(await (await context.request.get(`/api/v1/editorial/source-checks/${source.id}/1`)).json()).toEqual(before); expect(writes()).toBe(0);
+});
+
+test('preflight search and detail failures are independent; retries read real fixed data without publication writes', async ({ page }) => {
+  await login(page); await page.getByRole('button', { name: '来源核验与发布检查', exact: true }).click(); const desk = panel(page, '发布前资料检查');
+  await desk.getByLabel('搜索发布检查食材', { exact: true }).fill('黄芪'); await desk.getByRole('button', { name: '检查黄芪发布资料', exact: true }).click();
+  await expect(desk.getByLabel('发布前检查结果', { exact: true })).toBeVisible(); const writes = countWrites(page);
+  await page.route('**/api/v1/ingredients?**', (route) => route.abort()); await desk.getByLabel('搜索发布检查食材', { exact: true }).fill('姜');
+  await expect(desk.getByRole('alert')).toBeVisible(); await expect(desk.getByRole('button', { name: '检查黄芪发布资料', exact: true })).toHaveCount(0);
+  await expect(desk.getByLabel('发布前检查结果', { exact: true })).toBeVisible();
+  await page.unroute('**/api/v1/ingredients?**'); await desk.getByRole('button', { name: '重试发布检查食材', exact: true }).click();
+  await expect(desk.getByRole('button', { name: '检查姜发布资料', exact: true })).toBeVisible();
+  await page.route('**/api/v1/editorial/publication-preflight/huang-qi', (route) => route.abort()); await desk.getByRole('button', { name: '刷新发布前检查', exact: true }).click();
+  await expect(desk.getByRole('alert')).toBeVisible(); await expect(desk.getByLabel('发布前检查结果', { exact: true })).toHaveCount(0);
+  await page.unroute('**/api/v1/editorial/publication-preflight/huang-qi'); await desk.getByRole('button', { name: '刷新发布前检查', exact: true }).click();
+  await expect(desk.getByLabel('发布前检查结果', { exact: true })).toBeVisible(); expect(writes()).toBe(0);
+});

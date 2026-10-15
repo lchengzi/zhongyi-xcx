@@ -1,0 +1,56 @@
+<view class="page-shell favorites-page">
+  <view wx:if="{{storageIssue}}" class="storage-notice">
+    <view>{{storageIssue}}</view>
+    <button class="secondary-btn" bindtap="refresh">重试读取本机记录</button>
+  </view>
+  <view class="favorites-head">
+    <view>
+      <view class="page-kicker">留住想继续了解的资料</view>
+      <view class="page-title">我的收藏</view>
+      <view class="page-description">收藏只代表希望继续查资料，不代表适合食用或可以与其他材料组合。</view>
+    </view>
+    <button wx:if="{{!storageIssue && compareCount >= 2 && !triageBlocked}}" class="primary-btn compare-link" bindtap="openCompare">查看对照 {{compareCount}} 项</button>
+  </view>
+
+  <view class="privacy-strip">收藏 ID 仅保存在当前设备；本版不上传账户或健康资料。</view>
+
+  <view wx:if="{{!storageIssue && !triageBlocked}}" class="favorite-search">
+    <view class="favorite-search__box">
+      <input class="favorite-search__input" maxlength="60" value="{{query}}" bindinput="onSearchInput" bindconfirm="onSearchConfirm" data-version="{{searchVersion}}" placeholder="在收藏中搜索名称、拼音或别名" confirm-type="search" aria-label="搜索已收藏资料" />
+      <button wx:if="{{query}}" class="secondary-btn favorite-search__clear" bindtap="clearSearch" data-version="{{searchVersion}}" data-query="{{query}}">清空搜索</button>
+    </view>
+    <view class="muted favorite-search__summary">显示 {{rows.length}} / {{favoriteCount}} 项收藏；搜索只在本页使用，不保存记录。</view>
+  </view>
+
+  <view wx:if="{{triageBlocked}}" class="triage-alert card">
+    <view class="empty-state__title">已停止食养资料筛选</view>
+    <view>本次安全检查含需要优先处理的紧急情况，此时不展示收藏候选。请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+    <button class="primary-btn empty-action" bindtap="goCatalog">返回目录重新检查</button>
+  </view>
+
+  <view wx:elif="{{!storageIssue && rows.length}}" class="favorite-list">
+    <ingredient-card
+      wx:for="{{rows}}"
+      wx:key="id"
+      item="{{item}}"
+      compact="{{true}}"
+      bind:detail="openDetail"
+      bind:favorite="removeFavorite"
+      bind:compare="toggleCompare"
+    />
+  </view>
+
+  <view wx:elif="{{!storageIssue && favoriteCount > 0}}" class="empty-state card">
+    <view class="empty-state__mark" aria-hidden="true">⌕</view>
+    <view class="empty-state__title">收藏中没有匹配条目</view>
+    <view>试试名称、连写拼音或已有别名。没有匹配不表示收藏已被删除。</view>
+    <button class="primary-btn empty-action" bindtap="clearSearch" data-version="{{searchVersion}}" data-query="{{query}}">显示全部收藏</button>
+  </view>
+
+  <view wx:elif="{{!storageIssue}}" class="empty-state card">
+    <view class="empty-state__mark" aria-hidden="true">☆</view>
+    <view class="empty-state__title">还没有收藏</view>
+    <view>在食养目录点击“☆ 收藏”，可把希望进一步核对的条目保存在这里。</view>
+    <button class="primary-btn empty-action" bindtap="goCatalog">查看食养目录</button>
+  </view>
+</view>

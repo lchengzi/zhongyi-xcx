@@ -1,0 +1,10 @@
+node_modules/
+build/
+dist/
+.local/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+*.zfbackup

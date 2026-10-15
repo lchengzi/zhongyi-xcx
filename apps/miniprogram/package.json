@@ -1,0 +1,38 @@
+{
+  "name": "@food-education/miniprogram",
+  "version": "0.2.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.visual.json",
+    "prebuild:weapp": "tsx ../../tools/validate-mini-public-content.ts",
+    "build:weapp": "taro build --type weapp",
+    "predev:weapp": "tsx ../../tools/validate-mini-public-content.ts",
+    "dev:weapp": "taro build --type weapp --watch"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.28.4",
+    "@food-education/catalog-core": "0.2.0",
+    "@tarojs/components": "4.3.0",
+    "@tarojs/helper": "4.3.0",
+    "@tarojs/react": "4.3.0",
+    "@tarojs/runtime": "4.3.0",
+    "@tarojs/shared": "4.3.0",
+    "@tarojs/taro": "4.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.29.7",
+    "@babel/preset-react": "7.27.1",
+    "@tarojs/cli": "4.3.0",
+    "@tarojs/plugin-framework-react": "4.3.0",
+    "@tarojs/plugin-platform-weapp": "4.3.0",
+    "@tarojs/webpack5-runner": "4.3.0",
+    "@types/react": "18.3.26",
+    "@types/react-dom": "18.3.7",
+    "babel-preset-taro": "4.3.0",
+    "postcss": "8.5.30",
+    "webpack": "5.91.0"
+  }
+}

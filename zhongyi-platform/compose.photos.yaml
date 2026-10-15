@@ -1,0 +1,97 @@
+# Standalone file-only operators; no database connection, web port or network.
+# Build the existing runtime image separately. All host paths must already exist.
+name: food-education-photo-operations
+x-operator: &operator
+  image: food-education-demo:local
+  profiles: [photo-operations]
+  network_mode: none
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  secrets: [photo_resource_backup_key]
+  healthcheck:
+    disable: true
+  logging:
+    driver: none
+x-environment: &environment
+  NODE_ENV: production
+  PHOTO_RESOURCE_BACKUP_KEY_FILE: /run/secrets/photo_resource_backup_key
+  PHOTO_BACKUP_DATABASE_DIRECTORY: /database-archive
+  ENABLE_PHOTO_PUBLICATION: "false"
+  EDUCATION_PUBLICATION_ENABLED: "false"
+  AI_PROVIDER: disabled
+  AI_EXTERNAL_ENABLED: "false"
+x-database: &database
+  type: bind
+  source: ${CONTAINER_PHOTO_DATABASE_DIRECTORY:?Specify the existing private database archive directory}
+  target: /database-archive
+  read_only: true
+  bind:
+    create_host_path: false
+x-input: &input
+  type: bind
+  source: ${CONTAINER_PHOTO_INPUT_DIRECTORY:?Specify the existing encrypted photo archive input directory}
+  target: /photo-archive-input
+  read_only: true
+  bind:
+    create_host_path: false
+services:
+  photo-export:
+    <<: *operator
+    environment:
+      <<: *environment
+      PHOTO_BACKUP_ORIGINALS_DIRECTORY: /photo-originals
+      PHOTO_BACKUP_DERIVATIVES_DIRECTORY: /photo-derivatives
+      PHOTO_BACKUP_JOURNAL_DIRECTORY: /photo-journal
+      PHOTO_BACKUP_OUTPUT_DIRECTORY: /photo-archive-output
+    command: [photo-backup, export]
+    volumes:
+      - *database
+      - type: bind
+        source: ${CONTAINER_PHOTO_ORIGINALS_DIRECTORY:?Specify the reviewed private originals directory}
+        target: /photo-originals
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${CONTAINER_PHOTO_DERIVATIVES_DIRECTORY:?Specify the prepared private display directory}
+        target: /photo-derivatives
+        read_only: true
+        bind:
+          create_host_path: false
+      # The cooperative lock is written here; publication writers must be stopped.
+      - type: bind
+        source: ${CONTAINER_PHOTO_JOURNAL_DIRECTORY:?Specify the private append-only photo journal directory}
+        target: /photo-journal
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${CONTAINER_PHOTO_OUTPUT_DIRECTORY:?Specify the existing private encrypted archive output directory}
+        target: /photo-archive-output
+        bind:
+          create_host_path: false
+  photo-verify:
+    <<: *operator
+    environment:
+      <<: *environment
+      PHOTO_BACKUP_INPUT_DIRECTORY: /photo-archive-input
+    command: [photo-backup, verify]
+    volumes: [*database, *input]
+  photo-restore:
+    <<: *operator
+    environment:
+      <<: *environment
+      PHOTO_BACKUP_INPUT_DIRECTORY: /photo-archive-input
+      PHOTO_BACKUP_RESTORE_DIRECTORY: /photo-recovery
+    command: [photo-backup, restore]
+    volumes:
+      - *database
+      - *input
+      - type: bind
+        source: ${CONTAINER_PHOTO_RESTORE_DIRECTORY:?Specify the existing private NEW recovery directory parent}
+        target: /photo-recovery
+        bind:
+          create_host_path: false
+secrets:
+  photo_resource_backup_key:
+    file: ${CONTAINER_PHOTO_BACKUP_KEY_FILE:?Specify an independent key file outside all resource and archive directories}

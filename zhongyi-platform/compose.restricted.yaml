@@ -1,0 +1,80 @@
+# Standalone loopback production-mode configuration. Do NOT merge with compose.yaml.
+# Requires a separately provisioned TLS PostgreSQL database and reviewed roles.
+# URL secrets must use verify-full and sslrootcert=/run/secrets/database_ca.
+# Configuration parsing is not evidence that an image or container has run.
+name: food-education-restricted
+x-service: &service
+  image: food-education-demo:local
+  build:
+    context: ..
+    dockerfile: zhongyi-platform/Dockerfile
+    target: runtime
+  read_only: true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  stop_grace_period: 45s
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+x-environment: &environment
+  NODE_ENV: production
+  AUTH_MODE: accounts
+  DATABASE_PROVIDER: postgres
+  DATABASE_SCHEMA: ${DEPLOYMENT_DATABASE_SCHEMA:?Specify the reviewed dedicated schema}
+  AI_PROVIDER: disabled
+  AI_EXTERNAL_ENABLED: "false"
+  EDUCATION_PUBLICATION_ENABLED: "false"
+services:
+  app:
+    <<: *service
+    environment:
+      <<: *environment
+      DATABASE_RUNTIME_URL_FILE: /run/secrets/runtime_database_url
+      BIND_HOST: 0.0.0.0
+      PORT: "4310"
+      ALLOWED_ORIGINS: ${HTTPS_ALLOWED_ORIGINS:?Specify exact HTTPS origins covered by the certificate}
+      TLS_MODE: direct
+      TLS_CERT_FILE: /run/secrets/tls_certificate
+      TLS_KEY_FILE: /run/secrets/tls_private_key
+      TLS_HEALTH_CA_FILE: /run/secrets/https_ca
+    ports: ["127.0.0.1:4310:4310"]
+    secrets: [runtime_database_url, database_ca, tls_certificate, tls_private_key, https_ca]
+  operator:
+    <<: *service
+    profiles: [operator]
+    environment:
+      <<: *environment
+      DATABASE_OWNER_URL_FILE: /run/secrets/owner_database_url
+    command: [runtime-role, --verify, --schema, "${DEPLOYMENT_DATABASE_SCHEMA:?Specify the reviewed dedicated schema}", --role, "${DEPLOYMENT_DATABASE_RUNTIME_ROLE:?Specify the reviewed runtime role}"]
+    secrets: [owner_database_url, database_ca]
+    healthcheck:
+      disable: true
+  bootstrap:
+    <<: *service
+    profiles: [bootstrap]
+    environment:
+      <<: *environment
+      DATABASE_RUNTIME_URL_FILE: /run/secrets/runtime_database_url
+    # Supply an explicit username when invoking this one-shot service. It fails
+    # closed without one; initial password is shown once by the existing tool.
+    command: [bootstrap]
+    secrets: [runtime_database_url, database_ca]
+    healthcheck:
+      disable: true
+secrets:
+  runtime_database_url:
+    file: ${CONTAINER_RUNTIME_DATABASE_URL_FILE:?Specify the runtime URL secret file}
+  owner_database_url:
+    file: ${CONTAINER_OWNER_DATABASE_URL_FILE:?Specify the separate owner URL secret file}
+  database_ca:
+    file: ${CONTAINER_DATABASE_CA_FILE:?Specify the PostgreSQL CA certificate file}
+  tls_certificate:
+    file: ${HTTPS_CERT_FILE:?Specify the HTTPS certificate chain file}
+  tls_private_key:
+    file: ${HTTPS_KEY_FILE:?Specify the HTTPS private key file}
+  https_ca:
+    file: ${HTTPS_CA_FILE:?Specify the CA used by the container HTTPS health probe}

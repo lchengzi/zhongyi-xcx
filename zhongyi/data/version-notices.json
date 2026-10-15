@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.1.0",
+  "noticesVersion": "2026.08-notices.4",
+  "generatedAt": "2026-08-13T03:31:30+08:00",
+  "notices": [
+    {
+      "id": "notice-replace-public-projection-9",
+      "type": "replacement",
+      "state": "effective",
+      "issuedAt": "2026-08-13T03:31:30+08:00",
+      "effectiveAt": "2026-08-13T03:31:30+08:00",
+      "releaseId": "release-2026.08.13-public-artifact-projection.9",
+      "replacementReleaseId": "release-2026.08.13-complete-public-projection.10",
+      "reason": "The withheld recipe bundle policy fields in release .9 were not independently type-gated; release .10 replaces it with a complete typed public projection.",
+      "rollbackAllowed": false,
+      "authorization": {
+        "decisionId": "decision-public-projection-type-gate-2026-08-13",
+        "approvedBy": [
+          "content_owner",
+          "compliance"
+        ]
+      }
+    }
+  ]
+}

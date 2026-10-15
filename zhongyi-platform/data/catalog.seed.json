@@ -1,0 +1,4022 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "release-2026.08.13-complete-public-projection.10",
+  "releaseDigest": "sha256:dddbe21176521dfd417eb4c1aedd0fff62837c55ebb97d90ac74e0329f02b4d7",
+  "contentVersion": "2026.08-full-catalog.1",
+  "sourceAsOf": "2026-08-10",
+  "ingredients": [
+    {
+      "id": "dang-gui",
+      "name": "当归",
+      "pinyin": "dang gui",
+      "aliases": [],
+      "batch": "2019年第8号",
+      "latinName": "Angelica sinensis (Oliv.) Diels",
+      "ediblePart": "根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作为香辛料和调味品使用。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2019-8",
+          "title": "关于当归等6种新增按照传统既是食品又是中药材的物质公告（2019年第8号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202001/60977058ce3b4449b1b1d46cff283e73.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "shan-nai",
+      "name": "山柰",
+      "pinyin": "shan nai",
+      "aliases": [],
+      "batch": "2019年第8号",
+      "latinName": "Kaempferia galanga L.",
+      "ediblePart": "根茎",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作为香辛料和调味品使用。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2019-8",
+          "title": "关于当归等6种新增按照传统既是食品又是中药材的物质公告（2019年第8号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202001/60977058ce3b4449b1b1d46cff283e73.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xi-hong-hua",
+      "name": "西红花",
+      "pinyin": "xi hong hua",
+      "aliases": [
+        "藏红花（香辛料名称）"
+      ],
+      "batch": "2019年第8号",
+      "latinName": "Crocus sativus L.",
+      "ediblePart": "柱头",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作为香辛料和调味品使用。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2019-8",
+          "title": "关于当归等6种新增按照传统既是食品又是中药材的物质公告（2019年第8号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202001/60977058ce3b4449b1b1d46cff283e73.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "cao-guo",
+      "name": "草果",
+      "pinyin": "cao guo",
+      "aliases": [],
+      "batch": "2019年第8号",
+      "latinName": "Amomum tsao-ko Crevost et Lemaire",
+      "ediblePart": "果实",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作为香辛料和调味品使用。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2019-8",
+          "title": "关于当归等6种新增按照传统既是食品又是中药材的物质公告（2019年第8号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202001/60977058ce3b4449b1b1d46cff283e73.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "jiang-huang",
+      "name": "姜黄",
+      "pinyin": "jiang huang",
+      "aliases": [],
+      "batch": "2019年第8号",
+      "latinName": "Curcuma longa L.",
+      "ediblePart": "根茎",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作为香辛料和调味品使用。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2019-8",
+          "title": "关于当归等6种新增按照传统既是食品又是中药材的物质公告（2019年第8号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202001/60977058ce3b4449b1b1d46cff283e73.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bi-ba",
+      "name": "荜茇",
+      "pinyin": "bi ba",
+      "aliases": [],
+      "batch": "2019年第8号",
+      "latinName": "Piper longum L.",
+      "ediblePart": "果穗",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作为香辛料和调味品使用。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2019-8",
+          "title": "关于当归等6种新增按照传统既是食品又是中药材的物质公告（2019年第8号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202001/60977058ce3b4449b1b1d46cff283e73.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "dang-shen",
+      "name": "党参",
+      "pinyin": "dang shen",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Codonopsis pilosula (Franch.) Nannf.；Codonopsis pilosula Nannf. var. modesta (Nannf.) L.T. Shen；Codonopsis tangshen Oliv.",
+      "ediblePart": "根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "rou-cong-rong-huang-mo",
+      "name": "肉苁蓉（荒漠）",
+      "pinyin": "rou cong rong huang mo",
+      "aliases": [
+        "荒漠肉苁蓉"
+      ],
+      "batch": "2023年第9号",
+      "latinName": "Cistanche deserticola Y.C. Ma",
+      "ediblePart": "肉质茎",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "tie-pi-shi-hu",
+      "name": "铁皮石斛",
+      "pinyin": "tie pi shi hu",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Dendrobium officinale Kimura et Migo",
+      "ediblePart": "茎",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xi-yang-shen",
+      "name": "西洋参",
+      "pinyin": "xi yang shen",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Panax quinquefolium L.",
+      "ediblePart": "根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huang-qi",
+      "name": "黄芪",
+      "pinyin": "huang qi",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Astragalus membranaceus (Fisch.) Bge. var. mongholicus (Bge.) Hsiao；Astragalus membranaceus (Fisch.) Bge.",
+      "ediblePart": "根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ling-zhi",
+      "name": "灵芝",
+      "pinyin": "ling zhi",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Ganoderma lucidum (Leyss. ex Fr.) Karst.；Ganoderma sinense Zhao, Xu et Zhang",
+      "ediblePart": "子实体",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "shan-zhu-yu",
+      "name": "山茱萸",
+      "pinyin": "shan zhu yu",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Cornus officinalis Sieb. et Zucc.",
+      "ediblePart": "果肉",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "tian-ma",
+      "name": "天麻",
+      "pinyin": "tian ma",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Gastrodia elata Bl.",
+      "ediblePart": "块茎",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "du-zhong-ye",
+      "name": "杜仲叶",
+      "pinyin": "du zhong ye",
+      "aliases": [],
+      "batch": "2023年第9号",
+      "latinName": "Eucommia ulmoides Oliv.",
+      "ediblePart": "叶",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2023-9",
+          "title": "关于党参等9种新增按照传统既是食品又是中药材的物质公告（2023年第9号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/wjw/c100175/202311/59e03b384f9a4d0b9623e19b813f6cc4.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2023-9",
+          "title": "解读《关于党参等9种新增按照传统既是食品又是中药材的物质公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202311/a7e49f9f0285437b82b842576fa8ede9.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "di-huang",
+      "name": "地黄",
+      "pinyin": "di huang",
+      "aliases": [
+        "熟地黄（公告所述加工品）"
+      ],
+      "batch": "2024年第4号",
+      "latinName": "Rehmannia glutinosa Libosch.",
+      "ediblePart": "块根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2024-4",
+          "title": "关于地黄等4种按照传统既是食品又是中药材的物质的公告（2024年第4号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202408/53150d0918ec40899b5293147ec0dd01.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2024-4",
+          "title": "解读《关于地黄等4种按照传统既是食品又是中药材的物质的公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100087/202408/aa9a6f7bce8e4b4cbcc4b38591676ed6.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "mai-dong",
+      "name": "麦冬",
+      "pinyin": "mai dong",
+      "aliases": [],
+      "batch": "2024年第4号",
+      "latinName": "Ophiopogon japonicus (L.f) Ker-Gawl.",
+      "ediblePart": "块根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2024-4",
+          "title": "关于地黄等4种按照传统既是食品又是中药材的物质的公告（2024年第4号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202408/53150d0918ec40899b5293147ec0dd01.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2024-4",
+          "title": "解读《关于地黄等4种按照传统既是食品又是中药材的物质的公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100087/202408/aa9a6f7bce8e4b4cbcc4b38591676ed6.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "tian-dong",
+      "name": "天冬",
+      "pinyin": "tian dong",
+      "aliases": [],
+      "batch": "2024年第4号",
+      "latinName": "Asparagus cochinchinensis (Lour.) Merr.",
+      "ediblePart": "块根",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2024-4",
+          "title": "关于地黄等4种按照传统既是食品又是中药材的物质的公告（2024年第4号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202408/53150d0918ec40899b5293147ec0dd01.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2024-4",
+          "title": "解读《关于地黄等4种按照传统既是食品又是中药材的物质的公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100087/202408/aa9a6f7bce8e4b4cbcc4b38591676ed6.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "hua-ju-hong",
+      "name": "化橘红",
+      "pinyin": "hua ju hong",
+      "aliases": [],
+      "batch": "2024年第4号",
+      "latinName": "Citrus grandis 'Tomentosa' 或 Citrus grandis (L.) Osbeck",
+      "ediblePart": "外层果皮",
+      "identityState": "source_checked",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-announcement-2024-4",
+          "title": "关于地黄等4种按照传统既是食品又是中药材的物质的公告（2024年第4号）",
+          "publisher": "国家卫生健康委、国家市场监督管理总局",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202408/53150d0918ec40899b5293147ec0dd01.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-interpretation-2024-4",
+          "title": "解读《关于地黄等4种按照传统既是食品又是中药材的物质的公告》",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100087/202408/aa9a6f7bce8e4b4cbcc4b38591676ed6.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "gou-qi-zi",
+      "name": "枸杞子",
+      "pinyin": "gou qi zi",
+      "aliases": [
+        "枸杞"
+      ],
+      "batch": "官方名单与消费提示",
+      "latinName": "",
+      "ediblePart": "果实（具体身份与部位待发布前复核）",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅作食品资料展示；食品、保健食品和中药材分别按相应规定管理。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "samr-goji-consumer-tip-2023",
+          "title": "枸杞子的消费提示",
+          "publisher": "国家市场监督管理总局",
+          "url": "https://www.samr.gov.cn/spcjs/yjjl/art/2023/art_87ec1193abf84dd4b056f055e9df600b.html",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ding-xiang",
+      "name": "丁香",
+      "pinyin": "ding xiang",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ba-jiao-hui-xiang",
+      "name": "八角茴香",
+      "pinyin": "ba jiao hui xiang",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "dao-dou",
+      "name": "刀豆",
+      "pinyin": "dao dou",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xiao-hui-xiang",
+      "name": "小茴香",
+      "pinyin": "xiao hui xiang",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xiao-ji",
+      "name": "小蓟",
+      "pinyin": "xiao ji",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "shan-yao",
+      "name": "山药",
+      "pinyin": "shan yao",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "shan-zha",
+      "name": "山楂",
+      "pinyin": "shan zha",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ma-chi-xian",
+      "name": "马齿苋",
+      "pinyin": "ma chi xian",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "wu-shao-she",
+      "name": "乌梢蛇",
+      "pinyin": "wu shao she",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "wu-mei",
+      "name": "乌梅",
+      "pinyin": "wu mei",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "mu-gua",
+      "name": "木瓜",
+      "pinyin": "mu gua",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huo-ma-ren",
+      "name": "火麻仁",
+      "pinyin": "huo ma ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "dai-dai-hua",
+      "name": "代代花",
+      "pinyin": "dai dai hua",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "yu-zhu",
+      "name": "玉竹",
+      "pinyin": "yu zhu",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "gan-cao",
+      "name": "甘草",
+      "pinyin": "gan cao",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bai-zhi",
+      "name": "白芷",
+      "pinyin": "bai zhi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bai-guo",
+      "name": "白果",
+      "pinyin": "bai guo",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bai-bian-dou",
+      "name": "白扁豆",
+      "pinyin": "bai bian dou",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bai-bian-dou-hua",
+      "name": "白扁豆花",
+      "pinyin": "bai bian dou hua",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "long-yan-rou",
+      "name": "龙眼肉（桂圆）",
+      "pinyin": "long yan rou gui yuan",
+      "aliases": [
+        "龙眼肉",
+        "桂圆"
+      ],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "jue-ming-zi",
+      "name": "决明子",
+      "pinyin": "jue ming zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bai-he",
+      "name": "百合",
+      "pinyin": "bai he",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "rou-dou-kou",
+      "name": "肉豆蔻",
+      "pinyin": "rou dou kou",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "rou-gui",
+      "name": "肉桂",
+      "pinyin": "rou gui",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "yu-gan-zi",
+      "name": "余甘子",
+      "pinyin": "yu gan zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "fo-shou",
+      "name": "佛手",
+      "pinyin": "fo shou",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xing-ren",
+      "name": "杏仁（甜、苦）",
+      "pinyin": "xing ren tian ku",
+      "aliases": [
+        "杏仁",
+        "甜杏仁",
+        "苦杏仁"
+      ],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "sha-ji",
+      "name": "沙棘",
+      "pinyin": "sha ji",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "mu-li",
+      "name": "牡蛎",
+      "pinyin": "mu li",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "qian-shi",
+      "name": "芡实",
+      "pinyin": "qian shi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "hua-jiao",
+      "name": "花椒",
+      "pinyin": "hua jiao",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "chi-xiao-dou",
+      "name": "赤小豆",
+      "pinyin": "chi xiao dou",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "e-jiao",
+      "name": "阿胶",
+      "pinyin": "e jiao",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ji-nei-jin",
+      "name": "鸡内金",
+      "pinyin": "ji nei jin",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "mai-ya",
+      "name": "麦芽",
+      "pinyin": "mai ya",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "kun-bu",
+      "name": "昆布",
+      "pinyin": "kun bu",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "zao",
+      "name": "枣（大枣、酸枣、黑枣）",
+      "pinyin": "zao da zao suan zao hei zao",
+      "aliases": [
+        "枣",
+        "大枣",
+        "酸枣",
+        "黑枣"
+      ],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "luo-han-guo",
+      "name": "罗汉果",
+      "pinyin": "luo han guo",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "yu-li-ren",
+      "name": "郁李仁",
+      "pinyin": "yu li ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "jin-yin-hua",
+      "name": "金银花",
+      "pinyin": "jin yin hua",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "qing-guo",
+      "name": "青果",
+      "pinyin": "qing guo",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "yu-xing-cao",
+      "name": "鱼腥草",
+      "pinyin": "yu xing cao",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "jiang",
+      "name": "姜（生姜、干姜）",
+      "pinyin": "jiang sheng jiang gan jiang",
+      "aliases": [
+        "姜",
+        "生姜",
+        "干姜"
+      ],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "zhi-ju-zi",
+      "name": "枳椇子",
+      "pinyin": "zhi ju zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "zhi-zi",
+      "name": "栀子",
+      "pinyin": "zhi zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "sha-ren",
+      "name": "砂仁",
+      "pinyin": "sha ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "pang-da-hai",
+      "name": "胖大海",
+      "pinyin": "pang da hai",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "fu-ling",
+      "name": "茯苓",
+      "pinyin": "fu ling",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xiang-yuan",
+      "name": "香橼",
+      "pinyin": "xiang yuan",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xiang-ru",
+      "name": "香薷",
+      "pinyin": "xiang ru",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "tao-ren",
+      "name": "桃仁",
+      "pinyin": "tao ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "sang-ye",
+      "name": "桑叶",
+      "pinyin": "sang ye",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "sang-shen",
+      "name": "桑椹",
+      "pinyin": "sang shen",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ju-hong",
+      "name": "桔红",
+      "pinyin": "ju hong",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "jie-geng",
+      "name": "桔梗",
+      "pinyin": "jie geng",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "yi-zhi-ren",
+      "name": "益智仁",
+      "pinyin": "yi zhi ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "he-ye",
+      "name": "荷叶",
+      "pinyin": "he ye",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "lai-fu-zi",
+      "name": "莱菔子",
+      "pinyin": "lai fu zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "lian-zi",
+      "name": "莲子",
+      "pinyin": "lian zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "gao-liang-jiang",
+      "name": "高良姜",
+      "pinyin": "gao liang jiang",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "dan-zhu-ye",
+      "name": "淡竹叶",
+      "pinyin": "dan zhu ye",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "dan-dou-chi",
+      "name": "淡豆豉",
+      "pinyin": "dan dou chi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ju-hua",
+      "name": "菊花",
+      "pinyin": "ju hua",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ju-ju",
+      "name": "菊苣",
+      "pinyin": "ju ju",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huang-jie-zi",
+      "name": "黄芥子",
+      "pinyin": "huang jie zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huang-jing",
+      "name": "黄精",
+      "pinyin": "huang jing",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "zi-su",
+      "name": "紫苏",
+      "pinyin": "zi su",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "zi-su-zi",
+      "name": "紫苏籽",
+      "pinyin": "zi su zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ge-gen",
+      "name": "葛根",
+      "pinyin": "ge gen",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "hei-zhi-ma",
+      "name": "黑芝麻",
+      "pinyin": "hei zhi ma",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "hei-hu-jiao",
+      "name": "黑胡椒",
+      "pinyin": "hei hu jiao",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huai-mi",
+      "name": "槐米",
+      "pinyin": "huai mi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huai-hua",
+      "name": "槐花",
+      "pinyin": "huai hua",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "pu-gong-ying",
+      "name": "蒲公英",
+      "pinyin": "pu gong ying",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "feng-mi",
+      "name": "蜂蜜",
+      "pinyin": "feng mi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "fei-zi",
+      "name": "榧子",
+      "pinyin": "fei zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "suan-zao-ren",
+      "name": "酸枣仁",
+      "pinyin": "suan zao ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xian-bai-mao-gen",
+      "name": "鲜白茅根",
+      "pinyin": "xian bai mao gen",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xian-lu-gen",
+      "name": "鲜芦根",
+      "pinyin": "xian lu gen",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "fu-she",
+      "name": "蝮蛇",
+      "pinyin": "fu she",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "ju-pi",
+      "name": "橘皮",
+      "pinyin": "ju pi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "bo-he",
+      "name": "薄荷",
+      "pinyin": "bo he",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "yi-yi-ren",
+      "name": "薏苡仁",
+      "pinyin": "yi yi ren",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "xie-bai",
+      "name": "薤白",
+      "pinyin": "xie bai",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "fu-pen-zi",
+      "name": "覆盆子",
+      "pinyin": "fu pen zi",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "id": "huo-xiang",
+      "name": "藿香",
+      "pinyin": "huo xiang",
+      "aliases": [],
+      "batch": "2002年官方名单",
+      "latinName": "",
+      "ediblePart": "待发布前复核",
+      "identityState": "pending",
+      "professionalReviewState": "pending",
+      "restriction": "仅确认名称列入官方目录；基原、可食部位、食用方式及个体安全边界尚待逐项复核。",
+      "sources": [
+        {
+          "id": "nhc-food-medicine-list-2002",
+          "title": "既是食品又是药品的物品名单",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/200203/68aa338c814d4a0a9fe5fb6a46717b99.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        },
+        {
+          "id": "nhc-current-catalog-count-2025",
+          "title": "对十四届全国人大三次会议第2643号建议的答复",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/wjw/jiany/202508/6141c788fa794723afb4e71af48b3d93.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-10"
+        },
+        {
+          "id": "nhc-catalog-rule-2021",
+          "title": "按照传统既是食品又是中药材的物质目录管理规定",
+          "publisher": "中华人民共和国国家卫生健康委员会",
+          "url": "https://www.nhc.gov.cn/sps/c100088/202111/a0f07a6f1d4f4607add51e5a9de73abe.shtml",
+          "status": "published",
+          "checkedAt": "2026-08-09"
+        }
+      ]
+    }
+  ],
+  "digest": "sha256:6e3e6bbbbe13d68b482215b9f9f97335c49c7c334c5d6d044f0ba84dc678fa67"
+}

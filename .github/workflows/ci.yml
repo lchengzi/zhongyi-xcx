@@ -1,0 +1,77 @@
+name: Food education checks
+
+# Repository layout must contain both sibling projects. No deploy/publish job.
+on:
+  push:
+    branches: [main, master]
+    paths: ['zhongyi/**', 'zhongyi-platform/**', 'packages/catalog-core/**', '.github/workflows/ci.yml', '.gitattributes']
+  pull_request:
+    paths: ['zhongyi/**', 'zhongyi-platform/**', 'packages/catalog-core/**', '.github/workflows/ci.yml', '.gitattributes']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Do not abandon an owned PostgreSQL checkpoint merely because another push arrived.
+concurrency:
+  group: food-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify ${{ matrix.profile }}
+    runs-on: windows-2025
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        profile: [core, postgres, browser, postgres-browser, https]
+    defaults:
+      run:
+        working-directory: zhongyi-platform
+        shell: pwsh
+    env:
+      CI: 'true'
+      AI_PROVIDER: disabled
+      AI_EXTERNAL_ENABLED: 'false'
+    steps:
+      - name: Checkout source without persisted credentials
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - name: Set up supported Node 22 patch
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: zhongyi-platform/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Run selected verification profile
+        env:
+          CI_PROFILE: ${{ matrix.profile }}
+        run: npm run ci -- $env:CI_PROFILE
+      - name: Keep only scoped test evidence, never databases or secrets
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: food-checks-${{ matrix.profile }}-${{ github.run_attempt }}
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: warn
+          path: |
+            zhongyi-platform/.local/ci-runs/*/report.json
+            zhongyi-platform/.local/ci-results.*.latest.json
+            zhongyi-platform/.local/assistant-contract-eval.latest.json
+            zhongyi-platform/.local/ci-runs/*/browser-artifacts/*/*.png
+            zhongyi-platform/.local/https-tests/*/result.json
+            zhongyi-platform/.local/https-tests/*/application-*.json
+            zhongyi-platform/.local/https-tests/*/diagnostic-faults.json
+            zhongyi-platform/.local/https-tests/*/https-workbench-desktop.png
+            zhongyi-platform/.local/https-tests/*/https-workbench-mobile.png
+            zhongyi-platform/.local/https-tests/*/https-publication-desktop.png
+            zhongyi-platform/.local/https-tests/*/https-publication-mobile.png
+            zhongyi-platform/.local/postgres-tests/*/result.json
+            zhongyi-platform/.local/postgres-tests/*/browser-artifacts/*/*.png
+            zhongyi-platform/.local/request-log-runs/*/report.json

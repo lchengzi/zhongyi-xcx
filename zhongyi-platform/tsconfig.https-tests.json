@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.server.json",
+  "compilerOptions": { "noEmit": true, "rootDir": ".." },
+  "include": ["tests/https.test.ts", "tests/tls-config.test.ts", "tests/postgres-tls.test.ts", "tests/postgres-connection-diagnostics.test.ts", "tests/permissions-policy.test.ts", "tests/postgres-permissions.test.ts", "tests/container-backup.test.ts"]
+}

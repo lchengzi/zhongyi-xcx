@@ -1,0 +1,128 @@
+name: TypeScript mini-program
+
+on:
+  push:
+    paths: ['apps/**', 'packages/**', 'tools/**', 'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.research.json', '.gitignore', 'zhongyi/.gitignore', 'zhongyi/data/**', 'zhongyi/utils/**', 'zhongyi-platform/**', '.github/workflows/ts-refactor.yml']
+  pull_request:
+    paths: ['apps/**', 'packages/**', 'tools/**', 'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.research.json', '.gitignore', 'zhongyi/.gitignore', 'zhongyi/data/**', 'zhongyi/utils/**', 'zhongyi-platform/**', '.github/workflows/ts-refactor.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci --no-fund
+      - run: npm --prefix zhongyi-platform ci --no-fund
+      - run: npm run catalog:check
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run test:publication-client
+      - run: npm run build:mini
+
+  mini-reading-browser:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    env:
+      AI_PROVIDER: disabled
+      AI_EXTERNAL_ENABLED: 'false'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            zhongyi-platform/package-lock.json
+      - run: npm ci --no-fund
+      - run: npm --prefix zhongyi-platform ci --no-fund
+      - run: npm run typecheck
+      - run: npm run test:mini-browser-ci
+      - run: npm run test:mini-reading
+      - run: npm run test:mini-education
+      - run: npm run test:mini-storage
+      - run: npm run test:mini-photos
+      - run: npm run test:mini-catalog-photos
+      - name: Keep test-only mini-program evidence
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: mini-reading-${{ github.run_attempt }}
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: warn
+          path: |
+            .refactor/evidence/reading-layout-runs/run-*/report.json
+            .refactor/evidence/reading-layout-runs/run-*/320-compare-four-viewport.png
+            .refactor/evidence/reading-layout-runs/run-*/failure-viewport.png
+            .refactor/evidence/education-recovery-runs/run-*/report.json
+            .refactor/evidence/education-recovery-runs/run-*/reconnected-viewport.png
+            .refactor/evidence/education-recovery-runs/run-*/offline-expired-viewport.png
+            .refactor/evidence/education-recovery-runs/run-*/failure-viewport.png
+            .refactor/evidence/storage-recovery-runs/run-*/report.json
+            .refactor/evidence/storage-recovery-runs/run-*/confirmed-deletion-viewport.png
+            .refactor/evidence/storage-recovery-runs/run-*/unavailable-compare-slot.png
+            .refactor/evidence/storage-recovery-runs/run-*/320-unavailable-extra-large.png
+            .refactor/evidence/storage-recovery-runs/run-*/persisted_then_exception_never_invites_blind_retry-failure.png
+            .refactor/evidence/storage-recovery-runs/run-*/deletion_read_failure_clears_only_memory_then_explicit_retry-failure.png
+            .refactor/evidence/photo-ui-runs/run-*/report.json
+            .refactor/evidence/photo-ui-runs/run-*/320-extra-large-gallery.png
+            .refactor/evidence/catalog-photo-runs/run-*/report.json
+            .refactor/evidence/catalog-photo-runs/run-*/320-standard-card.png
+            .refactor/evidence/catalog-photo-runs/run-*/390-extra-large-card.png
+            .refactor/evidence/catalog-photo-runs/run-*/390-detail-photo-retry.png
+            .refactor/evidence/catalog-photo-runs/run-*/390-detail-photo-renewed.png
+            .refactor/evidence/catalog-photo-runs/run-*/failure.png
+
+  fullstack-browser:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    env:
+      AI_PROVIDER: disabled
+      AI_EXTERNAL_ENABLED: 'false'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            zhongyi-platform/package-lock.json
+      - run: npm ci --no-fund
+      - run: npm --prefix zhongyi-platform ci --no-fund
+      - run: npm run test:publication-browser
+      - run: npm --prefix zhongyi-platform run test:photo-publication
+      - run: npm --prefix zhongyi-platform run test:container-photos
+      - name: Keep scoped engineering evidence only
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: fullstack-client-${{ github.run_attempt }}
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: warn
+          path: |
+            .refactor/evidence/fullstack-client-*/run-*/report.json
+            .refactor/evidence/fullstack-client-*/run-*/first-publication.png
+            .refactor/evidence/fullstack-client-*/run-*/reopened-publication.png
+            zhongyi-platform/.local/photo-publication-tests/run-*/browser-report.json
+            zhongyi-platform/.local/photo-publication-tests/run-*/resource-report.json
+            zhongyi-platform/.local/photo-publication-tests/run-*/recovery-ui.png
+            zhongyi-platform/.local/photo-publication-tests/run-*/review-390.png

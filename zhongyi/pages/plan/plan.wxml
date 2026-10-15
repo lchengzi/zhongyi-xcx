@@ -1,0 +1,111 @@
+<view class="page-shell plan-page">
+  <view wx:if="{{storageIssue}}" class="storage-notice">
+    <view>{{storageIssue}}</view>
+    <button class="secondary-btn" bindtap="refresh">重试读取本机记录</button>
+  </view>
+  <view class="plan-head">
+    <view>
+      <view class="page-kicker">先确认，再作决定</view>
+      <view class="page-title">安全与咨询准备</view>
+      <view class="page-description">把候选资料和待确认事项整理清楚，但不在这里生成药方。</view>
+    </view>
+    <button wx:if="{{!storageIssue && !triageBlocked && (shortlist.length || excludedItems.length || checkedCount)}}" class="reset-btn" bindtap="clearPlan">重新整理</button>
+  </view>
+
+  <view wx:if="{{triageBlocked}}" class="triage-alert card">
+    <view class="empty-state__title">已停止食养资料筛选</view>
+    <view>本次安全检查含需要优先处理的紧急情况，此时不展示对照候选或咨询清单。请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+    <button class="primary-btn section-action" bindtap="goCatalog">返回目录重新检查</button>
+  </view>
+
+  <block wx:else>
+
+  <view class="boundary-card safety-banner">
+    <view class="safety-banner__title">本页不会做什么</view>
+    <view>不会根据收藏或对照内容自动组合材料，不给克数、煎煮时长、服用次数或疗程。</view>
+  </view>
+
+  <view wx:if="{{!storageIssue}}" class="plan-overview card">
+    <view class="overview-item"><text class="overview-value">{{favoritesCount}}</text><text>收藏资料</text></view>
+    <view class="overview-item"><text class="overview-value">{{shortlist.length}}</text><text>对照候选</text></view>
+    <view class="overview-item"><text class="overview-value">{{checkedCount}}/{{checks.length}}</text><text>本人已标记</text></view>
+  </view>
+
+  <view class="plan-section card">
+    <view class="section-row">
+      <view class="section-title">本次安全检查</view>
+      <button class="text-btn" bindtap="goCatalog">返回目录调整</button>
+    </view>
+    <view class="profile-status {{triageBlocked ? 'profile-status--blocked' : ''}}">
+      <view class="profile-status__title">{{profileSummaryTitle}}</view>
+      <view class="profile-status__answers">{{profileSummaryText}}</view>
+    </view>
+    <view class="source-note">安全选择只存在本次运行内。完全退出小程序后会清除。</view>
+  </view>
+
+  <block wx:if="{{!storageIssue}}">
+  <view class="plan-section card">
+    <view class="section-row">
+      <view class="section-title">对照候选</view>
+      <button wx:if="{{shortlist.length + excludedItems.length >= 2}}" class="text-btn" bindtap="goCompare">查看资料对照</button>
+    </view>
+    <view wx:if="{{shortlist.length}}" class="shortlist">
+      <view wx:for="{{shortlist}}" wx:key="id" class="shortlist-item" bindtap="openDetail" data-id="{{item.id}}">
+        <view class="shortlist-item__title">{{item.nameCn}}</view>
+        <view class="shortlist-item__meta">{{item.categoryText}} · {{item.partText}}</view>
+        <view class="shortlist-item__status">{{item.safetyLabel}}</view>
+        <view wx:if="{{item.reasonText}}" class="shortlist-item__status">{{item.reasonText}}</view>
+        <view wx:elif="{{item.warningText}}" class="shortlist-item__status">{{item.warningText}}</view>
+        <view class="shortlist-item__status">查看资料与完整安全提示 →</view>
+      </view>
+    </view>
+    <view wx:elif="{{!excludedItems.length}}" class="inline-empty">
+      <view>还没有需要对照的食养资料。</view>
+      <button class="secondary-btn section-action" bindtap="goCatalog">去选择资料</button>
+    </view>
+    <view wx:if="{{excludedItems.length}}" class="excluded-list">
+      <view class="excluded-list__title">已由安全规则排除，不作为候选</view>
+      <view wx:for="{{excludedItems}}" wx:key="id" class="excluded-item">
+        <view class="excluded-item__header"><text>{{item.nameCn}}</text><text>{{item.safetyLabel}}</text></view>
+        <view wx:if="{{item.reasonText}}">{{item.reasonText}}</view>
+        <view wx:elif="{{item.warningText}}">{{item.warningText}}</view>
+        <button class="secondary-btn excluded-detail" bindtap="openDetail" data-id="{{item.id}}">查看资料与完整安全提示</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="plan-section card">
+    <view class="section-row">
+      <view class="section-title">咨询准备清单</view>
+      <view class="muted">{{checkedCount}}/{{checks.length}}</view>
+    </view>
+    <view class="source-note preparation-note">勾选只是本人准备进度，不代表专业审校完成，不会补全未知信息，也不会改变条目的安全限制。全部勾选后仍需专业人员核对。</view>
+    <checkbox-group bindchange="onChecklistChange" class="checklist">
+      <label wx:for="{{checks}}" wx:key="key" class="checklist-item {{item.checked ? 'checklist-item--done' : ''}}">
+        <checkbox value="{{item.key}}" checked="{{item.checked}}" color="#2f6b45" />
+        <text>{{item.label}}</text>
+      </label>
+    </checkbox-group>
+  </view>
+
+  <view class="plan-section card">
+    <view class="section-title">可复制的咨询准备</view>
+    <view class="inquiry-preview">{{inquiryText}}</view>
+    <button class="primary-btn section-action" bindtap="copyInquiry">复制咨询准备</button>
+  </view>
+  </block>
+
+  <view class="danger-guide">
+    <view class="danger-guide__title">出现紧急情况时</view>
+    <view>胸痛、严重呼吸困难、意识改变、明显出血等情况不应等待食养建议，请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+  </view>
+  </block>
+
+  <view class="privacy-entry card">
+    <view>
+      <view class="privacy-entry__title">本地数据与隐私</view>
+      <view class="muted">查看本机保存了什么，或立即删除收藏、对照和本次健康会话。</view>
+    </view>
+    <button class="secondary-btn privacy-entry__button" bindtap="goPrivacy">查看与删除</button>
+  </view>
+</view>

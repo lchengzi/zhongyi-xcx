@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/favorites/favorites",
+    "pages/compare/compare",
+    "pages/plan/plan",
+    "pages/privacy/privacy"
+  ],
+  "subPackages": [
+    {
+      "root": "subpackages/catalog",
+      "pages": [
+        "detail/detail"
+      ]
+    },
+    {
+      "root": "subpackages/official",
+      "pages": [
+        "official-plans/official-plans",
+        "official-plan-detail/official-plan-detail"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "wifi",
+      "packages": [
+        "subpackages/catalog",
+        "subpackages/official"
+      ]
+    }
+  },
+  "window": {
+    "navigationBarTitleText": "中医食养筛选助手",
+    "navigationBarBackgroundColor": "#f5f7f3",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7f3",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#617066",
+    "selectedColor": "#245b46",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "食养", "iconPath": "assets/tabbar/catalog.png", "selectedIconPath": "assets/tabbar/catalog-active.png" },
+      { "pagePath": "pages/favorites/favorites", "text": "收藏", "iconPath": "assets/tabbar/favorites.png", "selectedIconPath": "assets/tabbar/favorites-active.png" },
+      { "pagePath": "pages/compare/compare", "text": "对照", "iconPath": "assets/tabbar/compare.png", "selectedIconPath": "assets/tabbar/compare-active.png" },
+      { "pagePath": "pages/plan/plan", "text": "安全", "iconPath": "assets/tabbar/safety.png", "selectedIconPath": "assets/tabbar/safety-active.png" }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

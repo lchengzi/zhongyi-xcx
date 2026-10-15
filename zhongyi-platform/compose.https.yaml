@@ -1,0 +1,24 @@
+# Optional HTTPS transport overlay; base still has demo DB privileges and is
+# loopback-only. This is NOT a complete production/public deployment template.
+# Production PostgreSQL additionally requires verify-full in the database URL
+# secret and a TLS-enabled database. The base plaintext database is insufficient;
+# this overlay alone now fails closed instead of silently using plaintext SQL.
+# Production also audits the runtime role before startup; the base owner login
+# is rejected even after TLS is added. For separated credentials use the standalone
+# compose.restricted.yaml; do not merge that file into this legacy demo overlay.
+services:
+  app:
+    environment:
+      NODE_ENV: production
+      TLS_MODE: direct
+      TLS_CERT_FILE: /run/secrets/tls_certificate
+      TLS_KEY_FILE: /run/secrets/tls_private_key
+      ALLOWED_ORIGINS: ${HTTPS_ALLOWED_ORIGINS:?Specify exact HTTPS origins covered by the certificate}
+    secrets:
+      - tls_certificate
+      - tls_private_key
+secrets:
+  tls_certificate:
+    file: ${HTTPS_CERT_FILE:?Specify the host certificate chain file}
+  tls_private_key:
+    file: ${HTTPS_KEY_FILE:?Specify the host private key file}

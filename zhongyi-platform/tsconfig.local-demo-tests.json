@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.server.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "tests/editorial-review-pack.test.ts",
+    "tests/editorial-review-browser.test.ts",
+    "tests/local-demo-photos.test.ts",
+    "tests/local-demo.test.ts",
+    "tests/compiled-demo-cli.test.ts",
+    "tests/local-demo-browser.test.ts"
+  ]
+}

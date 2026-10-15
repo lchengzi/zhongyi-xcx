@@ -1,0 +1,125 @@
+<view class="compare-page">
+  <view wx:if="{{storageIssue}}" class="storage-notice page-shell">
+    <view>{{storageIssue}}</view>
+    <button class="secondary-btn" bindtap="refresh">重试读取本机记录</button>
+  </view>
+  <view class="page-shell compare-head">
+    <view class="compare-intro">
+      <view class="page-kicker">并排看清资料差异</view>
+      <view class="page-title">食养资料对照</view>
+      <view class="page-description">最多四项，只用于核对差异；放在同一张表中不代表可以共同食用或配伍。</view>
+    </view>
+    <view wx:if="{{!storageIssue && ingredients.length}}" class="compare-controls">
+      <label wx:if="{{ingredients.length >= 2}}" class="difference-toggle"><switch id="compare-differences" checked="{{differencesOnly}}" bindchange="setDifferenceMode" data-version="{{displayVersion}}" color="#2f6b45" />仅看差异</label>
+      <button class="clear-btn" bindtap="clearCompare">清空</button>
+    </view>
+  </view>
+
+  <view wx:if="{{triageBlocked}}" class="page-shell">
+    <view class="triage-alert card">
+      <view class="empty-state__title">已停止食养资料筛选</view>
+      <view>本次安全检查含需要优先处理的紧急情况，此时不展示对照候选。请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+      <button class="primary-btn empty-action" bindtap="goCatalog">返回目录重新检查</button>
+    </view>
+  </view>
+
+  <view wx:elif="{{ingredients.length < 2 && !storageIssue}}" class="page-shell">
+    <view class="empty-state card">
+      <view class="empty-state__mark" aria-hidden="true">≍</view>
+      <view class="empty-state__title">{{ingredients.length === 1 ? '已选一项，再添加一项开始对照' : '至少选择两项资料'}}</view>
+      <view>在目录或收藏页点击“＋ 对照”。对照不会生成配方。</view>
+      <view wx:if="{{ingredients.length === 1}}" class="pending-selection">
+        <block wx:for="{{ingredients}}" wx:key="id">
+          <view class="pending-selection__name">{{item.nameCn}}</view>
+          <view class="muted">目录记录部位：{{item.partText}}</view>
+          <view class="muted">{{item.partReviewText}}</view>
+          <view class="pending-selection__status {{item.blocked ? 'pending-selection__status--blocked' : ''}}">{{item.safetyLabel}}</view>
+          <view wx:if="{{item.reasonText}}" class="pending-selection__note pending-selection__status--blocked">{{item.reasonText}}</view>
+          <view wx:elif="{{item.warningText}}" class="pending-selection__note">{{item.warningText}}</view>
+          <view class="pending-selection__actions">
+            <button class="secondary-btn" bindtap="openDetail" data-id="{{item.id}}">查看资料</button>
+            <button class="secondary-btn" bindtap="removeIngredient" data-id="{{item.id}}">移出对照</button>
+          </view>
+        </block>
+      </view>
+      <button class="primary-btn empty-action" bindtap="goCatalog">去选择资料</button>
+    </view>
+  </view>
+
+  <view wx:elif="{{!storageIssue && ingredients.length >= 2}}">
+    <view class="page-shell safety-reminder">
+      <view class="safety-banner">
+        <view class="safety-banner__title">先看禁忌，再看传统属性</view>
+        <view>任何一项出现阻断、未知或待专业审校，都不能依据本表自行组合。</view>
+        <view>{{partScopeNotice}}</view>
+      </view>
+      <view class="compare-summary">
+        <text>当前 {{ingredients.length}} 项</text>
+        <text>{{differencesOnly ? '差异模式' : '完整模式'}} · {{visibleRows}} 项可见</text>
+      </view>
+    </view>
+
+    <view class="page-shell reading-options">
+      <view class="reading-controls">
+        <button id="compare-stacked" class="secondary-btn {{readingMode === 'stacked' ? 'reading-option--active' : ''}}" bindtap="setReadingMode" data-mode="stacked" data-version="{{displayVersion}}" disabled="{{readingMode === 'stacked'}}">逐行阅读</button>
+        <button id="compare-table" class="secondary-btn {{readingMode === 'table' ? 'reading-option--active' : ''}}" bindtap="setReadingMode" data-mode="table" data-version="{{displayVersion}}" disabled="{{readingMode === 'table'}}">横向表格</button>
+      </view>
+      <view class="source-note reading-help">{{readingMode === 'stacked' ? '每段带食材名，按资料项目向下阅读，无需左右滑动。' : '左右滑动可查看全部食材列；也可切回逐行阅读。'}}</view>
+      <view class="selected-items">
+        <view wx:for="{{ingredients}}" wx:key="id" class="selected-item card">
+          <view class="selected-item__name">{{item.nameCn}}</view>
+          <view class="muted">目录记录部位：{{item.partText}}</view>
+          <view class="muted">{{item.partReviewText}}</view>
+          <view class="selected-item__status {{item.blocked ? 'selected-item__status--blocked' : ''}}">{{item.safetyLabel}}</view>
+          <view wx:if="{{item.reasonText}}" class="selected-item__status selected-item__status--blocked">{{item.reasonText}}</view>
+          <view wx:elif="{{item.warningText}}" class="selected-item__status">{{item.warningText}}</view>
+          <view class="selected-item__actions">
+            <button class="secondary-btn" bindtap="openDetail" data-id="{{item.id}}">查看资料</button>
+            <button class="secondary-btn" bindtap="toggleFavorite" data-id="{{item.id}}" disabled="{{item.blocked && !item.isFavorite}}">{{item.isFavorite ? '取消收藏' : item.blocked ? '已阻止收藏' : '收藏'}}</button>
+            <button class="secondary-btn" bindtap="removeIngredient" data-id="{{item.id}}">移出对照</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{readingMode === 'stacked'}}" class="page-shell stacked-comparison">
+      <view wx:for="{{groups}}" wx:key="title" wx:for-item="group" class="stacked-group">
+        <view class="compare-group-title">{{group.title}}</view>
+        <view wx:for="{{group.rows}}" wx:key="label" wx:for-item="row" class="stacked-row card {{row.different ? 'stacked-row--different' : ''}}">
+          <view class="stacked-row__label">{{row.label}}</view>
+          <view wx:for="{{row.cells}}" wx:key="key" wx:for-item="cell" class="stacked-cell">
+            <view class="stacked-cell__name">{{cell.nameCn}}</view>
+            <view class="stacked-cell__value">{{cell.text}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <scroll-view wx:else scroll-x class="compare-scroll" enhanced show-scrollbar="{{true}}">
+      <view class="compare-table" style="width: {{tableWidth}}rpx;">
+        <view class="compare-ingredients" style="grid-template-columns: {{gridTemplate}};">
+          <view class="compare-label compare-label--top">资料项</view>
+          <view wx:for="{{ingredients}}" wx:key="id" class="compare-ingredient">
+            <view class="compare-ingredient__name" bindtap="openDetail" data-id="{{item.id}}">{{item.nameCn}}</view>
+            <view class="compare-ingredient__meta">{{item.categoryText}}</view>
+            <view class="compare-ingredient__status {{item.blocked ? 'compare-ingredient__status--blocked' : ''}}">{{item.safetyLabel}}</view>
+          </view>
+        </view>
+
+        <block wx:for="{{groups}}" wx:key="title" wx:for-item="group">
+          <view class="compare-group-title">{{group.title}}</view>
+          <view wx:for="{{group.rows}}" wx:key="label" wx:for-item="row" class="compare-row {{row.different ? 'compare-row--different' : ''}}" style="grid-template-columns: {{gridTemplate}};">
+            <view class="compare-label">{{row.label}}</view>
+            <view wx:for="{{row.cells}}" wx:key="key" wx:for-item="cell" class="compare-value">{{cell.text}}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+    <view wx:if="{{!visibleRows}}" class="page-shell">
+      <view class="empty-state card">
+        <view class="empty-state__title">当前没有可显示的差异</view>
+        <view>可关闭“仅看差异”查看完整资料；未显示差异不代表安全或可以共同食用。</view>
+      </view>
+    </view>
+  </view>
+</view>

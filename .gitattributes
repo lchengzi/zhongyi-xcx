@@ -1,0 +1,5 @@
+# Release digests bind exact bytes. Do not let Git/Windows rewrite line endings
+# in either product tree; text diff detection remains unchanged.
+zhongyi/** -text
+zhongyi-platform/** -text
+.github/workflows/*.yml text eol=lf

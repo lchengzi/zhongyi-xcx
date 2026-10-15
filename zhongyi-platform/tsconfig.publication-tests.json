@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.server.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "tests/publication-http.test.ts",
+    "tests/postgres-publication-http.test.ts"
+  ]
+}

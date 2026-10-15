@@ -1,0 +1,61 @@
+# Operator-only extension of compose.restricted.yaml; never use with compose.yaml.
+# No default file, schema, export or restore: commands must be supplied explicitly.
+services:
+  backup-export:
+    image: food-education-demo:local
+    profiles: [backup]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      NODE_ENV: production
+      DATABASE_PROVIDER: postgres
+      DATABASE_OWNER_URL_FILE: /run/secrets/owner_database_url
+      BACKUP_ENCRYPTION_KEY_FILE: /run/secrets/backup_encryption_key
+      BACKUP_OUTPUT_DIRECTORY: /archive-output
+      AI_PROVIDER: disabled
+      AI_EXTERNAL_ENABLED: "false"
+      EDUCATION_PUBLICATION_ENABLED: "false"
+    command: [backup]
+    secrets: [owner_database_url, database_ca, backup_encryption_key]
+    volumes:
+      - type: bind
+        source: ${CONTAINER_BACKUP_OUTPUT_DIRECTORY:?Specify an existing dedicated encrypted archive output directory}
+        target: /archive-output
+        bind:
+          create_host_path: false
+    healthcheck:
+      disable: true
+    logging:
+      driver: none
+  backup-restore:
+    image: food-education-demo:local
+    profiles: [restore]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      NODE_ENV: production
+      DATABASE_PROVIDER: postgres
+      DATABASE_OWNER_URL_FILE: /run/secrets/owner_database_url
+      BACKUP_ENCRYPTION_KEY_FILE: /run/secrets/backup_encryption_key
+      BACKUP_INPUT_DIRECTORY: /archive-input
+      AI_PROVIDER: disabled
+      AI_EXTERNAL_ENABLED: "false"
+      EDUCATION_PUBLICATION_ENABLED: "false"
+    command: [backup, --restore]
+    secrets: [owner_database_url, database_ca, backup_encryption_key]
+    volumes:
+      - type: bind
+        source: ${CONTAINER_BACKUP_INPUT_DIRECTORY:?Specify an existing dedicated encrypted archive input directory}
+        target: /archive-input
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      disable: true
+    logging:
+      driver: none
+secrets:
+  backup_encryption_key:
+    file: ${CONTAINER_BACKUP_KEY_FILE:?Specify the independent backup key file outside the archive directories}

@@ -1,0 +1,149 @@
+<!-- Ordinary subpackage page; safety state remains in the main package App session. -->
+<view wx:if="{{storageIssue}}" class="storage-notice page-shell">
+  <view>{{storageIssue}}</view>
+  <button class="secondary-btn" bindtap="loadIngredient">重试读取本机记录</button>
+</view>
+<view wx:if="{{triageBlocked}}" class="page-shell">
+  <view class="triage-alert card">
+    <view class="empty-state__title">已停止食养资料筛选</view>
+    <view>本次安全检查含需要优先处理的紧急情况，此时不继续展示候选详情。请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+    <button class="primary-btn" bindtap="goCatalog">返回目录重新检查</button>
+  </view>
+</view>
+
+<view wx:elif="{{notFound}}" class="page-shell empty-state">
+  <view class="empty-state__title">没有找到这项资料</view>
+  <view>条目可能已撤回、更新或不在当前食药物质范围。</view>
+  <button class="primary-btn" bindtap="goCatalog">返回食养目录</button>
+</view>
+
+<view wx:elif="{{ingredient}}" class="detail-page">
+  <view id="detail-top" class="detail-hero">
+    <view class="detail-hero__mark">食养资料</view>
+    <view class="detail-hero__title">{{ingredient.nameCn}}</view>
+    <view wx:if="{{ingredient.pinyin}}" class="detail-hero__pinyin">{{ingredient.pinyin}}</view>
+    <view wx:if="{{ingredient.latinName}}" class="detail-hero__latin">{{ingredient.latinName}}</view>
+    <view class="detail-hero__status">{{ingredient.categoryText}} · {{ingredient.auditText}}</view>
+  </view>
+
+  <view class="page-shell detail-shell">
+    <view class="boundary-card safety-banner">
+      <view class="safety-banner__title">资料边界</view>
+      <view>本页用于核对食药物质身份、传统资料和安全边界，不构成诊断、处方或个体化食用建议。</view>
+    </view>
+
+    <view id="detail-safety" class="safety-card card {{ingredient.blocked ? 'safety-card--blocked' : ''}}">
+      <view class="section-row">
+        <view class="section-title">本次安全状态</view>
+        <text class="pill {{ingredient.blocked ? 'pill--blocked' : ingredient.warningCount ? 'pill--warning' : ''}}">{{ingredient.safetyLabel}}</text>
+      </view>
+      <view wx:if="{{ingredient.blockedReason}}" class="safety-copy safety-copy--blocked">{{ingredient.blockedReason}}</view>
+      <view wx:elif="{{ingredient.warningText}}" class="safety-copy">{{ingredient.warningText}}</view>
+      <view wx:else class="safety-copy">当前资料未触发通用阻断规则，但仍需结合个人过敏、疾病和用药情况向专业人员确认。</view>
+    </view>
+
+    <view class="detail-section card reading-nav">
+      <view class="section-title">快速查阅</view>
+      <view class="reading-nav__links">
+        <button wx:for="{{sectionLinks}}" wx:key="key" class="secondary-btn" data-section="{{item.key}}" data-id="{{ingredient.id}}" bindtap="jumpToSection">{{item.label}}</button>
+      </view>
+      <view wx:if="{{sectionNotice}}" class="section-note">{{sectionNotice}}</view>
+    </view>
+
+    <view id="detail-identity" class="detail-section card">
+      <view class="section-title">规范身份</view>
+      <view class="fact-grid">
+        <view wx:for="{{identityFacts}}" wx:key="label" class="fact-row">
+          <text class="fact-row__label">{{item.label}}</text>
+          <text class="fact-row__value">{{item.value}}</text>
+        </view>
+      </view>
+      <view class="section-note">{{partScopeNotice}}</view>
+    </view>
+
+    <view id="detail-regulatory" class="detail-section card">
+      <view class="section-title">法规与目录状态</view>
+      <view class="fact-grid">
+        <view wx:for="{{regulatoryFacts}}" wx:key="label" class="fact-row">
+          <text class="fact-row__label">{{item.label}}</text>
+          <text class="fact-row__value">{{item.value}}</text>
+        </view>
+      </view>
+      <view class="section-note">目录身份只说明相应物种和部位可按相关规定作为食品使用，不等于适合所有人，也不等于具有疾病治疗作用。</view>
+    </view>
+
+    <view class="detail-section card">
+      <view class="section-title">传统食养资料</view>
+      <view wx:if="{{traditionalFacts.length}}" class="fact-grid">
+        <view wx:for="{{traditionalFacts}}" wx:key="label" class="fact-row">
+          <text class="fact-row__label">{{item.label}}</text>
+          <text class="fact-row__value">{{item.value}}</text>
+        </view>
+      </view>
+      <view wx:else class="unknown-copy">当前版本没有经过专业复核的传统属性内容，因此不作推断。</view>
+      <view wx:if="{{goalRows.length}}" class="tag-block">
+        <view class="tag-block__label">资料主题</view>
+        <view class="tag-list"><text wx:for="{{goalRows}}" wx:key="*this" class="pill">{{item}}</text></view>
+      </view>
+    </view>
+
+    <view id="detail-food" class="detail-section card">
+      <view class="section-title">食用资料与加工边界</view>
+      <view wx:if="{{photoNotice}}" class="photo-notice">
+        <view class="photo-notice__title">{{photoNotice.title}}</view>
+        <view class="photo-notice__copy">{{photoNotice.message}}</view>
+      </view>
+      <view wx:if="{{foodForms.length}}" class="tag-block__label">食用形式标签（不是加工步骤）</view>
+      <view wx:if="{{foodForms.length}}" class="tag-list"><text wx:for="{{foodForms}}" wx:key="*this" class="pill">{{item}}</text></view>
+      <view wx:else class="unknown-copy">未收录经过来源确认的食用形式。</view>
+      <view class="section-note">{{foodUseReviewText}}</view>
+      <view wx:if="{{preparationNotes.length}}" class="note-list">
+        <view wx:for="{{preparationNotes}}" wx:key="*this" class="note-item">{{item}}</view>
+      </view>
+      <view class="section-note">本版不提供克数、疗程或自行煎药方案。没有权威来源的数据保持为空。</view>
+    </view>
+
+    <view id="detail-risks" class="detail-section card">
+      <view class="section-title">禁忌与不确定信息</view>
+      <view wx:for="{{safetyGroups}}" wx:key="title" class="safety-group">
+        <view class="safety-group__title">{{item.title}}</view>
+        <view wx:if="{{item.items.length}}" class="note-list">
+          <view wx:for="{{item.items}}" wx:key="*this" wx:for-item="note" class="note-item">{{note}}</view>
+        </view>
+        <view wx:else class="unknown-copy">当前资料未收录；这不代表已经确认没有风险。</view>
+      </view>
+      <view class="section-note">安全规则来源：{{safetySourceText}}</view>
+    </view>
+
+    <view id="detail-sources" class="detail-section card">
+      <view class="section-title">来源与审校</view>
+      <view class="audit-line">内容版本：{{contentVersion}}</view>
+      <view class="audit-line">资料读取：{{network.mode === 'online' ? '已验证的服务目录' : '本地历史目录'}}；来源核对日期 {{network.sourceAsOf}}</view>
+      <view class="audit-line">条目来源复核：{{ingredient.sourceCheckedAt}}</view>
+      <view class="audit-line">专业审校日期：{{ingredient.professionalReviewedAt}}</view>
+      <view class="audit-line">{{ingredient.auditDetail}}</view>
+      <view class="section-note">下列日期与支持范围来自项目保存的来源记录。资料发布日期与项目复核日期不同，不表示今天已重新核验链接或目录。</view>
+      <view wx:for="{{sourceRows}}" wx:key="id" class="source-row">
+        <view class="source-row__title">{{item.title}}</view>
+        <view class="source-row__meta">{{item.issuer}} · {{item.typeText}}</view>
+        <view class="source-row__meta">资料标注发布日期：{{item.publishedAt}}</view>
+        <view class="source-row__meta">项目记录的来源复核：{{item.checkedAt}}</view>
+        <view class="source-row__scope">记录的支持范围：{{item.scope}}</view>
+        <view class="source-row__actions">
+          <button class="text-btn" data-id="{{item.id}}" bindtap="copySource">复制来源链接</button>
+          <button class="text-btn" data-id="{{item.id}}" bindtap="copySourceRecord">复制来源记录</button>
+        </view>
+      </view>
+      <view wx:if="{{sourceRows.length}}" class="section-note">仅在点击时写入系统剪贴板。复制内容可能被其他应用读取；本程序不读取剪贴板，删除本机记录不能清空已复制的内容。</view>
+      <view wx:if="{{!sourceRows.length}}" class="unknown-copy">该条目缺少可展示来源，正式发布前不得标记为完成审校。</view>
+    </view>
+
+    <button class="secondary-btn reading-top" data-section="top" data-id="{{ingredient.id}}" bindtap="jumpToSection">返回顶部</button>
+  </view>
+
+  <view class="detail-actions">
+    <button id="detail-favorite" class="secondary-btn" bindtap="toggleFavorite" disabled="{{!favoritesAvailable || (ingredient.blocked && !ingredient.isFavorite)}}">{{!favoritesAvailable ? '收藏待读取' : ingredient.isFavorite ? '★ 已收藏' : ingredient.blocked ? '已阻止收藏' : '☆ 收藏'}}</button>
+    <button id="detail-compare" class="secondary-btn" bindtap="toggleCompare" disabled="{{!compareAvailable || (ingredient.blocked && !ingredient.inCompare)}}">{{!compareAvailable ? '对照待读取' : ingredient.inCompare ? '✓ 已加入' : ingredient.blocked ? '已阻止加入' : '＋ 加入对照'}}</button>
+    <button id="detail-copy-safety" class="primary-btn" bindtap="copySafetySummary">复制安全摘要</button>
+  </view>
+</view>

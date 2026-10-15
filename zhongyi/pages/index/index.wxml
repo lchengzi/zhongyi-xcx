@@ -1,0 +1,276 @@
+<view class="page-shell index-page">
+  <view wx:if="{{storageIssue}}" class="storage-notice">
+    <view>{{storageIssue}}</view>
+    <button class="secondary-btn" bindtap="refreshCards">重试读取本机记录</button>
+  </view>
+  <view class="intro-card card">
+    <view class="intro-card__kicker">食养资料馆</view>
+    <view class="intro-card__badge">非医疗 · 食养教育</view>
+    <view class="intro-card__title">把食材，了解得更清楚</view>
+    <view class="intro-card__copy">食材知识供学习参考，不用于诊断、治疗或处方指导。</view>
+    <view class="intro-card__footer"><text>查名称 · 看部位 · 核对来源</text></view>
+  </view>
+
+  <view wx:if="{{triageBlocked}}" class="triage-alert">
+    <view class="triage-alert__title">当前不适合继续筛选</view>
+    <view>{{triageMessage}}</view>
+    <view class="triage-alert__help">如症状严重、突然出现或正在加重，请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+    <button class="secondary-btn triage-alert__action" bindtap="openSafety">重新检查安全情况</button>
+  </view>
+
+  <view wx:else class="safety-summary safety-banner">
+    <view>
+      <view class="safety-banner__title">{{profileSummaryTitle}}</view>
+      <view class="safety-summary__copy">{{profileSummaryText}}</view>
+    </view>
+    <button class="warning-btn safety-summary__button" bindtap="openSafety">安全检查</button>
+  </view>
+
+  <view class="catalog-head">
+    <view>
+      <view class="section-title">食药物质目录</view>
+      <view class="muted">{{triageBlocked ? '安全分流已阻止推荐' : '共 ' + resultCount + ' 项符合当前资料条件'}}</view>
+    </view>
+    <button class="filter-trigger {{activeCount ? 'filter-trigger--active' : ''}}" bindtap="openFilters" disabled="{{triageBlocked}}">
+      筛选{{activeCount ? ' · ' + activeCount : ''}}
+    </button>
+  </view>
+
+  <view class="search-box {{triageBlocked ? 'search-box--disabled' : ''}}">
+    <view class="search-glyph" aria-hidden="true"></view>
+    <input class="search-input" maxlength="60" value="{{query}}" bindinput="onSearchInput" bindconfirm="onSearchConfirm" data-version="{{interactionVersion}}" placeholder="名称、拼音（可连写）、别名或拉丁名" confirm-type="search" disabled="{{triageBlocked}}" />
+    <button wx:if="{{query}}" class="icon-btn" bindtap="clearSearch" data-version="{{interactionVersion}}" data-query="{{query}}" aria-label="清空搜索">×</button>
+  </view>
+
+  <scroll-view wx:if="{{chips.length}}" scroll-x class="active-chips" enhanced show-scrollbar="{{false}}">
+    <view class="active-chips__inner">
+      <button wx:for="{{chips}}" wx:key="id" class="active-chip" data-key="{{item.key}}" data-value="{{item.value}}" data-version="{{interactionVersion}}" bindtap="removeChip">{{item.label}} ×</button>
+      <button class="clear-chip" bindtap="clearFilters" data-version="{{interactionVersion}}">清空条件</button>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{!triageBlocked}}" class="catalog-status">
+    <text>收藏 {{favoritesAvailable ? favoriteCount : '待读取'}}</text>
+    <text>对照 {{compareAvailable ? compareCount + '/4' : '待读取'}}</text>
+    <text>已显示 {{visibleCount}}/{{resultCount}}</text>
+  </view>
+
+  <view wx:if="{{!triageBlocked}}" class="catalog-provenance">
+    历史资料 · {{network.sourceAsOf}}核对 · 非最新目录 · 待专业审校
+  </view>
+
+  <view wx:if="{{!triageBlocked && rows.length}}" class="ingredient-grid">
+    <ingredient-card
+      interaction-version="{{interactionVersion}}"
+      favorites-available="{{favoritesAvailable}}"
+      compare-available="{{compareAvailable}}"
+      wx:for="{{rows}}"
+      wx:key="id"
+      item="{{item}}"
+      bind:detail="openDetail"
+      bind:favorite="toggleFavorite"
+      bind:compare="toggleCompare"
+    />
+  </view>
+
+  <view wx:elif="{{!triageBlocked}}" class="empty-state card">
+    <view class="empty-state__mark" aria-hidden="true">⌕</view>
+    <view class="empty-state__title">没有找到符合条件的资料</view>
+    <view>可以减少资料筛选条件，或换用规范名称搜索。安全阻断条件不会因清空筛选而放宽。</view>
+    <button class="secondary-btn empty-action" bindtap="clearFiltersAndSearch" data-version="{{interactionVersion}}" data-query="{{query}}">清空搜索与筛选</button>
+  </view>
+
+  <button wx:if="{{!triageBlocked && hasMore}}" class="load-more secondary-btn" bindtap="loadMore">继续查看</button>
+
+  <view wx:if="{{!triageBlocked}}" class="usage-guide card">
+    <view class="usage-guide__header">
+      <view class="section-title">使用指南与状态说明</view>
+      <button class="secondary-btn usage-guide__toggle" bindtap="toggleUsageGuide" data-version="{{interactionVersion}}" aria-label="{{usageGuideOpen ? '收起使用指南' : '展开使用指南'}}">{{usageGuideOpen ? '收起' : '展开'}}</button>
+    </view>
+    <view class="muted">查找食材、管理收藏、对照资料。</view>
+    <block wx:if="{{usageGuideOpen}}">
+      <view class="usage-guide__step">
+        <view class="usage-guide__title">1. 查找与看部位</view>
+        <view>用名称、拼音、别名或拉丁名搜索；筛选用于缩小资料范围。打开详情先看安全状态，再读可食部位、加工形态及来源。不能凭同名判断食材身份。</view>
+      </view>
+      <view class="usage-guide__step">
+        <view class="usage-guide__title">2. 收藏与资料对照</view>
+        <view>收藏方便下次查阅；选入2–4项后，点击底部“对照”，可逐行阅读或切换横向表格。一项时可先查看或移除。资料对照不代表可以共同食用、组合或煎煮。</view>
+      </view>
+      <view class="usage-guide__step">
+        <view class="usage-guide__title">3. 安全问项与咨询</view>
+        <view>安全检查可填写是、否或未知；不清楚的保留未知，不填也能浏览。底部“安全”可整理咨询准备，勾选只是本人自记，不代表专业审校完成；出现紧急情况时停止筛选并优先就医。</view>
+      </view>
+      <view class="usage-guide__labels">
+        <view class="usage-guide__title">页面状态怎么读</view>
+        <view class="usage-guide__label"><text>名称有官方目录来源</text><view>只说明名称有目录依据，不代表所有部位、加工形态或用途均已确认。</view></view>
+        <view class="usage-guide__label"><text>来源已核对，专业审校待完成</text><view>资料来源核对与专业审校是两件事，不能把前者当成后者。</view></view>
+        <view class="usage-guide__label"><text>需先确认／未命中已知阻止项</text><view>都不代表适合个人食用；未知信息和待审校事项仍需看详情并进一步核对。</view></view>
+      </view>
+      <view class="source-note">本地资料来源核对日期为{{network.sourceAsOf}}，不代表今天的最新目录。目前未提供经审核的实物照片，不能凭名称或示意内容自行鉴别。</view>
+      <view class="source-note">收藏和对照ID保存在本机；健康问项和咨询准备进度只在本次运行内使用。可主动查看或删除本地数据。</view>
+      <button class="secondary-btn usage-guide__privacy" bindtap="openUsagePrivacy" data-version="{{interactionVersion}}">本地数据与删除</button>
+    </block>
+  </view>
+
+  <view wx:if="{{!triageBlocked}}" class="catalog-connection card">
+    <view class="section-title">{{network.mode === 'online' ? '服务目录已读取' : '本地目录可用'}}</view>
+    <view class="muted">{{network.message}}</view>
+    <view class="muted">来源核对日期：{{network.sourceAsOf}}，不代表截至今天的最新目录。</view>
+    <view class="catalog-connection__actions">
+      <button class="secondary-btn" bindtap="readServiceCatalog" data-version="{{interactionVersion}}" loading="{{network.mode === 'loading'}}" disabled="{{!network.configured || network.mode === 'loading'}}">{{network.mode === 'fallback' ? '重试读取' : '读取服务目录'}}</button>
+      <button wx:if="{{network.mode !== 'offline'}}" class="text-btn" bindtap="useLocalCatalog" data-version="{{interactionVersion}}">使用本地资料</button>
+    </view>
+    <view class="section-note">按需读取公开目录，不发送搜索词、收藏或健康问项。连接服务可能产生 IP 和标准访问日志。</view>
+  </view>
+
+  <view wx:if="{{!triageBlocked}}" class="official-plan-entry card">
+    <view class="official-plan-entry__badge">官方指南 · 整体资料</view>
+    <view class="official-plan-entry__title">完整方案资料库</view>
+    <view class="official-plan-entry__copy">官方指南中的完整方案资料。材料、原始用量和步骤不可拆分、替换、叠加或自动换算。可查看审校进度与暂不开放原因。</view>
+    <button class="secondary-btn official-plan-entry__action" bindtap="openOfficialPlans">查看方案边界与审校进度</button>
+  </view>
+
+  <view class="catalog-footnote source-note">
+    内容版本：{{contentVersion}}。传统食养资料仅用于知识查询；“未发现阻断信息”不代表对每个人都安全。
+  </view>
+</view>
+
+<view wx:if="{{filterOpen}}" class="drawer-mask" data-version="{{interactionVersion}}" bindtap="closeFilters">
+  <view class="filter-drawer" catchtap="stopTap">
+    <view class="drawer-head">
+      <view>
+        <view class="drawer-title">筛选资料</view>
+        <view class="drawer-meta">按资料条件筛选，不用于辨证或诊断</view>
+      </view>
+      <button class="icon-btn" data-version="{{interactionVersion}}" bindtap="closeFilters" aria-label="关闭筛选">×</button>
+    </view>
+    <scroll-view scroll-y class="drawer-scroll" enhanced>
+      <view wx:if="{{goalOptions.length}}" class="filter-section">
+        <view class="filter-title">资料主题</view>
+        <checkbox-group class="check-grid" data-key="goals" data-version="{{interactionVersion}}" bindchange="onGroupChange">
+          <label wx:for="{{goalOptions}}" wx:key="value" class="check-item"><checkbox value="{{item.value}}" checked="{{item.checked}}" color="#2f6b45" />{{item.label}}</label>
+        </checkbox-group>
+      </view>
+      <view wx:if="{{categoryOptions.length}}" class="filter-section">
+        <view class="filter-title">法规类别</view>
+        <checkbox-group class="check-grid" data-key="categories" data-version="{{interactionVersion}}" bindchange="onGroupChange">
+          <label wx:for="{{categoryOptions}}" wx:key="value" class="check-item"><checkbox value="{{item.value}}" checked="{{item.checked}}" color="#2f6b45" />{{item.label}}</label>
+        </checkbox-group>
+      </view>
+      <view wx:if="{{usageTypeOptions.length}}" class="filter-section">
+        <view class="filter-title">资料中的食用形式</view>
+        <checkbox-group class="check-grid" data-key="usageTypes" data-version="{{interactionVersion}}" bindchange="onGroupChange">
+          <label wx:for="{{usageTypeOptions}}" wx:key="value" class="check-item"><checkbox value="{{item.value}}" checked="{{item.checked}}" color="#2f6b45" />{{item.label}}</label>
+        </checkbox-group>
+      </view>
+      <view wx:if="{{tasteOptions.length}}" class="filter-section">
+        <view class="filter-title">感官标签</view>
+        <checkbox-group class="check-grid" data-key="tastes" data-version="{{interactionVersion}}" bindchange="onGroupChange">
+          <label wx:for="{{tasteOptions}}" wx:key="value" class="check-item"><checkbox value="{{item.value}}" checked="{{item.checked}}" color="#2f6b45" />{{item.label}}</label>
+        </checkbox-group>
+      </view>
+      <view class="filter-section">
+        <view class="filter-title">结果显示</view>
+        <label class="toggle-item">
+          <view><view>仅看来源已核对</view><view class="filter-help filter-help--inline">仍可能等待专业逐字段审校</view></view>
+          <switch checked="{{filters.onlySourceChecked}}" data-key="onlySourceChecked" data-version="{{interactionVersion}}" bindchange="onToggleFilter" color="#2f6b45" />
+        </label>
+        <view class="filter-help">命中硬性阻止规则的条目始终排除，不能通过筛选开关重新显示。</view>
+      </view>
+    </scroll-view>
+    <view class="drawer-footer">
+      <button class="secondary-btn" data-version="{{interactionVersion}}" bindtap="clearDrawerFilters">清空</button>
+      <button class="primary-btn" data-version="{{interactionVersion}}" bindtap="closeFilters">查看 {{resultCount}} 项</button>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{safetyOpen}}" class="drawer-mask" bindtap="closeSafety">
+  <view class="filter-drawer safety-drawer" catchtap="stopTap">
+    <view class="drawer-head">
+      <view>
+        <view class="drawer-title">使用前安全检查</view>
+        <view class="drawer-meta">答案只保存在本次运行内，不写入本地存储</view>
+      </view>
+      <button class="icon-btn" bindtap="closeSafety" aria-label="关闭安全检查">×</button>
+    </view>
+    <scroll-view scroll-y class="drawer-scroll" enhanced>
+      <view class="filter-section filter-section--danger">
+        <view class="filter-title">需要立即分流的情况</view>
+        <view class="filter-help">如有以下任一情况，本工具不会继续给出候选；下列示例并不涵盖全部急症。</view>
+        <checkbox-group class="safety-list" bindchange="onRedFlagChange">
+          <label wx:for="{{redFlagOptions}}" wx:key="value" class="safety-item"><checkbox value="{{item.value}}" checked="{{item.checked}}" color="#a44538" />{{item.label}}</label>
+        </checkbox-group>
+      </view>
+      <view wx:if="{{draftTriageBlocked}}" class="drawer-triage-alert">
+        <view class="drawer-triage-alert__title">请停止等待食养建议</view>
+        <view>当前选择可能需要立即医疗处理。请联系急救或前往正规医疗机构；中国大陆可拨打 120。下列选项不构成诊断。</view>
+        <button class="primary-btn" bindtap="applySafetyAndClose">停止筛选并返回</button>
+      </view>
+      <view wx:if="{{!draftTriageBlocked}}" class="filter-section">
+        <view class="filter-title">使用者年龄阶段（单选）</view>
+        <radio-group class="safety-list" bindchange="onAgeGroupChange">
+          <label wx:for="{{ageGroupOptions}}" wx:key="value" class="safety-item"><radio value="{{item.value}}" checked="{{item.checked}}" color="#b47b24" />{{item.label}}</label>
+        </radio-group>
+      </view>
+      <view wx:if="{{!draftTriageBlocked}}" class="filter-section">
+        <view class="filter-title">核心安全问项（三态单选）</view>
+        <view class="filter-help">“未确认”不会被当作“否”。完整方案层只有在核心问项明确且全部发布门禁通过后才可能展示。</view>
+        <view class="tri-question">
+          <view class="tri-question__label">当前是否处于孕期？</view>
+          <radio-group class="tri-options" data-key="pregnancyStatus" bindchange="onSafetyStatusChange">
+            <label wx:for="{{pregnancyOptions}}" wx:key="value" class="tri-option"><radio value="{{item.value}}" checked="{{item.checked}}" color="#b47b24" />{{item.label}}</label>
+          </radio-group>
+        </view>
+        <view class="tri-question">
+          <view class="tri-question__label">当前是否处于哺乳期？</view>
+          <radio-group class="tri-options" data-key="breastfeedingStatus" bindchange="onSafetyStatusChange">
+            <label wx:for="{{breastfeedingOptions}}" wx:key="value" class="tri-option"><radio value="{{item.value}}" checked="{{item.checked}}" color="#b47b24" />{{item.label}}</label>
+          </radio-group>
+        </view>
+        <view class="tri-question">
+          <view class="tri-question__label">是否有已知过敏史？</view>
+          <radio-group class="tri-options" data-key="allergyStatus" bindchange="onSafetyStatusChange">
+            <label wx:for="{{allergyStatusOptions}}" wx:key="value" class="tri-option"><radio value="{{item.value}}" checked="{{item.checked}}" color="#b47b24" />{{item.label}}</label>
+          </radio-group>
+        </view>
+        <view class="tri-question">
+          <view class="tri-question__label">是否有基础疾病、肝肾功能问题或其他特殊情况？</view>
+          <radio-group class="tri-options" data-key="conditionStatus" bindchange="onSafetyStatusChange">
+            <label wx:for="{{conditionStatusOptions}}" wx:key="value" class="tri-option"><radio value="{{item.value}}" checked="{{item.checked}}" color="#b47b24" />{{item.label}}</label>
+          </radio-group>
+        </view>
+        <view class="tri-question">
+          <view class="tri-question__label">是否正在使用药品、保健品或其他相关材料？</view>
+          <radio-group class="tri-options" data-key="medicationStatus" bindchange="onSafetyStatusChange">
+            <label wx:for="{{medicationStatusOptions}}" wx:key="value" class="tri-option"><radio value="{{item.value}}" checked="{{item.checked}}" color="#b47b24" />{{item.label}}</label>
+          </radio-group>
+        </view>
+        <view class="safety-inputs">
+          <view wx:if="{{allergyStatus === 'yes'}}" class="safety-input-row">
+            <view class="safety-input-row__label">具体已知过敏物</view>
+            <input value="{{allergyText}}" data-key="allergyText" bindinput="onSafetyTextInput" placeholder="例如：天麻、花生" />
+          </view>
+          <view wx:if="{{conditionStatus === 'yes'}}" class="safety-input-row">
+            <view class="safety-input-row__label">具体基础疾病或特殊情况</view>
+            <input value="{{conditionText}}" data-key="conditionText" bindinput="onSafetyTextInput" placeholder="仅用于本次规则匹配" />
+          </view>
+          <view wx:if="{{medicationStatus === 'yes'}}" class="safety-input-row">
+            <view class="safety-input-row__label">具体在用药品或其他材料</view>
+            <input value="{{medicationText}}" data-key="medicationText" bindinput="onSafetyTextInput" placeholder="例如：藜芦；多个名称用顿号分隔" />
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{!draftTriageBlocked}}" class="privacy-note">本版不采集姓名、手机号，不上传症状、疾病或用药信息。关闭小程序进程后，本次安全选择会被清除。</view>
+    </scroll-view>
+    <view wx:if="{{!draftTriageBlocked}}" class="drawer-footer">
+      <button class="secondary-btn" bindtap="clearSafetyProfile">清空表单</button>
+      <button class="primary-btn" bindtap="applySafetyAndClose">应用安全检查</button>
+    </view>
+    <view wx:else class="drawer-footer drawer-footer--triage">
+      <view class="drawer-footer__urgent">紧急情况请立即就医；中国大陆可拨打 120。</view>
+      <button class="primary-btn" bindtap="applySafetyAndClose">停止筛选</button>
+    </view>
+  </view>
+</view>

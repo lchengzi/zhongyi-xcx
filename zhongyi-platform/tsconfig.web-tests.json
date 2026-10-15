@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "types": ["node"], "allowImportingTsExtensions": false },
+  "include": [
+    "tests/editorial-references.test.ts", "tests/editorial-references-browser.test.ts",
+    "tests/baihe-domestic-materials-browser.test.ts", "tests/baihe-video-materials-browser.test.ts",
+    "tests/shanyao-domestic-materials-browser.test.ts",
+    "tests/editorial-photo-browser.test.ts",
+    "tests/photo-professional-browser.test.ts",
+    "tests/photo-professional-response.test.ts", "tests/photo-professional-response-fixture.ts",
+    "tests/photo-professional-http.test.ts", "tests/photo-professional-http-fixture.ts", "tests/postgres-photo-professional-http.test.ts",
+    "tests/photo-professional.test.ts", "tests/photo-professional-fixture.ts", "tests/postgres-photo-professional.test.ts",
+    "tests/photo-professional-policy.test.ts",
+    "tests/photo-rights-browser.test.ts",
+    "tests/photo-rights-response.test.ts", "tests/photo-rights-response-fixture.ts",
+    "tests/photo-rights-http.test.ts", "tests/photo-rights-http-fixture.ts", "tests/postgres-photo-rights-http.test.ts",
+    "tests/postgres-pool.test.ts",
+    "tests/photo-rights.test.ts", "tests/photo-rights-fixture.ts", "tests/postgres-photo-rights.test.ts",
+    "web/api.ts", "tests/web-request.test.ts", "tests/workflow-response.test.ts", "tests/workbench-response.test.ts", "tests/note-response.test.ts", "tests/auth-response.test.ts", "tests/source-check-response.test.ts", "tests/professional-response.test.ts", "tests/publication-response.test.ts", "tests/account-response.test.ts", "tests/ci.test.ts", "tests/browser-fixture-output.test.ts", "shared",
+    "tests/assistant-response.test.ts", "tests/private-photos.test.ts", "tests/private-photos-browser.test.ts", "tests/private-photo-library.test.ts", "tests/private-photo-library-fixture.ts", "tests/photo-notes.test.ts", "tests/postgres-photo-notes.test.ts", "tests/photo-note-response.test.ts", "tests/photo-note-http.test.ts", "tests/postgres-photo-note-http.test.ts", "playwright.config.ts", "tests/browser/**/*.ts",
+    "tests/browser-server.ts", "tests/publication-browser-server.ts", "tests/postgres-browser-fixture.ts",
+    "tests/photo-submissions.test.ts", "tests/postgres-photo-submissions.test.ts",
+    "tests/postgres-deployment.test.ts", "tests/postgres-permissions.test.ts",
+    "tests/photo-submission-response.test.ts", "tests/photo-submission-http.test.ts", "tests/postgres-photo-submission-http.test.ts", "tests/photo-submissions-browser.test.ts", "tests/private-photo-acquisition-browser.test.ts"
+  ]
+}

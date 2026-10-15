@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": { "target": "ES2022", "lib": ["ES2022", "DOM"], "types": ["node"] },
+  "include": ["tools/research/**/*.ts", "tools/tests/photo-research.test.ts", "tools/tests/photo-research.fixture.ts", "tools/tests/photo-research-local.test.ts"]
+}

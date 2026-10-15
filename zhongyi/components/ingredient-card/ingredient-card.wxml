@@ -1,0 +1,40 @@
+<view class="ingredient-card card {{compact ? 'ingredient-card--compact' : ''}}">
+  <view class="ingredient-card__head" bindtap="openDetail">
+    <view class="ingredient-card__identity">
+      <view class="ingredient-card__title">{{item.nameCn}}</view>
+      <view wx:if="{{item.pinyin}}" class="ingredient-card__pinyin">{{item.pinyin}}</view>
+    </view>
+    <view class="status-pill {{item.blocked ? 'status-pill--blocked' : item.warningCount ? 'status-pill--warning' : ''}}">
+      {{item.safetyLabel}}
+    </view>
+  </view>
+
+  <view class="ingredient-card__meta" bindtap="openDetail">
+    <text>{{item.categoryText}}</text>
+    <text wx:if="{{item.partText}}">目录记录部位：{{item.partText}}</text>
+    <text wx:if="{{item.natureText}}">传统属性：{{item.natureText}}</text>
+  </view>
+
+  <view wx:if="{{item.partReviewText}}" class="ingredient-card__part-review" bindtap="openDetail">{{item.partReviewText}}</view>
+
+  <view wx:if="{{item.searchMatchText}}" class="ingredient-card__search-match" bindtap="openDetail">
+    <view>{{item.searchMatchText}}</view>
+    <view wx:if="{{item.searchMatchNote}}" class="ingredient-card__search-note">{{item.searchMatchNote}}</view>
+  </view>
+
+  <view wx:if="{{item.summary}}" class="ingredient-card__summary" bindtap="openDetail">{{item.summary}}</view>
+
+  <view wx:if="{{item.matchReasons.length}}" class="reason-list">
+    <view class="reason-list__label">本次显示依据</view>
+    <view wx:for="{{item.matchReasons}}" wx:key="*this" class="reason-item">{{item}}</view>
+  </view>
+
+  <view wx:if="{{item.blockedReason}}" class="blocked-note">{{item.blockedReason}}</view>
+  <view wx:elif="{{item.warningText}}" class="warning-note">{{item.warningText}}</view>
+
+  <view class="ingredient-card__actions">
+    <button class="card-action {{!favoritesAvailable || (item.blocked && !item.isFavorite) ? 'card-action--disabled' : ''}}" bindtap="toggleFavorite" disabled="{{!favoritesAvailable || (item.blocked && !item.isFavorite)}}">{{!favoritesAvailable ? '收藏待读取' : item.isFavorite ? '★ 已收藏' : item.blocked ? '已阻止收藏' : '☆ 收藏'}}</button>
+    <button class="card-action {{!compareAvailable || (item.blocked && !item.inCompare) ? 'card-action--disabled' : ''}}" bindtap="toggleCompare" disabled="{{!compareAvailable || (item.blocked && !item.inCompare)}}">{{!compareAvailable ? '对照待读取' : item.inCompare ? '✓ 已对照' : item.blocked ? '已阻止对照' : '＋ 对照'}}</button>
+    <button class="card-action card-action--primary" bindtap="openDetail">查看资料</button>
+  </view>
+</view>

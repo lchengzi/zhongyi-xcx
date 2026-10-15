@@ -1,0 +1,15 @@
+node_modules/
+.npm-cache/
+.refactor/
+/zhongyi/content-private/
+apps/*/dist/
+apps/*/.verification-builds/
+apps/*/.swc/
+apps/*/.taro/
+apps/*/project.config.json
+apps/*/project.private.config.json
+.env
+.env.*
+!.env.example
+
+# Existing projects retain their own ignore rules and data boundaries.

@@ -1,0 +1,84 @@
+# Local loopback demo only. Not an HTTPS or production deployment.
+name: food-education-demo
+x-app: &app
+  image: food-education-demo:local
+  build:
+    context: ..
+    dockerfile: zhongyi-platform/Dockerfile
+    target: runtime
+  environment: &environment
+    AUTH_MODE: accounts
+    BIND_HOST: 0.0.0.0
+    PORT: "4310"
+    DATABASE_PROVIDER: postgres
+    DATABASE_SCHEMA: food_demo
+    DATABASE_URL_FILE: /run/secrets/database_url
+    ALLOWED_ORIGINS: http://127.0.0.1:4310,http://localhost:4310
+    NODE_ENV: development
+    TLS_MODE: "off"
+    AI_PROVIDER: disabled
+    AI_EXTERNAL_ENABLED: "false"
+    AI_DAILY_CALL_LIMIT: "20"
+    AI_ACTOR_DAILY_CALL_LIMIT: "5"
+  secrets:
+    - database_url
+  read_only: true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  stop_grace_period: 45s
+  depends_on:
+    postgres:
+      condition: service_healthy
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+services:
+  postgres:
+    image: postgres:18.6-bookworm
+    environment:
+      POSTGRES_USER: food_demo
+      POSTGRES_DB: food_demo
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=trust
+    secrets:
+      - postgres_password
+    volumes:
+      # PostgreSQL 18 uses a versioned subdirectory under this mount.
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "food_demo", "-d", "food_demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    # Checkpoints can be slow on the Windows host; do not send a second signal.
+    stop_grace_period: 10m
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+  app:
+    <<: *app
+    ports:
+      - "127.0.0.1:4310:4310"
+  operator:
+    <<: *app
+    profiles: ["operator"]
+    command: ["init", "--schema", "food_demo"]
+    healthcheck:
+      disable: true
+
+secrets:
+  postgres_password:
+    file: ${CONTAINER_SECRET_DIR:?Prepare a NEW local demo secret directory first}/postgres-password.txt
+  database_url:
+    file: ${CONTAINER_SECRET_DIR:?Prepare a NEW local demo secret directory first}/database-url.txt
+volumes:
+  postgres_data:

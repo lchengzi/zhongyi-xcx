@@ -1,0 +1,98 @@
+<!-- Ordinary subpackage page; it intentionally reuses the main-package safety session. -->
+<view class="page-shell official-plans-page">
+  <view wx:if="{{triageBlocked}}" class="triage-alert card">
+    <view class="triage-alert__title">当前不适合继续查看方案</view>
+    <view>安全检查包含需优先处理的紧急情况，本页停止展示全部方案。</view>
+    <view class="triage-alert__help">请立即联系急救或前往正规医疗机构；中国大陆可拨打 120。</view>
+    <button class="secondary-btn" bindtap="goSafetyCheck">返回安全检查</button>
+  </view>
+
+  <block wx:else>
+    <view class="hero card">
+      <view class="hero__kicker">查看整体资料，保留使用边界</view>
+      <view class="pill">非诊疗 · 官方原文资料</view>
+      <view class="hero__title">完整方案资料库</view>
+      <view class="hero__copy">只允许用户主动选择已由医疗机构确诊的成人目标。本工具不从症状推断疾病，不自动辨证，也不替代复诊、用药或营养治疗。</view>
+    </view>
+
+    <view class="boundary-card safety-banner">
+      <view class="safety-banner__title">完整方案不可拆分</view>
+      <view>材料、部位、原始用量、顺序和制作方法必须作为一个整体；不能删除冲突材料、替换食材、叠加多个方案或自行按人数换算。</view>
+    </view>
+
+    <view class="profile-card card">
+      <view class="profile-card__title">本次安全检查</view>
+      <view class="muted">{{profileSummary}}</view>
+      <button class="text-btn" bindtap="goSafetyCheck">返回首页修改安全检查</button>
+    </view>
+
+    <view class="section-title target-title">主动选择已确诊成人目标</view>
+    <view class="target-list">
+      <button wx:for="{{targets}}" wx:key="id" class="target-card {{item.selected ? 'target-card--selected' : ''}}" data-id="{{item.id}}" bindtap="selectTarget">
+        <view class="target-card__title">{{item.label}}</view>
+        <view class="target-card__status">{{item.statusText}}</view>
+      </button>
+    </view>
+
+    <view wx:if="{{selectedTarget}}" class="target-summary card">
+      <view class="target-summary__head">
+        <view>
+          <view class="target-summary__title">{{selectedTarget.shortLabel}}</view>
+          <view class="muted">{{selectedTarget.description}}</view>
+        </view>
+        <button class="text-btn" bindtap="copyTargetSource">复制指南链接</button>
+      </view>
+      <view wx:if="{{selectedTarget.unavailableReason}}" class="withheld-note">{{selectedTarget.unavailableReason}}</view>
+      <label wx:if="{{publishedCards.length}}" class="diagnosis-check">
+        <checkbox-group bindchange="onDiagnosisChange">
+          <checkbox value="confirmed" checked="{{diagnosisConfirmed}}" color="#2f6b45" />
+          <text>我确认这是已由正规医疗机构确诊的成人目标，并且这里只查看官方资料。</text>
+        </checkbox-group>
+      </label>
+    </view>
+
+    <view wx:if="{{publishedCards.length}}" class="plans-section">
+      <view class="section-title">可查阅的完整资料</view>
+      <view wx:for="{{publishedCards}}" wx:key="id" class="plan-card card">
+        <view class="plan-card__title">{{item.name}}</view>
+        <view class="pill">完整方案 · 不可拆分</view>
+        <view class="source-note">{{item.sourceText}}</view>
+        <view class="plan-card__status">{{item.statusText}}</view>
+        <view wx:if="{{item.reasonText}}" class="card-reason">{{item.reasonText}}</view>
+        <button wx:if="{{item.needsSafety}}" class="text-btn" bindtap="goSafetyCheck">完善安全检查</button>
+        <button class="primary-btn" data-id="{{item.id}}" bindtap="openDetail" disabled="{{item.blocked}}">查看完整官方资料</button>
+      </view>
+    </view>
+
+    <view wx:if="{{pendingCards.length}}" class="plans-section">
+      <view class="section-title">来源已录入，仍在审校</view>
+      <view wx:for="{{pendingCards}}" wx:key="id" class="pending-card card">
+        <view class="pending-card__head">
+          <view class="pending-card__title">{{item.name}}</view>
+          <view class="pill pill--warning">{{item.lifecycleText}}</view>
+        </view>
+        <view wx:if="{{item.patternText}}" class="source-note">{{item.patternText}}</view>
+        <view class="source-note">{{item.sourceText}}</view>
+        <view class="pending-card__status">{{item.statusText}}</view>
+        <view class="muted">尚有 {{item.pendingChecks}} 类发布核验未完成。完成前不提供详情入口。</view>
+      </view>
+    </view>
+
+    <view wx:if="{{unavailableCards.length}}" class="plans-section">
+      <view class="section-title">已停止提供的资料</view>
+      <view wx:for="{{unavailableCards}}" wx:key="id" class="pending-card card">
+        <view class="pending-card__title">{{item.name}}</view>
+        <view class="pending-card__status">{{item.statusText}}</view>
+        <view class="source-note">{{item.sourceText}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{selectedTarget && !publishedCards.length && !pendingCards.length && !unavailableCards.length}}" class="empty-state card">
+      <view class="empty-state__mark" aria-hidden="true">◇</view>
+      <view class="empty-state__title">当前没有可展示的完整方案</view>
+      <view>{{selectedTarget.unavailableReason || '没有结果不代表无需治疗，也不表示可以自行组合食材。'}}</view>
+    </view>
+
+    <view class="source-note page-footnote">内容版本：{{contentVersion}}。当前已完成发布门禁 {{publishableCount}} 项，审校中 {{pendingCount}} 项，已撤回或替代 {{unavailableCount}} 项。</view>
+  </block>
+</view>

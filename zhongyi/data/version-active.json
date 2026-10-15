@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.1.0",
+  "manifestVersion": "2026.08-manifest.10",
+  "manifestDigest": "sha256:39e7f26f5f59546bd6625c30f1c7d1810e5999a0947040352a218c71385f46ee",
+  "noticesVersion": "2026.08-notices.4",
+  "noticesDigest": "sha256:81038b9dd311bb8360313d4e5905a71617ce6f9a4fe59448285c93281803d285",
+  "releaseId": "release-2026.08.13-complete-public-projection.10",
+  "releaseDigest": "sha256:dddbe21176521dfd417eb4c1aedd0fff62837c55ebb97d90ac74e0329f02b4d7",
+  "snapshotSha256": "sha256:51857684d6c15f624c6f5890b52b12db7c2cf43313318624b124f57bad0e9c44",
+  "activatedAt": "2026-08-13T03:31:30+08:00",
+  "mode": "release",
+  "previousReleaseId": null,
+  "recoverySnapshot": null
+}

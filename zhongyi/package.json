@@ -1,0 +1,25 @@
+{
+  "name": "zhongyi-food-therapy-selector",
+  "version": "0.1.0",
+  "private": true,
+  "description": "非医疗的中医食养资料筛选微信小程序",
+  "scripts": {
+    "preflight:device": "node tools/device-preflight.js",
+    "build:recipes": "node tools/build-public-recipes.js",
+    "build:runtime": "node tools/build-runtime-config.js",
+    "build:photo-review": "node tools/photo-review-inventory.js",
+    "build:media-drafts": "node tools/build-media-draft-manifest.js && node tools/build-media-review.js && node tools/build-specimen-candidate-manifest.js && node tools/build-specimen-review.js && node tools/build-food-form-candidate-manifest.js && node tools/build-food-form-review.js && node tools/build-food-form-gap-research-manifest.js && node tools/build-food-form-gap-research-review.js",
+    "build:evidence-drafts": "node tools/build-external-food-source-candidate-manifest.js && node tools/build-external-food-source-review.js",
+    "build:professional-review": "node tools/version-verify.js && node tools/build-professional-review-packet.js && node tools/build-professional-review.js && node tools/validate-professional-review.js",
+    "build:professional-review:first-release": "node tools/version-verify.js && node tools/build-professional-review-packet.js --profile first-release-black-bean && node tools/build-professional-review.js --profile first-release-black-bean && node tools/validate-professional-review.js --profile first-release-black-bean",
+    "build:release": "node tools/version-build.js",
+    "check": "node tools/version-verify.js && node tools/check-project.js && node tools/check-media-drafts.js && node tools/check-specimen-candidates.js && node tools/check-food-form-candidates.js && node tools/check-food-form-gap-research.js && node tools/check-research-refresh.js && node tools/check-external-food-source-candidates.js && node tools/check-professional-review.js",
+    "test": "node tools/test-safety.js && node tools/test-search.js && node tools/test-compare.js && node tools/test-recipes.js && node tools/test-privacy.js && node tools/test-storage.js && node tools/test-navigation.js && node tools/test-clipboard.js && node tools/test-detail-page.js && node tools/test-list-actions.js && node tools/test-entry-actions.js && node tools/test-privacy-page.js && node tools/test-public-catalog.js && node tools/test-catalog-read-lifecycle.js && node tools/test-device-preflight.js && node tools/smoke-pages.js && node tools/test-media-drafts.js && node tools/test-specimen-candidates.js && node tools/test-food-form-candidates.js && node tools/test-food-form-gap-research.js && node tools/test-research-refresh.js && node tools/test-external-food-source-candidates.js && node tools/test-professional-review.js && node tools/test-professional-review-scoped.js && node tools/test-professional-review-legacy.js && node tools/version-test.js",
+    "version:verify": "node tools/version-verify.js",
+    "version:snapshot": "node tools/version-snapshot.js",
+    "version:rollback": "node tools/version-rollback.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

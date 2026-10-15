@@ -1,0 +1,267 @@
+.plan-page {
+  padding-bottom: 48rpx;
+  overflow-wrap: anywhere;
+}
+
+.plan-page button {
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.triage-alert {
+  padding: 32rpx;
+  border-color: #dda69d;
+  background: #fff0ed;
+  color: #77362e;
+  line-height: 1.65;
+}
+
+.plan-head,
+.section-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.plan-head > view {
+  flex: 1 1 360rpx;
+  min-width: 0;
+}
+
+.reset-btn {
+  flex: 0 0 auto;
+  min-height: 58rpx;
+  margin: 0;
+  padding: 8rpx 14rpx;
+  background: transparent;
+  color: #945044;
+  font-size: 23rpx;
+}
+
+.boundary-card,
+.plan-section,
+.plan-overview {
+  margin-top: 22rpx;
+  padding: 28rpx;
+}
+
+.plan-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.overview-item {
+  display: flex;
+  min-width: 0;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  color: #6b786f;
+  font-size: 23rpx;
+}
+
+.overview-item + .overview-item {
+  border-left: 2rpx solid #e4e2d7;
+}
+
+.overview-value {
+  color: #2f6b45;
+  font-size: 42rpx;
+  font-weight: 800;
+}
+
+.section-row .section-title {
+  margin-bottom: 0;
+}
+
+.profile-status {
+  margin-top: 18rpx;
+  padding: 20rpx;
+  border-radius: 14rpx;
+  background: #f2f5ef;
+  color: #506057;
+  line-height: 1.6;
+}
+
+.profile-status--blocked {
+  background: #fff0ed;
+  color: #873b31;
+}
+
+.profile-status__title {
+  margin-bottom: 7rpx;
+  font-weight: 800;
+}
+
+.profile-status__answers {
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+.shortlist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14rpx;
+  margin-top: 18rpx;
+}
+
+.shortlist-item {
+  min-width: 0;
+  overflow-wrap: break-word;
+  padding: 20rpx;
+  border-radius: 14rpx;
+  background: #f3f4ec;
+}
+
+.shortlist-item__title {
+  color: #2f6b45;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.shortlist-item__meta,
+.shortlist-item__status {
+  margin-top: 8rpx;
+  color: #6b776f;
+  font-size: 23rpx;
+  line-height: 1.5;
+}
+
+.excluded-list {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  border-radius: 14rpx;
+  background: #fff0ed;
+  color: #7b3a32;
+}
+
+.excluded-list__title {
+  margin-bottom: 12rpx;
+  font-weight: 700;
+}
+
+.excluded-item {
+  padding: 18rpx 0;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.excluded-item + .excluded-item {
+  border-top: 2rpx solid #e6c6bf;
+}
+
+.excluded-item__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-bottom: 8rpx;
+}
+
+.excluded-detail {
+  margin: 12rpx 0 0;
+  white-space: normal;
+}
+
+.preparation-note {
+  margin-top: 18rpx;
+}
+
+.inline-empty {
+  margin-top: 18rpx;
+  padding: 26rpx;
+  border-radius: 14rpx;
+  background: #f5f3e9;
+  color: #6b776f;
+  text-align: center;
+}
+
+.section-action {
+  margin-top: 20rpx;
+}
+
+.checklist {
+  display: grid;
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  padding: 18rpx;
+  border-radius: 14rpx;
+  background: #f5f3e9;
+  line-height: 1.55;
+}
+
+.checklist-item--done {
+  background: #eaf2e9;
+  color: #647168;
+}
+
+.inquiry-preview {
+  padding: 22rpx;
+  border-radius: 14rpx;
+  background: #26372e;
+  color: #eff4ee;
+  font-size: 24rpx;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.danger-guide {
+  margin-top: 22rpx;
+  padding: 24rpx;
+  border: 2rpx solid #dda69d;
+  border-radius: 18rpx;
+  background: #fff0ed;
+  color: #7b3930;
+  line-height: 1.6;
+}
+
+.danger-guide__title {
+  margin-bottom: 8rpx;
+  font-weight: 800;
+}
+
+.privacy-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  margin-top: 22rpx;
+  padding: 28rpx;
+}
+
+.privacy-entry__title {
+  margin-bottom: 8rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.privacy-entry__button {
+  flex: 0 0 auto;
+  min-height: 64rpx;
+  margin: 0;
+  font-size: 25rpx;
+}
+
+@media (max-width: 560px) {
+  .shortlist {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .privacy-entry {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

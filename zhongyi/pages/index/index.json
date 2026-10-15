@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "中医食养筛选助手",
+  "usingComponents": {
+    "ingredient-card": "/components/ingredient-card/ingredient-card"
+  }
+}

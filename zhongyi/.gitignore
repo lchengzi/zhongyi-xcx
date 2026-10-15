@@ -1,0 +1,6 @@
+project.private.config.json
+node_modules/
+.local/
+content-private/
+.DS_Store
+Thumbs.db

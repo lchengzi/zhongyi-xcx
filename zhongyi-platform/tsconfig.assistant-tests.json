@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.server.json",
+  "compilerOptions": { "noEmit": true, "lib": ["ES2022", "DOM", "DOM.Iterable"] },
+  "include": [
+    "tests/assistant.test.ts",
+    "tests/assistant-provider.test.ts",
+    "tests/assistant-proposal.test.ts",
+    "tests/postgres-assistant.test.ts",
+    "tests/browser/assistant.spec.ts"
+  ]
+}
