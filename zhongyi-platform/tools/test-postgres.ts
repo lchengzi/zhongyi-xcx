@@ -176,6 +176,10 @@ async function main() {
   }
 
   try {
+    if (process.platform === 'win32' && process.env.GITHUB_ACTIONS === 'true') {
+      await command('pwsh', ['-NoLogo', '-NoProfile', '-NonInteractive', '-File',
+        resolve('tools/prepare-windows-postgres-fixture.ps1'), '-FixtureDirectory', directory]);
+    }
     if (browserReportPath) {
       assertNoLinks(browserReportPath);
       if (lstatSync(browserReportPath, { throwIfNoEntry: false })) throw new Error('Browser report must be fresh, not an existing file');
