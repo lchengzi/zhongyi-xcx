@@ -3,7 +3,7 @@ import { spawn, execFile, type ChildProcess } from 'node:child_process';
 import { promisify } from 'node:util';
 import { once } from 'node:events';
 import { createServer, type AddressInfo } from 'node:net';
-import { appendFileSync, mkdirSync, mkdtempSync, lstatSync, realpathSync, readFileSync, writeFileSync, unlinkSync, chmodSync, existsSync } from 'node:fs';
+import { appendFileSync, mkdirSync, mkdtempSync, lstatSync, realpathSync, readFileSync, writeFileSync, unlinkSync, chmodSync, existsSync, openSync, closeSync } from 'node:fs';
 import { resolve, join, sep } from 'node:path';
 import { createPostgresPool } from '../server/postgres-migration.js';
 import { postgresStartupFailure, waitForPostgresReadiness } from './postgres-readiness.js';
@@ -30,6 +30,7 @@ async function main() {
   let port = 0; let connection = '';
   type OwnedServer = { kind: 'direct'; child: ChildProcess } | { kind: 'pg-ctl'; identity: PostmasterIdentity };
   let server: OwnedServer | undefined; let restarting = false; let serverVersion = ''; let restarts = 0;
+  let startAttempts = 0;
   const isLive = (owned: OwnedServer) => owned.kind === 'direct'
     ? owned.child.exitCode === null && owned.child.signalCode === null : postgresPidLive(owned.identity.pid);
   let stopping: Promise<void> | undefined;
@@ -57,12 +58,19 @@ async function main() {
     persist(); console.log(`Owned PostgreSQL ${plan.scope} evidence: ${ownedReportPath}`);
   }
 
-  async function command(binary: string, args: string[], discardOutput = false) {
+  async function command(binary: string, args: string[], outputFile?: string) {
     // pg_ctl's detached postmaster may inherit otherwise-unused pipe handles.
-    // Its server log is explicit; do not wait for daemon-owned pipes to close.
-    const child = spawn(binary, args, { windowsHide: true, env: { ...process.env, LC_MESSAGES: 'C' }, stdio: discardOutput ? 'ignore' : ['ignore', 'pipe', 'pipe'] });
-    let stdout = ''; let stderr = ''; child.stdout?.on('data', (chunk) => { stdout += chunk; }); child.stderr?.on('data', (chunk) => { stderr += chunk; });
-    const [code] = await once(child, 'close');
+    // Use a fresh owned file, not pipes or discarded startup diagnostics.
+    if (outputFile) assertNoLinks(outputFile);
+    const fd = outputFile ? openSync(outputFile, 'wx', 0o600) : undefined;
+    let stdout = ''; let stderr = ''; let code: unknown;
+    try {
+      const child = spawn(binary, args, { windowsHide: true, env: { ...process.env, LC_MESSAGES: 'C' },
+        stdio: fd === undefined ? ['ignore', 'pipe', 'pipe'] : ['ignore', fd, fd] });
+      child.stdout?.on('data', (chunk) => { stdout += chunk; }); child.stderr?.on('data', (chunk) => { stderr += chunk; });
+      [code] = await once(child, 'close');
+    } finally { if (fd !== undefined) closeSync(fd); }
+    if (outputFile) stdout = readFileSync(outputFile, 'utf8');
     if (code !== 0) throw new Error(`PostgreSQL fixture command failed with code ${code}: ${(stdout + stderr).replaceAll(password, '[redacted]').replaceAll(connection, '[redacted]').slice(-1600)}`);
     return stdout;
   }
@@ -79,7 +87,8 @@ async function main() {
       if (existsSync(pidFile)) throw new Error('Previous owned PostgreSQL PID file still exists; refusing another start');
       const requestedAt = Date.now();
       let startupError: unknown;
-      try { await command(binaries.pg_ctl, windowsPostgresStartArgs(dataDir, serverLog, options), true); }
+      const startupLog = join(directory, `pg-ctl-start-${startAttempts++}.log`);
+      try { await command(binaries.pg_ctl, windowsPostgresStartArgs(dataDir, serverLog, options), startupLog); }
       catch (error) { startupError = error; }
       // Adopt only the identity from this freshly initialized, guarded cluster,
       // even if pg_ctl timed out, so final cleanup can observe/stop that process.
