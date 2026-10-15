@@ -6,7 +6,7 @@ import { createServer, type AddressInfo } from 'node:net';
 import { appendFileSync, mkdirSync, mkdtempSync, lstatSync, realpathSync, readFileSync, writeFileSync, unlinkSync, chmodSync } from 'node:fs';
 import { resolve, join, sep } from 'node:path';
 import { createPostgresPool } from '../server/postgres-migration.js';
-import { waitForPostgresReadiness } from './postgres-readiness.js';
+import { postgresStartupFailure, waitForPostgresReadiness } from './postgres-readiness.js';
 import { assertNoLinks } from '../server/demo-secrets.js';
 import { ciEnvironment, httpsProof, tapProof } from './ci-core.js';
 import { httpsOwnedReportPath } from './https-test-plan.js';
@@ -72,9 +72,11 @@ async function main() {
     });
     let output = '';
     await new Promise<void>((ready, reject) => {
-      const timer = setTimeout(() => reject(new Error('PostgreSQL fixture startup timed out')), 20000);
+      const failure = (reason: string) => postgresStartupFailure(reason, output, [password, connection]);
+      const timer = setTimeout(() => reject(failure('PostgreSQL fixture startup timed out')), 20000);
       server!.on('error', (error) => { clearTimeout(timer); reject(error); });
-      server!.once('exit', () => { clearTimeout(timer); reject(new Error('PostgreSQL fixture exited before readiness')); });
+      // close follows the final stderr delivery; exit can precede it on Windows.
+      server!.once('close', (code, signal) => { clearTimeout(timer); reject(failure(`PostgreSQL fixture exited before readiness (code=${code}, signal=${signal})`)); });
       server!.stderr!.on('data', (chunk) => {
         output += chunk.toString();
         appendFileSync(serverLog, chunk.toString().replaceAll(password, '[redacted]').replaceAll(connection, '[redacted]'));

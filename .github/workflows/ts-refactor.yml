@@ -2,9 +2,9 @@ name: TypeScript mini-program
 
 on:
   push:
-    paths: ['apps/**', 'packages/**', 'tools/**', 'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.research.json', '.gitignore', 'zhongyi/.gitignore', 'zhongyi/data/**', 'zhongyi/utils/**', 'zhongyi-platform/**', '.github/workflows/ts-refactor.yml']
+    paths: ['apps/**', 'packages/**', 'tools/**', 'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.research.json', '.gitattributes', '.gitignore', 'zhongyi/.gitignore', 'zhongyi/data/**', 'zhongyi/utils/**', 'zhongyi-platform/**', '.github/workflows/ts-refactor.yml']
   pull_request:
-    paths: ['apps/**', 'packages/**', 'tools/**', 'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.research.json', '.gitignore', 'zhongyi/.gitignore', 'zhongyi/data/**', 'zhongyi/utils/**', 'zhongyi-platform/**', '.github/workflows/ts-refactor.yml']
+    paths: ['apps/**', 'packages/**', 'tools/**', 'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.research.json', '.gitattributes', '.gitignore', 'zhongyi/.gitignore', 'zhongyi/data/**', 'zhongyi/utils/**', 'zhongyi-platform/**', '.github/workflows/ts-refactor.yml']
   workflow_dispatch:
 
 permissions:

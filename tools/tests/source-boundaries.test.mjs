@@ -21,7 +21,7 @@ test('actual Git ignores private material, credentials and generated files while
   const directory = join(parent, `run-${randomUUID()}`); mkdirSync(directory);
   const repository = join(directory, 'fixture'), template = join(directory, 'empty-template'); mkdirSync(repository); mkdirSync(template);
   const globalConfig = join(directory, 'empty-global-config'); writeFileSync(globalConfig, '', { flag: 'wx' });
-  for (const file of ['.gitignore', 'zhongyi/.gitignore', 'zhongyi-platform/.gitignore']) {
+  for (const file of ['.gitattributes', '.gitignore', 'zhongyi/.gitignore', 'zhongyi-platform/.gitignore']) {
     const source = join(root, file); plain(source); mkdirSync(dirname(join(repository, file)), { recursive: true });
     writeFileSync(join(repository, file), readFileSync(source), { flag: 'wx' });
   }
@@ -40,9 +40,22 @@ test('actual Git ignores private material, credentials and generated files while
   const result = spawnSync('git', ['check-ignore', '--no-index', '--stdin'], { cwd: repository, env, windowsHide: true, encoding: 'utf8',
     input: [...privatePaths, ...publicPaths].join('\n') + '\n', timeout: 15000 });
   const ignored = result.stdout.trim().split(/\r?\n/).filter(Boolean), expected = [...privatePaths].sort();
+  assert.equal(result.status, 0, result.stderr); assert.deepEqual(ignored.sort(), expected);
+  // Reproduce Windows runner defaults without normalizing a trusted snapshot or
+  // weakening the byte-for-byte generator check. Use only synthetic JSON.
+  const snapshots = ['apps/miniprogram/src/data/catalog.json', 'apps/miniprogram/src/data/catalog-release.json'];
+  const bytes = Buffer.from('{\n  "fixtureOnly": true\n}\n');
+  for (const file of snapshots) {
+    const target = join(repository, file); mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, bytes, { flag: 'wx' });
+  }
+  const indexed = git(['-c', 'core.autocrlf=true', 'add', '--', '.gitattributes', ...snapshots]); assert.equal(indexed.status, 0, indexed.stderr);
+  const checked = join(directory, 'windows-checkout'); mkdirSync(checked);
+  const checkout = git(['-c', 'core.autocrlf=true', 'checkout-index', '--all', `--prefix=${checked.replaceAll('\\', '/')}/`]);
+  assert.equal(checkout.status, 0, checkout.stderr);
+  for (const file of snapshots) assert.deepEqual(readFileSync(join(checked, file)), bytes, 'Windows checkout changed generated snapshot bytes');
   const report = { schemaVersion: 'source-boundary-evidence.1', status: result.status === 0 && JSON.stringify(ignored.sort()) === JSON.stringify(expected) ? 'passed' : 'failed',
     ignored, expectedIgnored: expected, expectedBuildSourcesNotIgnored: publicPaths, privateFilesCopied: 0, workingGitRepositoryModified: false,
-    externalRepositoryCreated: false, pushPerformed: false, remoteCiVerified: false, finishedAt: new Date().toISOString() };
+    externalRepositoryCreated: false, pushPerformed: false, remoteCiVerified: false, windowsCheckoutSnapshotsPreserved: snapshots.length, finishedAt: new Date().toISOString() };
   writeFileSync(join(directory, 'report.json'), JSON.stringify(report, null, 2), { flag: 'wx' });
   console.log(`Source boundary evidence: ${directory}`);
   assert.equal(result.status, 0, result.stderr); assert.deepEqual(ignored.sort(), expected);

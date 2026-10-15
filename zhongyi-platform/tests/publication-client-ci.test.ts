@@ -55,7 +55,10 @@ test('fullstack CI uses pinned actions, read-only permissions, isolated browser 
   for (const action of actions) assert.match(String(action.uses), /^actions\/(checkout|setup-node|upload-artifact)@[a-f0-9]{40}$/);
   assert.equal(object(actions[0].with)['persist-credentials'], false);
   assert.equal(object(actions[1].with)['node-version'], '22');
-  assert.deepEqual(steps.filter(step => step.run).map(step => step.run), ['npm ci --no-fund', 'npm --prefix zhongyi-platform ci --no-fund', 'npm run test:publication-browser']);
+  assert.deepEqual(steps.filter(step => step.run).map(step => step.run), [
+    'npm ci --no-fund', 'npm --prefix zhongyi-platform ci --no-fund', 'npm run test:publication-browser',
+    'npm --prefix zhongyi-platform run test:photo-publication', 'npm --prefix zhongyi-platform run test:container-photos'
+  ]);
   const source = JSON.stringify(parsed);
   for (const forbidden of ['secrets.', 'continue-on-error', 'pull_request_target']) assert.equal(source.includes(forbidden), false);
   const root = object(object(JSON.parse(readFileSync('../package.json', 'utf8'))).scripts);
@@ -72,6 +75,10 @@ test('uploaded artifacts are only the explicit report and simulated UI screensho
   assert.deepEqual(String(options.path).trim().split('\n'), [
     '.refactor/evidence/fullstack-client-*/run-*/report.json',
     '.refactor/evidence/fullstack-client-*/run-*/first-publication.png',
-    '.refactor/evidence/fullstack-client-*/run-*/reopened-publication.png'
+    '.refactor/evidence/fullstack-client-*/run-*/reopened-publication.png',
+    'zhongyi-platform/.local/photo-publication-tests/run-*/browser-report.json',
+    'zhongyi-platform/.local/photo-publication-tests/run-*/resource-report.json',
+    'zhongyi-platform/.local/photo-publication-tests/run-*/recovery-ui.png',
+    'zhongyi-platform/.local/photo-publication-tests/run-*/review-390.png'
   ]);
 });

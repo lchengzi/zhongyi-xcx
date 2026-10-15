@@ -5,6 +5,16 @@ import { postgresTestPlan, publicationHttpProof, postgresPermissionsProof } from
 import { postgresProof } from '../tools/ci-core.js';
 import { join, resolve } from 'node:path';
 import { postgresBrowserProof, postgresBrowserReportPath } from '../tools/postgres-test-plan.js';
+import { postgresStartupFailure } from '../tools/postgres-readiness.js';
+
+test('startup diagnostics retain bounded fixture failure evidence but redact credentials, URLs and terminal controls', () => {
+  const password = 'fixture-password-only'; const connection = `postgresql://fixture:${password}@localhost:9999/postgres`;
+  const error = postgresStartupFailure('Fixture exited', `\u001b[31mFATAL: ${password} ${connection}\npostgres://other:secret@localhost/work\u0007\nend`, [password, connection, '']);
+  assert.match(error.message, /FATAL:/); assert.match(error.message, /end$/);
+  for (const forbidden of [password, connection, 'other:secret', '\u001b', '\u0007']) assert.equal(error.message.includes(forbidden), false);
+  assert.equal(postgresStartupFailure('Fixture exited', '', []).message, 'Fixture exited (no server stderr)');
+  assert.ok(postgresStartupFailure('Fixture exited', 'x'.repeat(10000), []).message.length < 1700);
+});
 
 test('PostgreSQL browser proof requires fresh JSON, matching console counts and no skip, flake or focused-only configuration', () => {
   const start = Date.now(); const end = start + 1000;

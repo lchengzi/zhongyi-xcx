@@ -1,3 +1,12 @@
+// Only disposable fixture output belongs here; never log a working connection.
+export function postgresStartupFailure(reason: string, output: string, sensitive: readonly string[]): Error {
+  let safe = output;
+  for (const value of sensitive) if (value) safe = safe.replaceAll(value, '[redacted]');
+  safe = safe.replace(/postgres(?:ql)?:\/\/[^\s"']+/gi, '[redacted-postgres-url]')
+    .replace(/\u001b\[[0-9;]*m/g, '').replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, '');
+  return new Error(`${reason}${safe.trim() ? `: ${safe.trim().slice(-1600)}` : ' (no server stderr) '}`.trim());
+}
+
 // Fixture-only readiness: a log line is not proof that a new authenticated
 // connection can complete. Never change production pool deadlines or retry writes.
 export async function waitForPostgresReadiness(
