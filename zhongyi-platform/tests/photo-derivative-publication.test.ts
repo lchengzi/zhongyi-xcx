@@ -236,9 +236,23 @@ test('photo resources encrypt, restore to new roots, bind the SQL archive, and n
       privatePhotos: restored.originals, photoPublication: { derivatives: restored.derivatives, journal: restored.journal, enabled: true }
     }));
     const recoveryContext = await browser.newContext({ viewport: { width: 390, height: 1000 } });
+    const recoveryStartedAt = Date.now();
+    const recoveryRequests: Array<{ path: string; method: string; status: number | null; failed: boolean; elapsedMs: number }> = [];
+    let recoveryPage: Page | undefined, pageErrorCount = 0;
+    const recordRecoveryRequest = (url: string, method: string, status: number | null, failed: boolean) => {
+      const parsed = new URL(url);
+      if (parsed.origin !== quarantineOrigin || !parsed.pathname.startsWith('/api/v1/') || recoveryRequests.length >= 80) return;
+      // Synthetic fixture only. Never save request/response bodies, headers,
+      // cookies, query strings, passwords, CSRF tokens or raw browser errors.
+      recoveryRequests.push({ path: parsed.pathname, method, status, failed, elapsedMs: Date.now() - recoveryStartedAt });
+    };
+    recoveryContext.on('response', response => recordRecoveryRequest(response.url(), response.request().method(), response.status(), false));
+    recoveryContext.on('requestfailed', request => recordRecoveryRequest(request.url(), request.method(), null, true));
     try {
       await recoveryContext.route('**/*', route => new URL(route.request().url()).origin === quarantineOrigin ? route.continue() : route.abort('blockedbyclient'));
-      const page = await recoveryContext.newPage(); await page.goto(quarantineOrigin);
+      const page = await recoveryContext.newPage(); recoveryPage = page;
+      page.on('pageerror', () => { pageErrorCount += 1; });
+      await page.goto(quarantineOrigin);
       await page.getByLabel('用户名', { exact: true }).fill(f.admin.account.username); await page.getByLabel('密码', { exact: true }).fill(fixturePassword);
       await page.getByRole('button', { name: '登录工作台 →', exact: true }).click(); await page.getByRole('button', { name: '图片审阅', exact: true }).click();
       await page.getByLabel('照片候选列表').getByRole('button').filter({ hasText: f.photo.name }).click(); await page.getByRole('tab', { name: '展示与发布', exact: true }).click();
@@ -248,6 +262,26 @@ test('photo resources encrypt, restore to new roots, bind the SQL archive, and n
       await page.getByLabel('发布或撤回说明').fill('ENGINEERING_RECOVERY_REVIEW_ONLY');
       await expect(page.getByRole('button', { name: '撤回图片图集', exact: true })).toBeEnabled();
       await page.screenshot({ path: resolve(f.root, 'recovery-ui.png'), fullPage: true });
+    } catch (error) {
+      // Retain the original failure and its unchanged 5000ms assertion. A
+      // background/session cancellation and a bad API response need different
+      // fixes; a missing locator alone cannot distinguish them.
+      try {
+        const view = recoveryPage ? await recoveryPage.evaluate(() => ({
+          hidden: document.hidden, visibilityState: document.visibilityState, focused: document.hasFocus(),
+          selectedTab: document.querySelector('[role="tab"][aria-selected="true"]')?.textContent?.slice(0, 100) ?? null,
+          publicationBusy: document.querySelector('[aria-label="图片展示与发布"]')?.getAttribute('aria-busy') ?? null,
+          feedback: document.querySelector('[aria-label="图片发布反馈"]')?.textContent?.slice(0, 1000) ?? null,
+          imagePresent: !!document.querySelector('img[alt="待确认的展示图"]')
+        })) : null;
+        writeFileSync(resolve(f.root, 'recovery-failure.json'), JSON.stringify({ schemaVersion: 'synthetic-photo-recovery-failure.1',
+          syntheticOnly: true, finishedAt: new Date().toISOString(),
+          commit: /^[a-f0-9]{40}$/.test(process.env.GITHUB_SHA ?? '') ? process.env.GITHUB_SHA : null,
+          view, pageErrorCount, requests: recoveryRequests, rawBodiesOrCredentialsStored: false,
+          originalAssertionUnchanged: true, productionPublished: false }, null, 2), { flag: 'wx' });
+        if (recoveryPage) await recoveryPage.screenshot({ path: resolve(f.root, 'recovery-failure.png'), fullPage: true });
+      } catch { console.error('Synthetic recovery failure capture unavailable; original failure retained.'); }
+      throw error;
     } finally { await recoveryContext.close(); await new Promise<void>(done => { quarantineServer.close(() => done()); quarantineServer.closeAllConnections(); }); }
     // A new manual recovery action must occur after the restoration timestamp.
     await new Promise(resolve => setTimeout(resolve, 2));

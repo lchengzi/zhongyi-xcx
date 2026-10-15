@@ -79,6 +79,8 @@ test('uploaded artifacts are only the explicit report and simulated UI screensho
     'zhongyi-platform/.local/photo-publication-tests/run-*/browser-report.json',
     'zhongyi-platform/.local/photo-publication-tests/run-*/resource-report.json',
     'zhongyi-platform/.local/photo-publication-tests/run-*/recovery-ui.png',
+    'zhongyi-platform/.local/photo-publication-tests/run-*/recovery-failure.json',
+    'zhongyi-platform/.local/photo-publication-tests/run-*/recovery-failure.png',
     'zhongyi-platform/.local/photo-publication-tests/run-*/review-390.png'
   ]);
 });
