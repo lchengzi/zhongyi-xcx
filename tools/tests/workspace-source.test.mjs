@@ -21,6 +21,8 @@ test('source policy excludes private paths and preserves actual credential-handl
 test('actual source selection contains all TS products, locks, images and historical runtime without private inputs', () => {
   const files = collectWorkspaceSource(root), paths = new Set(files.map(file => file.path));
   for (const path of ['package-lock.json', 'zhongyi-platform/package-lock.json', 'apps/miniprogram/src/app.tsx',
+    'packages/archive-extractor-compat/package.json', 'packages/archive-extractor-compat/index.cjs',
+    'tools/tests/archive-extractor-compat.test.mjs',
     'packages/catalog-core/src/index.ts', 'zhongyi-platform/server/index.ts', 'zhongyi-platform/photo-processing/cli.ts',
     'zhongyi/data/version-manifest.json', 'zhongyi/tools/version-core.js', 'tools/tests/workspace-source.test.mjs',
     'tools/public-safety-projection.d.mts', 'apps/miniprogram/project.config.example.json', 'tools/source-archive.ps1',

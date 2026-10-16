@@ -98,3 +98,23 @@ test('default CI keeps private corpus checks opt-in and observes source boundary
     assert(value.on[event].paths.includes(path));
   }
 });
+
+test('archive compatibility runs real POSIX regressions in a pinned read-only Linux job and Windows default tests', () => {
+  const value = workflow(), job = value.jobs['archive-compat-posix'];
+  assert.equal(job['runs-on'], 'ubuntu-24.04'); assert.equal(job['timeout-minutes'], 10);
+  assert.deepEqual(job.steps.filter(step => step.run).map(step => step.run), [
+    'npm ci --ignore-scripts --no-fund', 'npm run test:archive-compat',
+  ]);
+  const actions = job.steps.filter(step => step.uses); assert.equal(actions.length, 2);
+  for (const action of actions) assert.match(action.uses, /^actions\/(checkout|setup-node)@[a-f0-9]{40}$/);
+  assert.equal(actions[0].with['persist-credentials'], false);
+  assert.equal(actions[1].with['node-version'], '22');
+  assert.equal(value.jobs.verify['runs-on'], 'windows-2025');
+  assert(value.jobs.verify.steps.some(step => step.run === 'npm test'));
+  const manifest = JSON.parse(readFileSync(new URL('package.json', root), 'utf8'));
+  assert.equal(manifest.scripts['test:archive-compat'], 'node --test tools/tests/archive-extractor-compat.test.mjs');
+  assert(manifest.scripts.test.split(' && ').includes('npm run test:archive-compat'));
+  assert.equal(manifest.devDependencies.decompress, 'file:packages/archive-extractor-compat');
+  assert.deepEqual(manifest.overrides, { decompress: '$decompress' });
+  for (const forbidden of ['secrets.', 'continue-on-error', 'pull_request_target']) assert.equal(JSON.stringify(value).includes(forbidden), false);
+});

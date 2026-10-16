@@ -1,0 +1,10 @@
+{
+  "name": "@food-education/archive-extractor-compat",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.cjs",
+  "license": "MIT",
+  "engines": { "node": ">=22.13.0" },
+  "dependencies": { "@xhmikosr/decompress": "11.1.4" }
+}

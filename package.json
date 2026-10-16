@@ -26,10 +26,11 @@
     "test:photo-research:local": "tsx --test tools/tests/photo-research-local.test.ts",
     "test:source-boundaries": "node --test tools/tests/source-boundaries.test.mjs",
     "test:workspace-source": "node --test tools/tests/workspace-source.test.mjs",
+    "test:archive-compat": "node --test tools/tests/archive-extractor-compat.test.mjs",
     "verify:workspace-clean-install": "node tools/verify-workspace-clean-install.mjs --offline",
     "source:export": "node tools/export-workspace-source.mjs",
     "test:source-archive": "node --test tools/tests/source-archive.test.mjs",
-    "test": "npm run test --workspace @food-education/catalog-core && node --test tools/tests/mini-package.test.mjs && npm run test:mini-browser-ci && npm run test:mini-config && npm run test:photo-research && npm run test:source-boundaries && npm run catalog:validate",
+    "test": "npm run test --workspace @food-education/catalog-core && node --test tools/tests/mini-package.test.mjs && npm run test:mini-browser-ci && npm run test:mini-config && npm run test:photo-research && npm run test:source-boundaries && npm run test:archive-compat && npm run catalog:validate",
     "test:publication-client": "tsx --test tools/integration/public-education-http.test.mjs",
     "test:publication-browser": "npm --prefix zhongyi-platform run test:publication-client:browser",
     "build:mini": "npm run catalog:check && npm run build:weapp --workspace @food-education/miniprogram && node tools/inspect-mini-package.mjs",
@@ -41,10 +42,12 @@
     "platform:dev": "npm --prefix zhongyi-platform run dev"
   },
   "devDependencies": {
+    "decompress": "file:packages/archive-extractor-compat",
     "@types/node": "22.15.0",
     "esbuild": "0.25.12",
     "sass": "1.105.1",
     "tsx": "4.20.6",
     "typescript": "5.9.3"
-  }
+  },
+  "overrides": { "decompress": "$decompress" }
 }

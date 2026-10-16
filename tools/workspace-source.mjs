@@ -4,7 +4,7 @@ import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSy
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 
 // Explicit product-source roots. Never use a recursive copy of the workspace.
-const trees = ['.github/workflows', 'docs', 'tools',
+const trees = ['.github/workflows', 'docs', 'tools', 'packages/archive-extractor-compat',
   'apps/miniprogram/src', 'apps/miniprogram/config', 'apps/miniprogram/assets', 'apps/miniprogram/tests',
   'packages/catalog-core/src', 'packages/catalog-core/tests', 'packages/catalog-core/tools',
   'zhongyi-platform/server', 'zhongyi-platform/shared', 'zhongyi-platform/photo-processing',
