@@ -18,7 +18,7 @@ const empty: PhotoState = Object.freeze({ revision: 0, status: 'disabled', galle
 const getEmpty = () => empty, subscribeEmpty = () => () => {};
 const emptyBatch: PhotoBatchState = Object.freeze({ revision: 0, status: 'disabled', galleries: Object.freeze({}) });
 const getEmptyBatch = () => emptyBatch;
-const MIN_DETAIL_RECHECK_INTERVAL_MS = 1000;
+const MIN_PHOTO_RECHECK_INTERVAL_MS = 1000;
 
 function usePhotoLifecycle(client: { clear(): void } | null, suspended: boolean, refresh: () => void) {
   const visible = useRef(true), visitEpoch = useRef(safetySession.getSnapshot().clearEpoch);
@@ -68,7 +68,7 @@ export function usePhotos(id: string, suspended: boolean, canInteract: () => boo
   useEffect(() => {
     if (!client || state.status !== 'expired' || !isCurrent()) return;
     const elapsed = Date.now() - lastReadStartedAt.current;
-    const delay = Number.isFinite(elapsed) && elapsed >= 0 ? Math.max(0, MIN_DETAIL_RECHECK_INTERVAL_MS - elapsed) : MIN_DETAIL_RECHECK_INTERVAL_MS;
+    const delay = Number.isFinite(elapsed) && elapsed >= 0 ? Math.max(0, MIN_PHOTO_RECHECK_INTERVAL_MS - elapsed) : MIN_PHOTO_RECHECK_INTERVAL_MS;
     // Only a verified expiry schedules renewal. Errors/withdrawal do not loop;
     // very short server lifetimes cannot create a tight automatic request loop.
     return contentScheduler.after(delay, () => { if (client.getSnapshot() === state && isCurrent()) read(); });
@@ -78,6 +78,7 @@ export function usePhotos(id: string, suspended: boolean, canInteract: () => boo
 }
 
 export function useCardPhotos(ingredients: readonly Ingredient[], suspended: boolean, canInteract: () => boolean) {
+  const lastReadStartedAt = useRef(0);
   const key = ingredients.map(item => item.id).join(',');
   const bindings = useMemo(() => {
     if (!key || !catalogResult.ok || !catalogRelease) return [];
@@ -89,10 +90,17 @@ export function useCardPhotos(ingredients: readonly Ingredient[], suspended: boo
   const client = useMemo(() => catalogRelease && publicContentConfig.origin ? createPhotoBatchClient({ origin: publicContentConfig.origin,
     now: Date.now, transport: publicEducationTransport, scheduler: contentScheduler }) : null, []);
   const state = useSyncExternalStore(client?.subscribe ?? subscribeEmpty, client?.getSnapshot ?? getEmptyBatch, getEmptyBatch);
-  const allowed = usePhotoLifecycle(client, suspended, () => { void client?.refresh(bindings); });
-  useEffect(() => { if (client && allowed()) void client.refresh(bindings); }, [client, bindings]);
-  // Only a verified expiry can trigger renewal; HTTP/transport errors do not loop.
-  useEffect(() => { if (client && state.status === 'expired' && allowed()) void client.refresh(bindings); }, [client, state.status, state.revision]);
+  const read = () => { lastReadStartedAt.current = Date.now(); void client?.refresh(bindings); };
+  const allowed = usePhotoLifecycle(client, suspended, read);
+  useEffect(() => { if (client && allowed()) read(); }, [client, bindings]);
+  // Batch replies may also have very short validUntil values. Use the same
+  // minimum renewal interval as details; a hidden/reset page cannot fire it.
+  useEffect(() => {
+    if (!client || state.status !== 'expired' || !allowed()) return;
+    const elapsed = Date.now() - lastReadStartedAt.current;
+    const delay = Number.isFinite(elapsed) && elapsed >= 0 ? Math.max(0, MIN_PHOTO_RECHECK_INTERVAL_MS - elapsed) : MIN_PHOTO_RECHECK_INTERVAL_MS;
+    return contentScheduler.after(delay, () => { if (client.getSnapshot() === state && allowed()) read(); });
+  }, [client, bindings, state.status, state.revision]);
   const galleries = allowed() ? state.galleries : emptyBatch.galleries;
   return { galleries, origin: publicContentConfig.origin, isCurrent: () => allowed() && canInteract() && client?.getSnapshot() === state };
 }

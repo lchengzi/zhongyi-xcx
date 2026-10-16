@@ -188,6 +188,41 @@ try {
       await expect(comparison.getByText('把想了解的食材放在一起', { exact: true })).toBeVisible();
       await expect(comparison.locator('.compare-selected__item')).toHaveCount(0);
     }],
+    ['catalog_short_lifetimes_rate_limit_renewal_and_stop_after_failure', async h => {
+      await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12);
+      await h.page.clock.pauseAt(new Date(await h.page.evaluate(() => Date.now() + 1000)));
+      try {
+        h.lifetime(100); await h.offline(); await h.online();
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12);
+        const before = h.requests.length;
+        await h.page.clock.runFor(200);
+        assert.equal(h.requests.length, before, 'short card-gallery expiry must not immediately request again');
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(0);
+        await h.page.clock.runFor(900); await expect.poll(() => h.requests.length).toBe(before + 1);
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12);
+        h.status(503); await h.page.clock.runFor(1100);
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(0);
+        assert.equal(h.requests.length, before + 2);
+        await h.page.clock.runFor(10000); assert.equal(h.requests.length, before + 2);
+      } finally { await h.page.clock.resume(); }
+    }],
+    ['catalog_scheduled_renewal_cancels_on_hidden_privacy_reset', async h => {
+      await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12);
+      await h.page.clock.pauseAt(new Date(await h.page.evaluate(() => Date.now() + 1000)));
+      try {
+        h.lifetime(100); await h.offline(); await h.online();
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12);
+        const before = h.requests.length; await h.page.clock.runFor(200);
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(0);
+        assert.equal(h.requests.length, before);
+        await h.page.getByRole('button', { name: '测试关于', exact: true }).click();
+        await h.page.getByRole('button', { name: '允许下一次测试确认', exact: true }).click();
+        await h.page.locator('#delete-local-records').click();
+        await h.offline(); await h.online(); await h.page.clock.runFor(10000);
+        assert.equal(h.requests.length, before, 'hidden/reset catalog cannot revive a scheduled image request');
+        await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(0);
+      } finally { await h.page.clock.resume(); }
+    }],
     ['expiry_verifies_withdrawal_and_network_errors_do_not_loop', async h => {
       await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12); h.withdraw(true);
       await h.page.clock.fastForward(61000); await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(0);
