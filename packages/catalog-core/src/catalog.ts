@@ -170,13 +170,21 @@ function searchable(value: string): string {
   return value.normalize("NFKC").toLowerCase().replace(/[\s_-]+/g, "");
 }
 
+// Discovery-only spelling; not an identity, food-use or allergy equivalence.
+// Public spelling evidence: Wuhan Botanical Garden, “一果多吃” (2021-08-30):
+// https://wbg.cas.cn/KPPJ/zrjy/hbsjt/202108/t20210830_6177451.html
+// Bind both fields so a withdrawn/renamed record cannot inherit this keyword.
+function discoverySpellings(item: Ingredient): readonly string[] {
+  return item.id === 'sang-shen' && item.name === '桑椹' ? ['桑葚'] : [];
+}
+
 /** Tokens match names, aliases, pinyin, Latin names and identity information. */
 export function searchCatalog(catalog: CatalogSnapshot, query: string): readonly Ingredient[] {
   const terms = query.trim().split(/\s+/u).map(searchable).filter(Boolean);
   if (terms.length === 0) return catalog.ingredients;
   const joinedQuery = searchable(query);
   return catalog.ingredients.filter((item) => {
-    const identity = [item.name, item.pinyin, ...item.aliases, item.latinName ?? "", item.partText, ...item.processingForms];
+    const identity = [item.name, item.pinyin, ...item.aliases, ...discoverySpellings(item), item.latinName ?? "", item.partText, ...item.processingForms];
     const fields = identity.map(searchable);
     return fields.some((value) => value.includes(joinedQuery)) || terms.every((term) => fields.some((value) => value.includes(term)));
   });

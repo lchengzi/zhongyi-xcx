@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import { buildComparison, findIngredient, parseCatalog, searchCatalog } from "../src/index.js";
 import type { Ingredient } from "../src/index.js";
 
@@ -82,6 +83,28 @@ test("searches names, aliases, pinyin, Latin identity and multiple identity term
   assert.equal(searchCatalog(result.catalog, "无此条目").length, 0);
   assert.equal(findIngredient(result.catalog, "missing"), undefined);
   assert.equal(searchCatalog(result.catalog, "专业审校").length, 0);
+});
+
+test("common mulberry spelling finds the existing public record without changing its identity or review", () => {
+  const result = parseCatalog(JSON.parse(readFileSync(new URL('../../../apps/miniprogram/src/data/catalog.json', import.meta.url), 'utf8')) as unknown);
+  assert.ok(result.ok);
+  const snapshot = JSON.stringify(result.catalog), target = findIngredient(result.catalog, 'sang-shen'); assert.ok(target);
+  for (const query of ['桑葚', ' 桑葚 ', '桑葚 sang shen', '桑椹', 'sangshen', 'SANG SHEN']) {
+    const found = searchCatalog(result.catalog, query);
+    assert.deepEqual(found.map(item => item.id), ['sang-shen'], query);
+    assert.equal(found[0], target); assert.equal(found[0]?.name, '桑椹'); assert.equal(found[0]?.professionalReview, 'pending'); assert.equal(found[0]?.image, null);
+  }
+  assert.equal(searchCatalog(result.catalog, '桑葚 百合').length, 0);
+  assert.equal(searchCatalog(result.catalog, '桑葚 桑叶').length, 0);
+  assert.deepEqual(searchCatalog(result.catalog, '桑叶').map(item => item.id), ['sang-ye']);
+  assert.equal(JSON.stringify(result.catalog), snapshot, 'search must not inject aliases, sources or approval into catalog data');
+});
+
+test("a discovery spelling is bound to both the expected record ID and catalog name", () => {
+  for (const [id, name] of [['sang-ye', '桑椹'], ['sang-shen', '桑叶'], ['other-mulberry', '其他桑果']]) {
+    const result = parseCatalog({...input(), ingredients: [{...ingredient(id, name), aliases: [], pinyin: 'placeholder', latinName: null, partText: '未知', processingForms: []}]}); assert.ok(result.ok);
+    assert.equal(searchCatalog(result.catalog, '桑葚').length, 0, `${id}/${name}`);
+  }
 });
 
 test("comparison keeps ordering, visible uncertainty and actual field differences", () => {

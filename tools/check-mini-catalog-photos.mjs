@@ -76,6 +76,38 @@ try {
       }
       assert.equal(h.requests.length, 4, 'layout changes cannot re-read photos');
     }],
+    ['common_spelling_catalog_favorites_compare_and_return', async h => {
+      for (const width of [320, 390]) {
+        await h.page.setViewportSize({ width, height: 844 });
+        for (const query of ['桑葚', '桑椹', 'sangshen', '桑葚 sang shen']) {
+          await h.catalog.locator('#catalog-search').fill(query);
+          await expect(h.catalog.locator('.ingredient-card')).toHaveCount(1);
+          await expect(h.catalog.locator('.ingredient-card__name')).toHaveText('桑椹');
+        }
+        await h.catalog.locator('#catalog-search').fill('桑葚');
+        assert.equal(await h.page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false);
+      }
+      await h.catalog.getByRole('button', { name: '查看桑椹详情', exact: true }).click();
+      const detail = h.page.locator('#detail-fixture'); await expect(detail.locator('.detail-name')).toHaveText('桑椹');
+      assert.equal(new URLSearchParams(new URL(h.page.url()).hash.split('?')[1]).get('id'), 'sang-shen');
+      await detail.locator('#detail-favorite').click(); await expect(detail.locator('#detail-favorite')).toHaveText('取消收藏');
+      await detail.locator('#detail-compare').click(); await expect(detail.locator('#detail-compare')).toHaveText('移出对比');
+      await h.page.getByRole('button', { name: '测试收藏', exact: true }).click();
+      const favorites = h.page.locator('#favorites-fixture'); await favorites.locator('#favorites-search').fill('桑葚');
+      await expect(favorites.locator('.ingredient-card')).toHaveCount(1); await expect(favorites.locator('.ingredient-card__name')).toHaveText('桑椹');
+      await favorites.getByRole('button', { name: '查看桑椹详情', exact: true }).click();
+      await expect(detail.locator('#detail-favorite')).toHaveText('取消收藏'); await expect(detail.locator('#detail-compare')).toHaveText('移出对比');
+      await h.page.getByRole('button', { name: '测试对比', exact: true }).click();
+      await expect(h.page.locator('#compare-fixture .compare-selected__name')).toHaveText(['桑椹']);
+      await h.page.getByRole('button', { name: '测试目录', exact: true }).click();
+      await expect(h.catalog.locator('#catalog-search')).toHaveValue('桑葚'); await expect(h.catalog.locator('.ingredient-card')).toHaveCount(1);
+      await h.catalog.locator('#catalog-search').fill('桑葚 桑叶'); await expect(h.catalog.locator('.ingredient-card')).toHaveCount(0);
+      await h.catalog.locator('#catalog-search').fill('桑叶'); await expect(h.catalog.locator('.ingredient-card__name')).toHaveText('桑叶');
+      await h.catalog.locator('#catalog-search').fill('桑葚');
+      await h.catalog.screenshot({ path: path.join(output, '390-common-spelling-search.png') });
+      await h.page.getByRole('button', { name: '添加测试红旗', exact: true }).click(); await expect(h.catalog.locator('.urgent-notice')).toBeVisible();
+      await expect(h.catalog.locator('.ingredient-card')).toHaveCount(0);
+    }],
     ['actual_search_detail_favorite_and_remove', async h => {
       await expect(h.catalog.locator('.ingredient-card-photo__image')).toHaveCount(12);
       await h.catalog.getByRole('textbox', { name: '搜索食材', exact: true }).fill('百合');
