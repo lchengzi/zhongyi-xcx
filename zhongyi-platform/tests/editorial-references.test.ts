@@ -19,9 +19,9 @@ const bytes = Buffer.from([255,216,255,192,0,11,8,0,1,0,1,1,1,17,0,255,217]);
 const reference = { id: 'research-fixture', ingredientId: 'huang-qi', name: '工程研究参考', sourceUrl: 'https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10178363/fullTextXML',
   publisher: '工程夹具', locator: '仅测试', author: '未确定', declaredLicense: 'not-established', licenseUrl: null, representation: 'repository-display', observation: '不是食材图片。', concerns: ['仅测试，不能公开。'],
   sha256: `sha256:${createHash('sha256').update(bytes).digest('hex')}`, bytes: bytes.length, width: 1, height: 1, publicationEligible: false };
-function fixture() {
+function fixture(input: unknown = reference) {
   const root = mkdtempSync(join(tmpdir(), 'editorial-reference-')), file = join(root, 'manifest.json');
-  const manifest = { schemaVersion: EDITORIAL_REFERENCE_SCHEMA, items: [{ ...reference, localPath: 'research.jpg' }] };
+  const manifest = { schemaVersion: EDITORIAL_REFERENCE_SCHEMA, items: [{ ...parseEditorialReference(input), localPath: 'research.jpg' }] };
   writeFileSync(file, JSON.stringify(manifest)); writeFileSync(join(root, 'research.jpg'), bytes);
   return { root, file, manifest };
 }
@@ -43,6 +43,21 @@ test('source thumbnails retain fixed Commons provenance and share-alike license 
     { ...thumb, sourceUrl: 'https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10178363/fullTextXML' },
     { ...thumb, licenseUrl: 'https://creativecommons.org/licenses/by/4.0/' }, { ...thumb, publicationEligible: true },
     { ...thumb, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Fixture.jpg?oldid=123&token=secret' }]) assert.throws(() => parseEditorialReference(bad));
+});
+test('private Commons reference preserves actual BY-SA2.5 without widening original or public publication permissions', () => {
+  const older = { ...reference, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Fixture.jpg?oldid=123',
+    declaredLicense: 'CC-BY-SA-2.5', licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/', representation: 'repository-original' };
+  const parsed = parseEditorialReference(older); assert.equal(parsed.declaredLicense, 'CC-BY-SA-2.5');
+  assert.equal(parsed.publicationEligible, false); assert.throws(() => parsePrivatePhoto(parsed));
+  const f = fixture(older), registry = new EditorialReferenceRegistry(f.file);
+  assert.equal(registry.list().items[0]!.declaredLicense, 'CC-BY-SA-2.5'); assert.deepEqual(registry.image(older.id), bytes);
+  for (const bad of [{ ...older, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Fixture.jpg' },
+    { ...older, sourceUrl: 'https://www.ebi.ac.uk/article' }, { ...older, sourceUrl: 'https://commons.wikimedia.org/wiki/Category:Beans?oldid=123' },
+    { ...older, licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }, { ...older, declaredLicense: 'CC-BY-SA-3.0' },
+    { ...older, sourceUrl: older.sourceUrl + '&token=private' }, { ...older, publicationEligible: true }]) assert.throws(() => parseEditorialReference(bad));
+  const originalWithSupportedLicense = { ...older, declaredLicense: 'CC0-1.0', licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/' };
+  assert.equal(parseEditorialReference(originalWithSupportedLicense).representation, 'repository-original');
+  assert.throws(() => parseEditorialReference({ ...originalWithSupportedLicense, sourceUrl: 'https://www.ebi.ac.uk/reference' }));
 });
 test('domestic news references remain article-bound, private and without an inferred open licence', () => {
   for (const sourceUrl of ['https://www.news.cn/info/20231123/f50bde73d27847b48cee110c34047d57/c.html',

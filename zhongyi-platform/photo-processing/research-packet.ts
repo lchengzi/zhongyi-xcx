@@ -18,6 +18,10 @@ export interface ResearchDisplay {
   reference: EditorialReference; filename: string; sha256: string; bytes: number; width: number; height: number;
   decodedWidth: number; decodedHeight: number; metadataPolicy: 'jfif-only-no-thumbnail';
 }
+export function researchReviewNotes(raw: EditorialReviewPack): string {
+  const pack = parseEditorialReviewPack(raw);
+  return `食材研究材料意见记录（空白，不构成批准）\r\n对应条目：${pack.drafts.map(draft => draft.ingredientId).join('、')}\r\n核对人/角色/日期：________________\r\n资格与实际职责核对：________________\r\n条目/图片ID/版本：________________\r\n身份、部位与加工证据及定位：________________\r\n来源冲突或无法确认项：________________\r\n许可、署名、修改说明与画面隐私：________________\r\n需补材料及建议：________________\r\n请将实际核对与具名审校按既有工作台流程登记；本文件不能直接授予发布权限。\r\n`;
+}
 export function researchPacketHtml(pack: EditorialReviewPack, items: ResearchDisplay[]): string {
   const base = editorialReviewHtml(parseEditorialReviewPack(pack));
   const safeItems = items.map(item => {
@@ -29,7 +33,7 @@ export function researchPacketHtml(pack: EditorialReviewPack, items: ResearchDis
   const cards = safeItems.map(item => `<article><h3>${escape(item.reference.name)}</h3><img src="${item.filename}" width="${item.width}" height="${item.height}" alt="${escape(item.reference.name)}，待审研究展示图"><p>${escape(item.reference.publisher)} · ${escape(item.reference.author)}</p>
 <p><a href="${escape(item.reference.sourceUrl)}" target="_blank" rel="noopener noreferrer">图片出处</a> · ${item.reference.licenseUrl ? `<a href="${escape(item.reference.licenseUrl)}" target="_blank" rel="noopener noreferrer">${item.reference.declaredLicense}声明</a>` : '转载许可未取得'}</p>
 <p>${escape(item.reference.locator)}</p><p>${escape(item.reference.observation)}</p><ul>${item.reference.concerns.map(text => `<li>${escape(text)}</li>`).join('')}</ul>
-<p class="notice">本包对登记参考文件依其方向等比例缩放、sRGB JPEG重编码并移除附加元数据，无裁切或生成式修改。来源站缩略/仓储图仍不是作者原件；本地展示图处理不解决旧原件问题、版权、画面隐私或专业匹配。</p><p>${item.width} × ${item.height} · ${item.bytes}字节</p></article>`).join('');
+<p class="notice">本包对登记参考文件依其方向等比例缩放、sRGB JPEG重编码并移除附加元数据，无裁切或生成式修改。${item.reference.representation === 'repository-original' ? '输入为已登记来源与摘要的仓库原文件，不代表相机原始文件或样本鉴定；展示图另存。' : '来源站缩略/仓储图仍不是作者原件；'}本地展示图处理不解决旧原件问题、版权、画面隐私或专业匹配。</p><p>${item.width} × ${item.height} · ${item.bytes}字节</p></article>`).join('');
   const excludedBaiheScene = pack.drafts.some(draft => draft.ingredientId === 'bai-he') ? '含可辨人脸的湖南现场不在本包，' : '';
   const section = `<section id="research-images"><h2>逐图研究参考与待审问题</h2><p class="notice">${items.length}张内部核对展示图。来源声明许可或转载权限仍须逐项核对，未获准公开或不特定分发；本包没有专业签审。${excludedBaiheScene}原始图片、完整标准原件、账户和数据库均未装入。</p>${cards}<p><a href="review-notes.txt">空白意见记录</a> · <a href="basis.json">版本和展示图绑定</a> · <a href="pack.json">本版稿件快照</a></p></section>`;
   if (base.split('</main>').length !== 2) throw new Error('Unexpected editorial handoff template');
@@ -77,7 +81,7 @@ export async function prepareResearchPacket(options: ReturnType<typeof researchP
       maxEdge: DERIVATIVE_MAX_EDGE, quality: DERIVATIVE_JPEG_QUALITY, crop: 'none', generativeEdit: false, sourceFilesIncluded: false, workflowRecordsRead: false, publicationEligible: false, professionalReview: 'pending', items };
     writeFileSync(join(directory, 'start.html'), researchPacketHtml(pack, items), { flag: 'wx' });
     writeFileSync(join(directory, 'pack.json'), JSON.stringify(pack, null, 2), { flag: 'wx' });
-    writeFileSync(join(directory, 'review-notes.txt'), '百合研究材料意见记录（空白，不构成批准）\r\n核对人/角色/日期：________________\r\n资格与实际职责核对：________________\r\n条目/图片ID/版本：________________\r\n身份、部位与加工证据及定位：________________\r\n来源冲突或无法确认项：________________\r\n许可、署名、修改说明与画面隐私：________________\r\n需补材料及建议：________________\r\n请将实际核对与具名审校按既有工作台流程登记；本文件不能直接授予发布权限。\r\n', { flag: 'wx' });
+    writeFileSync(join(directory, 'review-notes.txt'), researchReviewNotes(pack), { flag: 'wx' });
     // Commit marker last. Failed directories never qualify for export.
     writeFileSync(join(directory, 'basis.json'), JSON.stringify(basis, null, 2), { flag: 'wx' });
     return { directory, packDigest, manifestDigest, references: items.length, sourceBytes: references.reduce((sum, item) => sum + item.bytes, 0), displayBytes: items.reduce((sum, item) => sum + item.bytes, 0), publicationEligible: false };

@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { resolve } from 'node:path';
 import { parseEditorialReviewPack } from '../server/editorial-review-pack.js';
 import { parseEditorialReference } from '../shared/editorial-references.js';
-import { researchPacketArgs, researchPacketHtml, type ResearchDisplay } from '../photo-processing/research-packet.js';
+import { researchPacketArgs, researchPacketHtml, researchReviewNotes, type ResearchDisplay } from '../photo-processing/research-packet.js';
 
 const pack = parseEditorialReviewPack({ schemaVersion: 'private-editorial-pack.1', visibility: 'private', professionalReviewState: 'pending', publicationEnabled: false, externalAiEnabled: false,
   sources: [{ key: 'fixture-source', input: { title: '<script>not-markup</script>', publisher: '工程夹具', url: 'https://example.test/source' }, accessedOn: '2026-10-14', evidenceNote: '<img src=x onerror=alert(1)>' }],
@@ -29,4 +29,19 @@ test('non-Baihe material does not acquire an unrelated Baihe scene claim', () =>
   const html = researchPacketHtml(yam, [{ ...item, reference: { ...reference, ingredientId: 'shan-yao' } }]);
   assert(!html.includes('湖南现场'));
   assert(html.includes('未获准公开') && html.includes('原始图片、完整标准原件、账户和数据库均未装入'));
+});
+test('blank opinion sheet follows the actual ingredient instead of a hardcoded Baihe label', () => {
+  const beans = { ...pack, drafts: pack.drafts.map(draft => ({ ...draft, ingredientId: 'chi-xiao-dou' })) };
+  const notes = researchReviewNotes(beans);
+  assert(notes.includes('chi-xiao-dou')); assert(!notes.includes('百合'));
+  assert(notes.includes('空白，不构成批准') && notes.includes('不能直接授予发布权限'));
+  assert.throws(() => researchReviewNotes({ ...beans, publicationEnabled: true } as unknown as typeof beans));
+});
+test('verified repository-file context is not described as a missing original or a publication approval', () => {
+  const original = parseEditorialReference({ ...reference, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Fixture.jpg?oldid=123',
+    representation: 'repository-original', declaredLicense: 'CC-BY-SA-2.5', licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/' });
+  const html = researchPacketHtml(pack, [{ ...item, reference: original }]);
+  assert(html.includes('输入为已登记来源与摘要的仓库原文件'));
+  assert(!html.includes('来源站缩略/仓储图仍不是作者原件'));
+  assert(html.includes('未获准公开') && html.includes('不代表相机原始文件或样本鉴定'));
 });

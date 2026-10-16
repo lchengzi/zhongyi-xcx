@@ -33,7 +33,7 @@ function ReferenceImage({ reference, session }: { reference: EditorialReference;
     <figcaption><strong>{reference.name}</strong><p>{reference.publisher} · {reference.author}</p>
       <p><a href={reference.sourceUrl} target="_blank" rel="noopener noreferrer">研究出处</a> · {reference.licenseUrl ? <a href={reference.licenseUrl} target="_blank" rel="noopener noreferrer">{reference.declaredLicense}声明</a> : '图片转载许可未取得'}</p>
       <p className="small muted">{reference.locator}</p><p>{reference.observation}</p>
-      <p className="small muted">{reference.representation === 'repository-display' ? '仓储缩放展示版，作者原图未取得。' : reference.representation === 'source-page-image' ? '原页参考图，可能保留原始附加元数据。' : reference.representation === 'source-thumbnail' ? '来源站独立缩略图，不是已校验原件；原件问题另按待核对事项记录。' : '既有处理展示版，不替代原件。'} 研究参考不进入候选批准或发布流程。</p>
+      <p className="small muted">{reference.representation === 'repository-original' ? '已取得来源仓库原文件并登记摘要；不代表相机原始文件、样本鉴定或用途批准。' : reference.representation === 'repository-display' ? '仓储缩放展示版，作者原图未取得。' : reference.representation === 'source-page-image' ? '原页参考图，可能保留原始附加元数据。' : reference.representation === 'source-thumbnail' ? '来源站独立缩略图，不是已校验原件；原件问题另按待核对事项记录。' : '既有处理展示版，不替代原件。'} 研究参考不进入候选批准或发布流程。</p>
       <details><summary>研究图待核对事项</summary><ul>{reference.concerns.map(item => <li key={item}>{item}</li>)}</ul></details>
     </figcaption>
   </figure>;
