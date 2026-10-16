@@ -33,7 +33,7 @@ export function CheckboxGroup(props: Props & { onChange?: (event: { detail: { va
   return <div onChange={event => props.onChange?.({ detail: { value: Array.from(event.currentTarget.querySelectorAll<HTMLInputElement>('input:checked')).map(input => input.value) } })}>{props.children}</div>;
 }
 export function Label({ children, className }: Props) { return <label className={className}>{children}</label>; }
-export function Image(props: Props & { src: string; mode?: string; lazyLoad?: boolean; onError?: () => void }) {
+export function Image(props: Props & { src: string; mode?: string; lazyLoad?: boolean; onLoad?: () => void; onError?: () => void }) {
   return <img className={props.className} src={props.src} alt={props.ariaLabel ?? ''} aria-hidden={props.ariaHidden}
-    style={{ objectFit: props.mode === 'aspectFill' ? 'cover' : 'contain' }} onError={props.onError} />;
+    style={{ objectFit: props.mode === 'aspectFill' ? 'cover' : 'contain' }} onLoad={props.onLoad} onError={props.onError} />;
 }

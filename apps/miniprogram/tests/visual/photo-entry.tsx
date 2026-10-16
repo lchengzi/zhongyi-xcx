@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { parsePublicPhotoGallery } from '@food-education/catalog-core';
 import { catalogResult } from '../../src/data/catalog';
 import { IngredientPhotos } from '../../src/components/ingredient-photos';
@@ -14,7 +14,10 @@ const gallery = parsePublicPhotoGallery({ schemaVersion: 'public-photo-gallery.1
 }, { ingredientId: ingredient.id, name: ingredient.name, baseReleaseId: 'test-release' }, now);
 function App() {
   const [active, setActive] = useState(true);
+  const allowed = useRef(true);
   return <main className='page'><p>仅工程交互验证，非实际公开食材</p><button id='withdraw' onClick={() => setActive(false)}>模拟撤回</button>
-    <IngredientPhotos ingredient={ingredient} gallery={active ? gallery : null} origin='https://photos.example.test' canInteract={() => active} /></main>;
+    <button id='block-interaction' onClick={() => { allowed.current = false; }}>暂停测试交互</button>
+    <button id='resume-interaction' onClick={() => { allowed.current = true; }}>恢复测试交互</button>
+    <IngredientPhotos ingredient={ingredient} gallery={active ? gallery : null} origin='https://photos.example.test' canInteract={() => active && allowed.current} /></main>;
 }
 const root = document.getElementById('root'); if (!root) throw new Error('Missing root'); createRoot(root).render(<App />);

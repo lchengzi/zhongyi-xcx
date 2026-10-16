@@ -1,5 +1,5 @@
 import { Button, Image, Text, View } from '@tarojs/components';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { publicPhotoUrl, type Ingredient, type PublicPhotoGallery } from '@food-education/catalog-core';
 import { IngredientVisual } from './ingredient-visual';
 import { Disclosure } from './disclosure';
@@ -14,16 +14,12 @@ export function IngredientPhotos({ ingredient, gallery, origin, canInteract }: {
 function Gallery({ ingredient, gallery, origin, canInteract }: {
   ingredient: Ingredient; gallery: PublicPhotoGallery; origin: string; canInteract: () => boolean;
 }) {
-  const [index, setIndex] = useState(0), [failed, setFailed] = useState<readonly string[]>([]);
+  const [index, setIndex] = useState(0);
   const photo = gallery.photos[index];
   if (!photo) return <IngredientVisual ingredient={ingredient} large />;
-  const unavailable = failed.includes(photo.sha256);
   return <View className='ingredient-photos'>
     <View className='ingredient-photos__frame'>
-      {unavailable ? <View className='ingredient-photos__error'><Text>照片暂时无法加载</Text><Button className='button button--soft' onClick={() => {
-        if (canInteract()) setFailed(current => current.filter(hash => hash !== photo.sha256));
-      }}>重新加载</Button></View> : <Image key={photo.sha256} className='ingredient-photos__image' src={publicPhotoUrl(origin, gallery, photo)} mode='aspectFit'
-        ariaLabel={photo.caption} onError={() => { setFailed(current => current.includes(photo.sha256) ? current : [...current, photo.sha256]); }} />}
+      <PhotoImage key={photo.sha256} url={publicPhotoUrl(origin, gallery, photo)} caption={photo.caption} canInteract={canInteract} />
       <Text className='ingredient-photos__count'>{index + 1} / {gallery.photos.length}</Text>
     </View>
     <View className='ingredient-photos__caption'>{photo.caption}</View>
@@ -38,4 +34,30 @@ function Gallery({ ingredient, gallery, origin, canInteract }: {
       <Button className='button button--text' onClick={() => { if (canInteract()) void copySourceUrl(photo.licenseUrl); }}>复制许可链接 ↗</Button>
     </Disclosure>
   </View>;
+}
+
+/** Each displayed photo owns its loading attempt. A late event from a timed-out
+ * or retried image cannot overwrite the current attempt's feedback. */
+function PhotoImage({ url, caption, canInteract }: { url: string; caption: string; canInteract: () => boolean }) {
+  const [state, setState] = useState<{ attempt: number; status: 'loading' | 'ready' | 'error' }>({ attempt: 0, status: 'loading' });
+  const current = useRef(state);
+  const settle = (status: 'ready' | 'error', attempt: number) => {
+    if (current.current.attempt !== attempt || current.current.status !== 'loading') return;
+    const next = { attempt, status }; current.current = next; setState(next);
+  };
+  useEffect(() => {
+    if (state.status !== 'loading') return;
+    const timer = setTimeout(() => settle('error', state.attempt), 15000);
+    return () => clearTimeout(timer);
+  }, [state.attempt, state.status]);
+  if (state.status === 'error') return <View className='ingredient-photos__error'><Text>照片暂时无法加载</Text>
+    <Button className='button button--soft' onClick={() => {
+      if (!canInteract() || current.current.status !== 'error') return;
+      const next = { attempt: current.current.attempt + 1, status: 'loading' as const }; current.current = next; setState(next);
+    }}>重新加载</Button></View>;
+  return <>
+    <Image key={state.attempt} className='ingredient-photos__image' src={url} mode='aspectFit' ariaLabel={caption}
+      onLoad={() => settle('ready', state.attempt)} onError={() => settle('error', state.attempt)} />
+    {state.status === 'loading' && <Text className='ingredient-photos__loading'>照片加载中…</Text>}
+  </>;
 }
