@@ -59,6 +59,24 @@ test('private Commons reference preserves actual BY-SA2.5 without widening origi
   assert.equal(parseEditorialReference(originalWithSupportedLicense).representation, 'repository-original');
   assert.throws(() => parseEditorialReference({ ...originalWithSupportedLicense, sourceUrl: 'https://www.ebi.ac.uk/reference' }));
 });
+test('private Commons BY2.0 preserves its exact licence and cannot grant candidate or publication permission', () => {
+  const older = { ...reference, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Fixture.jpg?oldid=123',
+    declaredLicense: 'CC-BY-2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/', representation: 'processed-display' };
+  const parsed = parseEditorialReference(older);
+  assert.equal(parsed.declaredLicense, 'CC-BY-2.0');
+  assert.equal(parsed.publicationEligible, false); assert.throws(() => parsePrivatePhoto(parsed));
+  const f = fixture(older), registry = new EditorialReferenceRegistry(f.file);
+  assert.equal(registry.list().items[0]!.licenseUrl, older.licenseUrl);
+  assert.deepEqual(registry.image(older.id), bytes);
+  for (const bad of [{ ...older, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Fixture.jpg' },
+    { ...older, sourceUrl: 'https://commons.wikimedia.org/wiki/Category:Lilium?oldid=123' },
+    { ...older, sourceUrl: 'https://www.ebi.ac.uk/article' },
+    { ...older, sourceUrl: 'https://www.yixing.gov.cn/doc/2024/10/08/1260878.shtml' },
+    { ...older, sourceUrl: older.sourceUrl + '&token=private' },
+    { ...older, licenseUrl: 'https://creativecommons.org/licenses/by/4.0/' },
+    { ...older, licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.0/' },
+    { ...older, publicationEligible: true }]) assert.throws(() => parseEditorialReference(bad));
+});
 test('domestic news references remain article-bound, private and without an inferred open licence', () => {
   for (const sourceUrl of ['https://www.news.cn/info/20231123/f50bde73d27847b48cee110c34047d57/c.html',
     'https://www.news.cn/20250810/86728be67197444f91ce862ac492b211/c.html']) {

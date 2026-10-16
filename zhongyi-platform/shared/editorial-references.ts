@@ -6,7 +6,7 @@ export const EDITORIAL_REFERENCE_SCHEMA = 'private-editorial-reference.1';
 export const MAX_REFERENCE_BYTES = 1024 * 1024;
 export interface EditorialReference {
   id: string; ingredientId: string; name: string; sourceUrl: string; publisher: string; locator: string;
-  author: string; declaredLicense: 'not-established' | 'CC-BY-4.0' | 'CC-BY-SA-4.0' | 'CC-BY-SA-2.5' | 'CC0-1.0'; licenseUrl: string | null;
+  author: string; declaredLicense: 'not-established' | 'CC-BY-2.0' | 'CC-BY-4.0' | 'CC-BY-SA-4.0' | 'CC-BY-SA-2.5' | 'CC0-1.0'; licenseUrl: string | null;
   representation: 'source-page-image' | 'repository-display' | 'repository-original' | 'processed-display' | 'source-thumbnail';
   observation: string; concerns: string[]; sha256: string; bytes: number; width: number; height: number;
   publicationEligible: false;
@@ -30,11 +30,11 @@ export function parseEditorialReference(raw: unknown): EditorialReference {
     !['nieer.cas.cn', 'www.yixing.gov.cn', 'www.ebi.ac.uk', 'commons.wikimedia.org', 'www.news.cn', 'www.thepaper.cn', 'sourcing.hktdc.com'].includes(url.hostname)) invalid();
   if (url.search && !(url.hostname === 'commons.wikimedia.org' && /^\?oldid=[1-9][0-9]{0,14}$/.test(url.search))) invalid();
   const license = value.declaredLicense;
-  if (license !== 'not-established' && license !== 'CC-BY-4.0' && license !== 'CC-BY-SA-4.0' && license !== 'CC-BY-SA-2.5' && license !== 'CC0-1.0') invalid();
+  if (license !== 'not-established' && license !== 'CC-BY-2.0' && license !== 'CC-BY-4.0' && license !== 'CC-BY-SA-4.0' && license !== 'CC-BY-SA-2.5' && license !== 'CC0-1.0') invalid();
   // A researched older licence is recorded truthfully, not relabelled as4.0.
   // This is private context only; no candidate or public-photo contract changes.
-  if (license === 'CC-BY-SA-2.5' && (url.hostname !== 'commons.wikimedia.org' || !url.pathname.startsWith('/wiki/File:') || !/^\?oldid=[1-9][0-9]{0,14}$/.test(url.search))) invalid();
-  const licenseUrl = license === 'not-established' ? null : license === 'CC-BY-4.0' ? 'https://creativecommons.org/licenses/by/4.0/' : license === 'CC-BY-SA-4.0' ? 'https://creativecommons.org/licenses/by-sa/4.0/' : license === 'CC-BY-SA-2.5' ? 'https://creativecommons.org/licenses/by-sa/2.5/' : 'https://creativecommons.org/publicdomain/zero/1.0/';
+  if ((license === 'CC-BY-SA-2.5' || license === 'CC-BY-2.0') && (url.hostname !== 'commons.wikimedia.org' || !url.pathname.startsWith('/wiki/File:') || !/^\?oldid=[1-9][0-9]{0,14}$/.test(url.search))) invalid();
+  const licenseUrl = license === 'not-established' ? null : license === 'CC-BY-2.0' ? 'https://creativecommons.org/licenses/by/2.0/' : license === 'CC-BY-4.0' ? 'https://creativecommons.org/licenses/by/4.0/' : license === 'CC-BY-SA-4.0' ? 'https://creativecommons.org/licenses/by-sa/4.0/' : license === 'CC-BY-SA-2.5' ? 'https://creativecommons.org/licenses/by-sa/2.5/' : 'https://creativecommons.org/publicdomain/zero/1.0/';
   if (value.licenseUrl !== licenseUrl || !Array.isArray(value.concerns) || !value.concerns.length || value.concerns.length > 10) invalid();
   const representation = value.representation;
   if (representation !== 'source-page-image' && representation !== 'repository-display' && representation !== 'repository-original' && representation !== 'processed-display' && representation !== 'source-thumbnail') invalid();
